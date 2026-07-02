@@ -1,0 +1,25 @@
+﻿{
+    "id":  "mem_layer_grammar_planning_note_2026-04-19_122345",
+    "projectId":  "AIVA_CORE",
+    "title":  "Layer Grammar Planning Note",
+    "summary":  "Semi-private planning note on layer grammar and how segmented roles and unified meaning should influence system design.",
+    "content":  "Layer grammar includes role, anchor, emotion, signal density, boundary, and workflow surface. Whole system, bounded sections, distinct roles, unified meaning.",
+    "objectClass":  "note",
+    "scope":  "project",
+    "verification":  "source_backed",
+    "promotion":  "captured",
+    "truthLane":  "semi_private",
+    "tags":  [
+                 "layers",
+                 "planning",
+                 "grammar",
+                 "workflow",
+                 "continuity",
+                 "design_language"
+             ],
+    "sourceRefs":  [
+                       "D:\\DEV\\AIVA\\captures\\semi_private\\layer_grammar_planning_note_2026-04-19_122345.md"
+                   ],
+    "createdAt":  "2026-04-19T12:23:45.3444339-04:00",
+    "updatedAt":  "2026-04-19T12:23:45.3444339-04:00"
+}

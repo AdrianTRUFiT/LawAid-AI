@@ -1,0 +1,13 @@
+{
+  "decisionId": "gov_admission_9b90ebf3beb75b15b7afd902",
+  "intakeId": "intake_unreadable_001",
+  "governanceResult": "GOVERNANCE_PENDING_RECOVERY",
+  "reportable": true,
+  "unresolved": true,
+  "recoveryRequired": true,
+  "reasonCodes": [
+    "UNREADABLE_INTAKE"
+  ],
+  "nextQueue": "bounded_pending_recovery",
+  "createdAt": "2026-04-23T14:59:37.951Z"
+}

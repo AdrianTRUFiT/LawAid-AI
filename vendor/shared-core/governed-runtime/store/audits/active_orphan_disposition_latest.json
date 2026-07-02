@@ -1,0 +1,16 @@
+﻿{
+  "count": 1,
+  "disposition": [
+    {
+      "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "title": "Ollama Candidate - Produce an active operational summary for this governed memory object. [Accepted Derivative]",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note",
+      "overlapCount": 0,
+      "disposition": "standalone_active_orphan",
+      "nextAction": "preserve_monitor",
+      "overlappingActive": []
+    }
+  ]
+}

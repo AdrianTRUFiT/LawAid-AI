@@ -1,0 +1,83 @@
+{
+  "profileId": "TRAVEL-PAI-SAFE-1777841297308",
+  "profileType": "TRAVEL_PAI_SAFE_VERTICAL_PROFILE_V1",
+  "architectureBoundary": {
+    "travelIsEngine": false,
+    "travelIsVerticalProfile": true,
+    "paiSafeIsRail": true,
+    "paidIsControlSurface": true,
+    "tpsIsMerchantPackage": true,
+    "fundTrackerAIIsTransactionTruth": true,
+    "fintechionAIIsOperatorGovernance": true,
+    "rateRemainsWorkflowLaw": true
+  },
+  "rail": {
+    "name": "PAI-SAFE",
+    "expansion": "Pay Securely",
+    "role": "verified_payment_safety_rail",
+    "vap": [
+      "VERIFY",
+      "AUTHORIZE",
+      "PROOF"
+    ],
+    "boundary": "rail_not_wallet_first_product"
+  },
+  "actionModes": [
+    "PAI-ROLL",
+    "PAI-LATER",
+    "PAI-NOW",
+    "PAI-FOR",
+    "PAI-ME",
+    "PAI-U",
+    "PAI-AHEAD",
+    "PAI-ADVANCE"
+  ],
+  "dashboardType": "TRAVEL_CONGLOMERATE",
+  "dashboardFields": [
+    "airlines",
+    "hotels",
+    "rentals",
+    "loyalty",
+    "kiosks",
+    "mobile_apps",
+    "web_booking",
+    "call_centers",
+    "partner_operators",
+    "refund_centers",
+    "customer_support"
+  ],
+  "transactionMoments": [
+    "booking",
+    "deposit",
+    "upgrade",
+    "baggage",
+    "seat_selection",
+    "cancellation",
+    "refund",
+    "rebooking",
+    "hotel_hold",
+    "incidentals",
+    "rental_hold",
+    "insurance",
+    "excursion",
+    "loyalty_redemption",
+    "partner_payout"
+  ],
+  "continuityFields": [
+    "who_paid",
+    "what_was_approved",
+    "what_was_promised",
+    "what_changed",
+    "what_was_refunded",
+    "what_credit_was_issued",
+    "what_loyalty_value_was_earned",
+    "what_customer_state_carries_forward"
+  ],
+  "proofLanguage": {
+    "cleanLine": "Free dashboard. Embedded trusted processing. Proof-backed transactions.",
+    "travelLine": "Travel needs verified continuity across every payment moment.",
+    "loyaltyLine": "PAI-SAFE turns travel loyalty from points into verified continuity."
+  },
+  "outputBoundary": "demo_profile_only_no_live_integration",
+  "createdAt": "2026-05-03T20:48:17.308Z"
+}

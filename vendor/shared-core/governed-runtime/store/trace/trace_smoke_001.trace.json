@@ -1,0 +1,12 @@
+{
+  "markerId": "trace_smoke_001",
+  "projectId": "AIVA_CORE",
+  "locationType": "state_change",
+  "summary": "Added lineage/supersession/state/trace stores.",
+  "relatedObjectIds": [
+    "mem_smoke_001",
+    "mem_20260419_103156"
+  ],
+  "confidence": 0.98,
+  "createdAt": "2026-04-19T14:33:56.721Z"
+}

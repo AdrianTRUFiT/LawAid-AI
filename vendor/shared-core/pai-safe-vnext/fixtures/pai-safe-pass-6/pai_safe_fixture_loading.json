@@ -1,0 +1,144 @@
+{
+  "scenario": "LOADING",
+  "fixtureId": "pai_safe_fixture_loading",
+  "generatedAt": "2026-05-11T16:00:00.000Z",
+  "source": "PAI_SAFE_PASS_6_FIXTURE_EXPORT_PACKET",
+  "authority": {
+    "createsTruth": false,
+    "mutatesState": false,
+    "authorizesPayment": false,
+    "writesCustody": false,
+    "promotesDoctrine": false,
+    "uiRendersLater": true
+  },
+  "uiState": {
+    "transactionId": null,
+    "decision": null,
+    "merchantScreen": {
+      "screenRole": "MERCHANT_SCREEN",
+      "screenMode": "LOADING",
+      "stateKind": "LOADING_STATE",
+      "transactionId": null,
+      "decision": null,
+      "tone": "neutral",
+      "headline": "Loading transaction state.",
+      "primaryMessage": "Preparing merchant screen state.",
+      "proofLabel": null,
+      "reasonLabel": null,
+      "nextStepLabel": null,
+      "timelineLabels": [],
+      "allowedActions": [],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD",
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "LOADING_STATE",
+      "fulfillmentLabel": null,
+      "disputeSupportLabel": null
+    },
+    "consumerScreen": {
+      "screenRole": "CONSUMER_SCREEN",
+      "screenMode": "LOADING",
+      "stateKind": "LOADING_STATE",
+      "transactionId": null,
+      "decision": null,
+      "tone": "neutral",
+      "headline": "Loading safe-pay status.",
+      "primaryMessage": "Preparing consumer screen state.",
+      "proofLabel": null,
+      "reasonLabel": null,
+      "nextStepLabel": null,
+      "timelineLabels": [],
+      "allowedActions": [],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD",
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "LOADING_STATE",
+      "userMessage": null
+    },
+    "internalReviewScreen": {
+      "screenRole": "INTERNAL_REVIEW_SCREEN",
+      "screenMode": "LOADING",
+      "stateKind": "LOADING_STATE",
+      "transactionId": null,
+      "decision": null,
+      "tone": "neutral",
+      "headline": "Loading internal review packet.",
+      "primaryMessage": "Preparing internal review screen state.",
+      "proofLabel": null,
+      "reasonLabel": null,
+      "nextStepLabel": null,
+      "timelineLabels": [],
+      "allowedActions": [],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD",
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "LOADING_STATE",
+      "riskCodes": [],
+      "hashes": {
+        "requestHash": null,
+        "decisionHash": null,
+        "recordHash": null,
+        "receiptHash": null
+      },
+      "consistency": {
+        "proofBackConsistent": null,
+        "receiptConsistent": null
+      },
+      "reviewRequired": null
+    },
+    "sourceSurfaceContractReadOnly": true,
+    "uiAuthority": {
+      "screenStatePrepares": true,
+      "uiRendersLater": true,
+      "createsTruth": false,
+      "mutatesState": false,
+      "authorizesPayment": false,
+      "writesCustody": false
+    }
+  }
+}

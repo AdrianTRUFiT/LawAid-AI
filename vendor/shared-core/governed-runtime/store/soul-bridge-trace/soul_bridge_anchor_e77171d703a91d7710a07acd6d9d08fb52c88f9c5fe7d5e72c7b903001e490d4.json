@@ -1,0 +1,25 @@
+{
+  "anchorId": "soul_bridge_anchor_e77171d703a91d7710a07acd6d9d08fb52c88f9c5fe7d5e72c7b903001e490d4",
+  "recordType": "soul_bridge_trace_anchor",
+  "anchoredAt": "2026-04-21T22:00:07.462Z",
+  "sourceEndpoint": "source.eco",
+  "targetEndpoint": "target.eco",
+  "decision": "reroute",
+  "eventType": "rerouted",
+  "reasonCodes": [
+    "REROUTE_REQUIRED"
+  ],
+  "traceId": "soul_trace_e3951fedee4246fe8b2fc29c8aca229e",
+  "traceTimestamp": "2026-04-21T22:00:07.462Z",
+  "state": {
+    "requestedState": "custody",
+    "allowedMaxState": "session",
+    "resolvedState": "session",
+    "overExpansionBlocked": true
+  },
+  "trustClass": "verified",
+  "requestClass": "handoff",
+  "contextClass": "ecosystem",
+  "timingClass": "session",
+  "deterministicKey": "e77171d703a91d7710a07acd6d9d08fb52c88f9c5fe7d5e72c7b903001e490d4"
+}

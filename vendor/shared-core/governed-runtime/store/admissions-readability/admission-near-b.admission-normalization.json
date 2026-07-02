@@ -1,0 +1,27 @@
+{
+  "artifactType": "ADMISSION_NORMALIZATION_ARTIFACT",
+  "generatedAt": "2026-04-23T15:02:32.856Z",
+  "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.md",
+  "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.normalized.md",
+  "linkage": {
+    "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.md",
+    "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.normalized.md"
+  },
+  "readabilityState": "ADMISSION_READABLE",
+  "normalizationState": "ADMISSION_NORMALIZED",
+  "divergenceState": "ADMISSION_NO_DIVERGENCE",
+  "reasonCodes": [
+    "VISIBLE_TEXT_PRESENT",
+    "NORMALIZATION_CHANGED_TEXT"
+  ],
+  "originalTextLength": 166,
+  "normalizedTextLength": 164,
+  "fingerprints": {
+    "rawHash": "374f0c023c14aa7d2c40b1c53b15c1e8f2ef940b4f639bff9417154374bf30ee",
+    "normalizedHash": "1fbf183ea3acac2f62f0f7f9141c057069391b63996a80cd91caf6e6b938e274",
+    "tokenSetHash": "c508ec5738e718f27e46c15e2bfbe8995d4cd484d809b7df1522b5515fe1c9a2",
+    "visibleCharCount": 138,
+    "printableRatio": 1,
+    "tokenCount": 23
+  }
+}

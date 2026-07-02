@@ -1,0 +1,13 @@
+{
+  "identityId": "PGL-ID-1777832349172-8e5d83b6",
+  "privacyStatus": "ERASED",
+  "identityHash": "f9d84eb2b2ce56c98798c5ee85172f98821684cc650f77ed5b60a8e0389886d3",
+  "protectedFields": {
+    "username": null,
+    "email": null,
+    "phone": null,
+    "name": null
+  },
+  "erasedAt": "2026-05-03T18:19:09.696Z",
+  "erasureReason": "DATA_SUBJECT_REQUEST"
+}

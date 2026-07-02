@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { X, Plus, Calendar, CheckSquare, FileText, DollarSign, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useProject, Record } from '../context/ProjectContext';

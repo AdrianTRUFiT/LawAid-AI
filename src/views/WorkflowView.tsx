@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+﻿import React, { useMemo, useState } from "react";
 import { useProject } from "../context/ProjectContext";
 import type {
   WorkflowItem,
@@ -120,7 +120,7 @@ export default function WorkflowView() {
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-900">Workflow</h2>
         <p className="mt-1 text-sm text-slate-500">
-          Post → Review → Compare → Consolidate → Final Draft
+          Post â†’ Review â†’ Compare â†’ Consolidate â†’ Final Draft
         </p>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">

@@ -1,0 +1,22 @@
+{
+  "id": "mem_smoke_001",
+  "projectId": "AIVA_CORE",
+  "title": "Governed Runtime Smoke Object",
+  "summary": "Smoke object for governed runtime search and intake classification.",
+  "content": "same project active build for governed runtime memory and strategic thread intake",
+  "objectClass": "pattern",
+  "scope": "project",
+  "verification": "reviewed",
+  "promotion": "active",
+  "truthLane": "semi_private",
+  "tags": [
+    "runtime",
+    "build",
+    "smoke"
+  ],
+  "sourceRefs": [
+    "smoke_test"
+  ],
+  "createdAt": "2026-04-19T14:26:46.708Z",
+  "updatedAt": "2026-04-20T06:06:22.200Z"
+}

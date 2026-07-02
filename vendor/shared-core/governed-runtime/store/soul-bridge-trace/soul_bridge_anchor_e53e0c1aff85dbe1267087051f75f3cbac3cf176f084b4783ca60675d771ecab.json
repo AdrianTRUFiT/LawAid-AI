@@ -1,0 +1,25 @@
+{
+  "anchorId": "soul_bridge_anchor_e53e0c1aff85dbe1267087051f75f3cbac3cf176f084b4783ca60675d771ecab",
+  "recordType": "soul_bridge_trace_anchor",
+  "anchoredAt": "2026-04-21T22:00:16.402Z",
+  "sourceEndpoint": "concurrency.source",
+  "targetEndpoint": "concurrency.target",
+  "decision": "allow",
+  "eventType": "allowed",
+  "reasonCodes": [
+    "OK"
+  ],
+  "traceId": "soul_trace_531ad191b1014d6697f1017840cf4cc8",
+  "traceTimestamp": "2026-04-21T22:00:16.402Z",
+  "state": {
+    "requestedState": "trusted_local",
+    "allowedMaxState": "trusted_local",
+    "resolvedState": "trusted_local",
+    "overExpansionBlocked": false
+  },
+  "trustClass": "verified",
+  "requestClass": "bridge",
+  "contextClass": "project",
+  "timingClass": "session",
+  "deterministicKey": "e53e0c1aff85dbe1267087051f75f3cbac3cf176f084b4783ca60675d771ecab"
+}

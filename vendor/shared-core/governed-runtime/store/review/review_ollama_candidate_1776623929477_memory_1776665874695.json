@@ -1,0 +1,12 @@
+{
+  "reviewId": "review_ollama_candidate_1776623929477_memory_1776665874695",
+  "candidateId": "ollama_candidate_1776623929477_memory",
+  "reviewer": "operator",
+  "decision": "park",
+  "note": "parked_for_later_review",
+  "previousPromotion": "active",
+  "nextPromotion": "parked",
+  "truthLane": "semi_private",
+  "title": "Ollama Candidate - Produce a candidate summary for the active governed runtime memory object.",
+  "createdAt": "2026-04-20T06:17:54.695Z"
+}

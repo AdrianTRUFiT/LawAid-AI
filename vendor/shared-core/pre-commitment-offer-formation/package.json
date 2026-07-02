@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/pre-commitment-offer-formation",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

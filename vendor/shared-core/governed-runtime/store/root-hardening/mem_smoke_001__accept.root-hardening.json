@@ -1,0 +1,28 @@
+{
+  "decision": {
+    "memoryId": "mem_smoke_001",
+    "action": "accept",
+    "approvedBy": "Adrian",
+    "rationale": [
+      "captured_descendant_hardening"
+    ],
+    "createdAt": "2026-04-20T05:59:06.038Z"
+  },
+  "contextSummary": {
+    "upstreamPath": [
+      "mem_smoke_001",
+      "mem_20260419_103156"
+    ],
+    "directLinks": [
+      {
+        "fromId": "mem_smoke_001",
+        "toId": "mem_20260419_103156",
+        "relation": "supports"
+      }
+    ],
+    "downstreamTree": {
+      "memoryId": "mem_smoke_001",
+      "children": []
+    }
+  }
+}

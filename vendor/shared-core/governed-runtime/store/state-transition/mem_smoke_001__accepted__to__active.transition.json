@@ -1,0 +1,10 @@
+{
+  "memoryId": "mem_smoke_001",
+  "fromPromotion": "accepted",
+  "toPromotion": "active",
+  "approvedBy": "Adrian",
+  "rationale": [
+    "descendant_activate_after_hardening"
+  ],
+  "createdAt": "2026-04-20T06:06:22.200Z"
+}

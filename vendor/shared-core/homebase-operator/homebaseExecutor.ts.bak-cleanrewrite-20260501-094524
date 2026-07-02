@@ -1,0 +1,297 @@
+console.log("EXECUTOR LOADED FROM:", __filename);
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+
+
+const HB_ROOT = 'D:/DEV/AIVA/homebase';
+
+const PATHS = {
+  queue: path.join(HB_ROOT, 'EXECUTION_QUEUE'),
+  executed: path.join(HB_ROOT, 'EXECUTED'),
+  denied: path.join(HB_ROOT, 'EXECUTION_DENIED'),
+  live: path.join(HB_ROOT, 'LIVE_RECORD'),
+  index: path.join(HB_ROOT, 'INDEX')
+};
+
+function sha(value: string) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function liveFingerprint(content: string) {
+  const cleaned = content
+    .replace(/---[\s\S]*?---/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+
+  return sha(cleaned);
+}
+
+function ensureDirs() {
+  for (const dir of Object.values(PATHS)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function existingLiveFingerprints() {
+  ensureDirs();
+
+  const set = new Set<string>();
+  const files = fs.readdirSync(PATHS.live).filter(f => f.endsWith('.md'));
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(PATHS.live, file), 'utf8');
+    set.add(liveFingerprint(raw));
+  }
+
+  return set;
+}
+
+function extract(content: string, key: string) {
+  const regex = new RegExp(key + ':\\s*"([^"]+)"');
+  const match = content.match(regex);
+  return match ? match[1] : null;
+}
+
+function readQueue() {
+  ensureDirs();
+  return fs.readdirSync(PATHS.queue).filter(f => f.endsWith('.md')).sort();
+}
+
+function hardBlocked(content: string) {
+  const text = content.toLowerCase();
+
+  const blocked = [
+    'mutate doctrine',
+    'authorize public release',
+    'bypass human custody'
+  ];
+
+  return blocked.filter(hit => text.includes(hit));
+}
+
+function paccAllows(content: string) {
+  const mode = null;
+
+  const state = (
+    extract(content, 'pacc_state') ||
+    extract(content, 'state') ||
+    'ALLOW'
+  ).toUpperCase();
+
+  if (mode === 'OFF') return { allowed: true, state, reason: 'PACC_MODE_OFF' };
+
+  if (state === 'LOCK') return { allowed: false, state, reason: 'PACC_LOCK_FINAL_GATE' };
+  if (state === 'REVIEW') return { allowed: false, state, reason: 'PACC_REVIEW_FINAL_GATE' };
+  if (state === 'PAUSE') return { allowed: false, state, reason: 'PACC_PAUSE_FINAL_GATE' };
+
+  return { allowed: true, state, reason: 'PACC_ALLOWED' };
+}
+
+function sourceAlreadyExecuted(sourceId: string) {
+  ensureDirs();
+
+  return fs.readdirSync(PATHS.executed)
+    .filter(f => f.endsWith('.md'))
+    .some(f => {
+      const raw = fs.readFileSync(path.join(PATHS.executed, f), 'utf8');
+      return raw.includes('source_file: "' + sourceId + '"');
+    });
+}
+
+function writeManifest(records: any[]) {
+  ensureDirs();
+
+  const jsonPath = path.join(PATHS.index, 'hb-sos-execution-manifest.json');
+  const mdPath = path.join(PATHS.index, 'hb-sos-execution-manifest.md');
+
+  const manifest = {
+    status: 'HB-SOS_EXECUTION_MANIFEST_BUILT',
+    generatedAt: new Date().toISOString(),
+    records,
+    totals: {
+      executed: records.filter(r => r.status === 'EXECUTED').length,
+      denied: records.filter(r => r.status === 'DENIED').length
+    }
+  };
+
+  fs.writeFileSync(jsonPath, JSON.stringify(manifest, null, 2), 'utf8');
+
+  const md = [
+    '# HB-SOS Execution Manifest',
+    '',
+    'Generated: ' + manifest.generatedAt,
+    '',
+    '## Totals',
+    '',
+    '- Executed: ' + manifest.totals.executed,
+    '- Denied: ' + manifest.totals.denied,
+    '',
+    '## Boundary',
+    '',
+    '- Executor remains the final gate.',
+    '- PACC LOCK / REVIEW / PAUSE cannot become Live System Record while mode is ON.',
+    '- Hard-blocked instructions are refused.',
+    '- Idempotent duplicate live records are refused.',
+    '- Source duplicate execution is refused.',
+    '- Live System Record remains the recognized outcome.',
+    ''
+  ].join('\n');
+
+  fs.writeFileSync(mdPath, md, 'utf8');
+
+  return manifest;
+}
+
+function writeDenied(sourcePath: string, file: string, execId: string, reason: string, details: string[], records: any[]) {
+  const deniedPath = path.join(
+    PATHS.denied,
+    file.replace('.md', '__EXECUTION_DENIED_' + execId + '.md')
+  );
+
+  const packet = [
+    '---',
+    'execution_packet: "HB-SOS_EXECUTION_DENIAL"',
+    'execution_id: "' + execId + '"',
+    'status: "DENIED"',
+    'reason: "' + reason + '"',
+    'source_file: "' + file + '"',
+    'created_at: "' + new Date().toISOString() + '"',
+    '---',
+    '',
+    '# Execution Denied',
+    '',
+    'Source: ' + file,
+    '',
+    'Reason: ' + reason,
+    '',
+    'Details:',
+    ...details.map(d => '- ' + d),
+    '',
+    'Boundary:',
+    '- No Live System Record created.',
+    '- Executor refused final consequence.',
+    ''
+  ].join('\n');
+
+  fs.writeFileSync(deniedPath, packet, 'utf8');
+  fs.unlinkSync(sourcePath);
+
+  records.push({
+    file,
+    status: 'DENIED',
+    reason,
+    deniedPath: deniedPath.replace(/\\/g, '/')
+  });
+}
+
+export function runHomebaseExecutor() {
+  ensureDirs();
+
+  const files = readQueue();
+  const records: any[] = [];
+  const liveSet = existingLiveFingerprints();
+
+  for (const file of files) {
+    const sourcePath = path.join(PATHS.queue, file);
+    const content = fs.readFileSync(sourcePath, 'utf8');
+    const execId = 'HBEXEC-' + sha(file + content + null).slice(0, 12);
+
+    const sourceId = extract(content, 'source_file') || file;
+    const fingerprint = liveFingerprint(content);
+    const hardHits = hardBlocked(content);
+    const pacc = paccAllows(content);
+
+    if (sourceAlreadyExecuted(sourceId)) {
+      writeDenied(sourcePath, file, execId, 'SOURCE_ALREADY_EXECUTED', [
+        'source_file already appears in EXECUTED records.',
+        'Duplicate execution refused.'
+      ], records);
+      continue;
+    }
+
+    if (liveSet.has(fingerprint)) {
+      writeDenied(sourcePath, file, execId, 'IDEMPOTENCY_DUPLICATE_LIVE_RECORD', [
+        'A matching Live System Record fingerprint already exists.',
+        'Duplicate live consequence refused.'
+      ], records);
+      continue;
+    }
+
+    if (hardHits.length > 0) {
+      writeDenied(sourcePath, file, execId, 'HARD_BLOCKED_INSTRUCTION_PRESENT', [
+        'Blocked instruction hits: ' + hardHits.join(', ')
+      ], records);
+      continue;
+    }
+
+    if (!pacc.allowed) {
+      writeDenied(sourcePath, file, execId, pacc.reason, [
+        'PACC state: ' + pacc.state,
+        'PACC refused final execution while active.'
+      ], records);
+      continue;
+    }
+
+    const executedPath = path.join(
+      PATHS.executed,
+      file.replace('.md', '__EXECUTED_' + execId + '.md')
+    );
+
+    const livePath = path.join(
+      PATHS.live,
+      file.replace('.md', '__LIVE_' + execId + '.md')
+    );
+
+    const packet = [
+      '---',
+      'live_record: "HB-SOS_LIVE_SYSTEM_RECORD_CLEAN_V1"',
+      'execution_id: "' + execId + '"',
+      'status: "EXECUTED"',
+      'source_file: "' + sourceId + '"',
+      'created_at: "' + new Date().toISOString() + '"',
+      '---',
+      '',
+      '# Live System Record',
+      '',
+      'Status: EXECUTED',
+      '',
+      'Source: ' + sourceId,
+      '',
+      'Boundary:',
+      '- Executor accepted final consequence.',
+      '- Live System Record created.',
+      '- Display is not authority.',
+      '- Record is authority after gated execution.',
+      '',
+      '## Source Packet',
+      '',
+      content
+    ].join('\n');
+
+    fs.writeFileSync(executedPath, packet, 'utf8');
+    fs.writeFileSync(livePath, packet, 'utf8');
+    fs.unlinkSync(sourcePath);
+
+    liveSet.add(liveFingerprint(packet));
+
+    records.push({
+      file,
+      status: 'EXECUTED',
+      executedPath: executedPath.replace(/\\/g, '/'),
+      livePath: livePath.replace(/\\/g, '/')
+    });
+  }
+
+  const manifest = writeManifest(records);
+
+  return {
+    status: 'HB-SOS_EXECUTOR_COMPLETE',
+    files: files.length,
+    executed: records.filter(r => r.status === 'EXECUTED').length,
+    denied: records.filter(r => r.status === 'DENIED').length,
+    manifest
+  };
+}
+

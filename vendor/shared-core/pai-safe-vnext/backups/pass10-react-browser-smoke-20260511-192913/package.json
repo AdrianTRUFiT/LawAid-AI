@@ -1,0 +1,29 @@
+{
+    "name":  "@aiva/pai-safe-vnext",
+    "version":  "0.1.0",
+    "private":  true,
+    "type":  "module",
+    "scripts":  {
+                    "typecheck":  "tsc --noEmit",
+                    "smoke":  "tsx tests/smoke-pai-safe-transaction-circuit.ts",
+                    "verify":  "npm run typecheck \u0026\u0026 npm run smoke",
+                    "smoke:pass2":  "tsx tests/smoke-pai-safe-pass-2-negative-refusal.ts",
+                    "verify:pass2":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2",
+                    "smoke:pass3":  "tsx tests/smoke-pai-safe-pass-3-state-projection.ts",
+                    "verify:pass3":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2 \u0026\u0026 npm run smoke:pass3",
+                    "smoke:pass4":  "tsx tests/smoke-pai-safe-pass-4-surface-contract.ts",
+                    "verify:pass4":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2 \u0026\u0026 npm run smoke:pass3 \u0026\u0026 npm run smoke:pass4",
+                    "smoke:pass5":  "tsx tests/smoke-pai-safe-pass-5-ui-state-mapping.ts",
+                    "verify:pass5":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2 \u0026\u0026 npm run smoke:pass3 \u0026\u0026 npm run smoke:pass4 \u0026\u0026 npm run smoke:pass5",
+                    "export:pass6":  "tsx scripts/export-pai-safe-pass-6-fixtures.ts",
+                    "smoke:pass6":  "tsx tests/smoke-pai-safe-pass-6-fixture-packet.ts",
+                    "verify:pass6":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2 \u0026\u0026 npm run smoke:pass3 \u0026\u0026 npm run smoke:pass4 \u0026\u0026 npm run smoke:pass5 \u0026\u0026 npm run export:pass6 \u0026\u0026 npm run smoke:pass6",
+                    "preview:pass7":  "node scripts/build-pai-safe-pass-7-preview.mjs",
+                    "smoke:pass7":  "tsx tests/smoke-pai-safe-pass-7-read-only-preview.ts",
+                    "verify:pass7":  "npm run typecheck \u0026\u0026 npm run smoke \u0026\u0026 npm run smoke:pass2 \u0026\u0026 npm run smoke:pass3 \u0026\u0026 npm run smoke:pass4 \u0026\u0026 npm run smoke:pass5 \u0026\u0026 npm run export:pass6 \u0026\u0026 npm run smoke:pass6 \u0026\u0026 npm run preview:pass7 \u0026\u0026 npm run smoke:pass7"
+                },
+    "devDependencies":  {
+                            "tsx":  "^4.19.2",
+                            "typescript":  "^5.6.3"
+                        }
+}

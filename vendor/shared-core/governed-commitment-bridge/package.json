@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/governed-commitment-bridge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

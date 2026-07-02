@@ -1,0 +1,23 @@
+{
+  "restrictionId": "PGL-RESTRICT-1777832349689-d30fe9d8",
+  "identityRef": "PGL-ID-1777832349172-8e5d83b6",
+  "privacyStatus": "RESTRICTED",
+  "restrictionReason": "COMPLIANCE_REVIEW",
+  "restrictionTrigger": "EU_PRIVACY_REVIEW",
+  "restrictedAt": "2026-05-03T18:19:09.689Z",
+  "restrictedBy": "PGL_SMOKE_TEST",
+  "exitCondition": "COMPLIANCE_REVIEW_CLEARED",
+  "exitAuthority": "PRIVACY_AUTHORITY",
+  "reviewDueAt": "2026-05-04T18:19:09.688Z",
+  "allowedActions": [
+    "PRESERVE_RECORD",
+    "EXPORT_PORTABILITY_PACKET",
+    "REVIEW_STATUS"
+  ],
+  "blockedActions": [
+    "CAPTURE_SIGNAL",
+    "QUALIFY_SIGNAL",
+    "ROUTE_OPPORTUNITY",
+    "PROCESS_DOWNSTREAM"
+  ]
+}

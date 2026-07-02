@@ -1,0 +1,19 @@
+{
+  "name": "@aiva/aim-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AIM - AI MarketIntel bounded core intelligence module.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "smoke": "tsx tests/smoke-aim-pass1.ts",
+    "verify": "npm run typecheck && npm run smoke",
+    "smoke:pass1": "tsx tests/smoke-aim-pass1.ts",
+    "smoke:pass2": "tsx tests/smoke-aim-pass2.ts",
+    "verify:pass2": "npm run typecheck && npm run smoke:pass1 && npm run smoke:pass2"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

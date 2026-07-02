@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-05-11T16:00:00.000Z",
+  "fixtureCount": 6,
+  "scenarios": [
+    "SAFE",
+    "HOLD",
+    "REFUSED",
+    "EMPTY",
+    "LOADING",
+    "UNAVAILABLE"
+  ],
+  "files": [
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_safe.json",
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_hold.json",
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_refused.json",
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_empty.json",
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_loading.json",
+    "fixtures/pai-safe-pass-6/pai_safe_fixture_unavailable.json"
+  ],
+  "boundary": {
+    "noUi": true,
+    "noPayments": true,
+    "noExternalApis": true,
+    "noCustody": true,
+    "noSoulWritePath": true,
+    "noFundTrackerBridge": true
+  }
+}

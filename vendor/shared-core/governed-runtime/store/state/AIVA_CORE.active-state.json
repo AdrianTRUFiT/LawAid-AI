@@ -1,0 +1,21 @@
+{
+  "projectId": "AIVA_CORE",
+  "activeObjective": "Governed runtime hardening",
+  "currentZone": [
+    "development-memory-runtime",
+    "ingestion"
+  ],
+  "recentDecisions": [
+    "enhanced migration enabled"
+  ],
+  "lockedConstraints": [
+    "AIVA hierarchy sealed",
+    "truth lanes enforced"
+  ],
+  "recentInstructions": [
+    "add lineage",
+    "add supersession",
+    "add active-state store"
+  ],
+  "lastUpdatedAt": "2026-04-19T14:33:56.721Z"
+}

@@ -1,0 +1,18 @@
+﻿{
+  "count": 1,
+  "standaloneActiveOrphans": [
+    {
+      "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "title": "Ollama Candidate - Produce an active operational summary for this governed memory object. [Accepted Derivative]",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note",
+      "sourceRefs": [
+        "ollama_candidate_1776624379269",
+        "mem_20260419_103156",
+        "ollama_candidate_1776624379269_memory"
+      ],
+      "monitorAction": "preserve_monitor"
+    }
+  ]
+}

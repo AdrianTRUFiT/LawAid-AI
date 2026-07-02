@@ -1,0 +1,12 @@
+{
+  "activationId": "activation_ollama_candidate_1776624379269_memory_accepted_derivative_1776666531267",
+  "candidateId": "ollama_candidate_1776624379269_memory",
+  "derivativeId": "ollama_candidate_1776624379269_memory_accepted_derivative",
+  "reviewer": "operator",
+  "sourceTitle": "Ollama Candidate - Produce an active operational summary for this governed memory object.",
+  "truthLane": "semi_private",
+  "promotion": "accepted",
+  "createdAt": "2026-04-20T06:28:50.926Z",
+  "note": "accepted_to_derivative_copy",
+  "activationMode": "derivative_copy"
+}

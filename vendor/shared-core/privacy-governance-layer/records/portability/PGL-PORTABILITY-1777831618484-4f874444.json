@@ -1,0 +1,52 @@
+{
+  "packetId": "PGL-PORTABILITY-1777831618484-4f874444",
+  "identityRef": "PGL-ID-1777831618479-cd010482",
+  "privacyStatus": "RESTRICTED",
+  "protectedFields": {
+    "username": "eu_user_mock",
+    "email": "eu@example.com",
+    "phone": null,
+    "name": null
+  },
+  "consents": [
+    {
+      "consentId": "PGL-CONSENT-1777831618480-397089c5",
+      "identityRef": "PGL-ID-1777831618479-cd010482",
+      "lawfulBasis": "CONSENT",
+      "scopes": [
+        "lead_processing",
+        "merchant_activation"
+      ],
+      "granted": true,
+      "revoked": false,
+      "grantedAt": "2026-05-03T18:06:58.480Z"
+    }
+  ],
+  "restrictions": [
+    {
+      "restrictionId": "PGL-RESTRICT-1777831618483-11184119",
+      "identityRef": "PGL-ID-1777831618479-cd010482",
+      "privacyStatus": "RESTRICTED",
+      "restrictionReason": "COMPLIANCE_REVIEW",
+      "restrictionTrigger": "EU_PRIVACY_REVIEW",
+      "restrictedAt": "2026-05-03T18:06:58.483Z",
+      "restrictedBy": "PGL_SMOKE_TEST",
+      "exitCondition": "COMPLIANCE_REVIEW_CLEARED",
+      "exitAuthority": "PRIVACY_AUTHORITY",
+      "reviewDueAt": "2026-05-04T18:06:58.483Z",
+      "allowedActions": [
+        "PRESERVE_RECORD",
+        "EXPORT_PORTABILITY_PACKET",
+        "REVIEW_STATUS"
+      ],
+      "blockedActions": [
+        "CAPTURE_SIGNAL",
+        "QUALIFY_SIGNAL",
+        "ROUTE_OPPORTUNITY",
+        "PROCESS_DOWNSTREAM"
+      ]
+    }
+  ],
+  "erasures": [],
+  "exportedAt": "2026-05-03T18:06:58.484Z"
+}

@@ -1,0 +1,93 @@
+{
+  "reportId": "soul_bridge_anchor_phase_report_fcef2c0e29088ae20628f8f45b7cc68f71a1e2a572585c0ff44c0b7acd80648c",
+  "recordType": "soul_bridge_anchor_phase_report",
+  "phase": "soul_bridge_anchor_stability_phase_1_runtime_only",
+  "createdAt": "2026-04-21T22:01:13.191Z",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "complete": true,
+  "deterministicKey": "fcef2c0e29088ae20628f8f45b7cc68f71a1e2a572585c0ff44c0b7acd80648c",
+  "results": [
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-allow.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_ALLOW=PASS\nANCHOR_STATUS=existing\nANCHOR_PATH=D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\soul-bridge-trace\\soul_bridge_anchor_780c49dfba9866722e879fe24db776f4d0d7da5266471aa748efe4a19b57c2d0.json"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-hold.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_HOLD=PASS\nANCHOR_STATUS=existing"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-contract.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_CONTRACT=PASS\nANCHOR_STATUS=existing"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-reroute.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_REROUTE=PASS\nANCHOR_STATUS=existing"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-refuse.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_REFUSE=PASS\nANCHOR_STATUS=existing"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-repeat.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_REPEAT=PASS\nFIRST_STATUS=existing\nSECOND_STATUS=existing\nANCHOR_ID=soul_bridge_anchor_4c238fb666e4760b1bbca02a80f733da851efccc664ac0dc49a27e5abf6bf12e"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-multi-run.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_MULTI_RUN=PASS\nRUNS=25\nANCHOR_ID_COUNT=1\nKEY_COUNT=1\nPATH_COUNT=1\nFIRST_STATUS=existing\nLAST_STATUS=existing"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-volume.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_VOLUME=PASS\nRUNS=250\nCREATED_COUNT=0\nEXISTING_COUNT=250\nANCHOR_ID=soul_bridge_anchor_f969667b20a4fa00c7cf6d924478bdfd34e28afa935ca09fd2bf9bab564c824b"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-isolation.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_ISOLATION=PASS\nSCENARIO_COUNT=5\nUNIQUE_KEYS=5\nUNIQUE_ANCHORS=5"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-ledger-audit.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_LEDGER_AUDIT=PASS\nFILE_COUNT=14\nUNIQUE_ANCHOR_IDS=14\nUNIQUE_KEYS=14\nDUPLICATE_ANCHOR_IDS=0\nDUPLICATE_KEYS=0"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-concurrency.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_CONCURRENCY=PASS\nRUNS=40\nANCHOR_ID_COUNT=1\nKEY_COUNT=1\nCREATED_COUNT=0\nEXISTING_COUNT=40\nANCHOR_ID=soul_bridge_anchor_e53e0c1aff85dbe1267087051f75f3cbac3cf176f084b4783ca60675d771ecab"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-collision-audit.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_COLLISION_AUDIT=PASS\nFILE_COUNT=14\nLOGICAL_INPUT_COUNT=14\nCOLLISIONS=0"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-reads.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_READS=PASS\nTOTAL=14\nSAMPLE_ANCHOR_ID=soul_bridge_anchor_ff4271db44d1bfc98590de8069d9b99fba58ed114df61046fbceb7500907fdea\nLOOKUP_BY_ENDPOINTS=1"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\smoke-soul-bridge-anchor-query-reads.ts",
+      "ok": true,
+      "output": "SOUL_BRIDGE_ANCHOR_QUERY_READS=PASS\nTOTAL=14\nSAMPLE_DECISION=refuse\nDECISION_MATCHES=2\nSAMPLE_EVENT=expired\nEVENT_MATCHES=2"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\render-soul-bridge-anchor-read-snapshot.ts",
+      "ok": true,
+      "output": "# Soul Bridge Anchor Read Snapshot\n\n- Total Anchors: 14\n\n## Endpoint Pairs\n- concurrency.source -> concurrency.target: 1\n- intake.local -> workspace.local: 1\n- iso.source.allow -> iso.target.allow: 1\n- iso.source.contract -> iso.target.contract: 1\n- iso.source.hold -> iso.target.hold: 1\n- iso.source.refuse -> iso.target.refuse: 1\n- iso.source.reroute -> iso.target.reroute: 1\n- repeat.source -> repeat.target: 1\n- source.a -> target.a: 1\n- source.b -> target.b: 1\n- source.eco -> target.eco: 1\n- source.refuse -> target.refuse: 1\n- stability.source -> stability.target: 1\n- volume.source -> volume.target: 1\n\n## Latest 10\n- soul_bridge_anchor_5d5595d8dbd1d8c189b0a26ceff59d370d34a91adfd73c7fc5951cd5df38249e\n  - Decision: allow\n  - Event: allowed\n  - Source: stability.source\n  - Target: stability.target\n  - Key: 5d5595d8dbd1d8c189b0a26ceff59d370d34a91adfd73c7fc5951cd5df38249e\n- soul_bridge_anchor_780c49dfba9866722e879fe24db776f4d0d7da5266471aa748efe4a19b57c2d0\n  - Decision: allow\n  - Event: allowed\n  - Source: intake.local\n  - Target: workspace.local\n  - Key: 780c49dfba9866722e879fe24db776f4d0d7da5266471aa748efe4a19b57c2d0\n- soul_bridge_anchor_8e73cf7ba1174519c28d49a811065b6e93df195e33e823c628e0c635138856e7\n  - Decision: reroute\n  - Event: rerouted\n  - Source: iso.source.reroute\n  - Target: iso.target.reroute\n  - Key: 8e73cf7ba1174519c28d49a811065b6e93df195e33e823c628e0c635138856e7\n- soul_bridge_anchor_ab0ce7c25862563d896b2ea6f89b5d0d9baa7c79bff503a1a7424e7397c1c59a\n  - Decision: contract\n  - Event: contracted\n  - Source: source.b\n  - Target: target.b\n  - Key: ab0ce7c25862563d896b2ea6f89b5d0d9baa7c79bff503a1a7424e7397c1c59a\n- soul_bridge_anchor_b0605034847748a92c0e8c1b07c1d135eff58360932fd691d54e7200aec8c182\n  - Decision: hold\n  - Event: held\n  - Source: iso.source.hold\n  - Target: iso.target.hold\n  - Key: b0605034847748a92c0e8c1b07c1d135eff58360932fd691d54e7200aec8c182\n- soul_bridge_anchor_d9c1a490823458f2e0e3bac14f35300aa3baa22d583c289e345eb4c8bcf486a6\n  - Decision: refuse\n  - Event: expired\n  - Source: source.refuse\n  - Target: target.refuse\n  - Key: d9c1a490823458f2e0e3bac14f35300aa3baa22d583c289e345eb4c8bcf486a6\n- soul_bridge_anchor_e53e0c1aff85dbe1267087051f75f3cbac3cf176f084b4783ca60675d771ecab\n  - Decision: allow\n  - Event: allowed\n  - Source: concurrency.source\n  - Target: concurrency.target\n  - Key: e53e0c1aff85dbe1267087051f75f3cbac3cf176f084b4783ca60675d771ecab\n- soul_bridge_anchor_e77171d703a91d7710a07acd6d9d08fb52c88f9c5fe7d5e72c7b903001e490d4\n  - Decision: reroute\n  - Event: rerouted\n  - Source: source.eco\n  - Target: target.eco\n  - Key: e77171d703a91d7710a07acd6d9d08fb52c88f9c5fe7d5e72c7b903001e490d4\n- soul_bridge_anchor_f969667b20a4fa00c7cf6d924478bdfd34e28afa935ca09fd2bf9bab564c824b\n  - Decision: allow\n  - Event: allowed\n  - Source: volume.source\n  - Target: volume.target\n  - Key: f969667b20a4fa00c7cf6d924478bdfd34e28afa935ca09fd2bf9bab564c824b\n- soul_bridge_anchor_ff4271db44d1bfc98590de8069d9b99fba58ed114df61046fbceb7500907fdea\n  - Decision: allow\n  - Event: allowed\n  - Source: iso.source.allow\n  - Target: iso.target.allow\n  - Key: ff4271db44d1bfc98590de8069d9b99fba58ed114df61046fbceb7500907fdea"
+    },
+    {
+      "command": "npx tsx .\\src\\tests\\render-soul-bridge-anchor-summary.ts",
+      "ok": true,
+      "output": "# Soul Bridge Anchor Summary\n\n- Total Anchors: 14\n\n## By Decision\n- allow: 6\n- contract: 2\n- hold: 2\n- refuse: 2\n- reroute: 2\n\n## By Event Type\n- allowed: 6\n- contracted: 2\n- expired: 2\n- held: 2\n- rerouted: 2\n\n## By Trust Class\n- unknown: 2\n- verified: 12"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "artifactId": "ollama_candidate_1776623929477",
+  "projectId": "AIVA_CORE",
+  "sourceIds": [
+    "mem_20260419_103156"
+  ],
+  "model": "llama3.2",
+  "promptIntent": "Produce a candidate summary for the active governed runtime memory object.",
+  "truthLane": "semi_private",
+  "responseText": "Here is a candidate output that meets the objective:\n\n\"Runtime Object: layer-workflow-ollama (mem_20260419_103156)\n\n Class: rule\n Summary: Governed Runtime preserves continuity of migrated session material, enabling efficient workflow activation and code retrieval. Key signals include: ollama runtime target, governed memory preservation, and strategic thread intake.\"",
+  "status": "candidate",
+  "createdAt": "2026-04-19T18:38:49.477Z"
+}

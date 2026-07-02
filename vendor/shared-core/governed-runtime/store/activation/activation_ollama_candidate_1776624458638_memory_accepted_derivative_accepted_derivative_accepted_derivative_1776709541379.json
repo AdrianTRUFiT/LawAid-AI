@@ -1,0 +1,12 @@
+{
+  "activationId": "activation_ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative_accepted_derivative_1776709541379",
+  "candidateId": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative",
+  "derivativeId": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative_accepted_derivative",
+  "reviewer": "operator",
+  "sourceTitle": "Ollama Candidate - Produce a refined active operational summary from the resolved governed context. [Accepted Derivative] [Accepted Derivative]",
+  "truthLane": "semi_private",
+  "promotion": "accepted",
+  "createdAt": "2026-04-20T18:25:41.378Z",
+  "note": "accepted_best_candidate_to_derivative",
+  "activationMode": "derivative_copy"
+}

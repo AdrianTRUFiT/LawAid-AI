@@ -1,0 +1,13 @@
+{
+  "artifactId": "ollama_candidate_1776663821579",
+  "projectId": "AIVA_CORE",
+  "sourceIds": [
+    "mem_20260419_103156"
+  ],
+  "model": "llama3.2",
+  "promptIntent": "Produce an active operational summary for this governed memory object.",
+  "truthLane": "semi_private",
+  "responseText": "# Candidate Output for Active Operational Summary\n\n**Mem Object: `mem_20260419_103156`**\n\n**Class:** `rule`\n**Summary:** Governed runtime processing of \"Layer Workflow Ollama Runtime\" staged session material.\n\nKey Signals:\n\n- **Workflow Activation**: Triggers layer activation.\n- **Code Retrieval Signal**: Enables code retrieval for integration with governed memory runtime.\n- **Ollama Local Runtime Target**: Designates `mem_20260419_103156` as the local runtime target for \"ollama\" operations.\n- **Continuity Preservation**: Ensures governed memory runtime maintains continuity and structure during processing.\n- **Speed Creation**: Optimizes speed through strategic thread intake and merge sidecar interrupt or park decisions.\n\nThis summary provides a concise overview of the active operational state of `mem_20260419_103156`, outlining its key class, governing principles, and critical signals for managing governed memory runtime operations.",
+  "status": "candidate",
+  "createdAt": "2026-04-20T05:43:41.579Z"
+}

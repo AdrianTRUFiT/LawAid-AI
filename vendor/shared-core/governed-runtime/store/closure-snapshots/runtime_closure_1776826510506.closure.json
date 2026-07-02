@@ -1,0 +1,76 @@
+{
+  "snapshotId": "runtime_closure_1776826510506",
+  "proposal": {
+    "proposalId": "proposal_demo_001",
+    "proposedAction": "connect",
+    "targetId": "mem_target_001",
+    "sourceId": "mem_source_001",
+    "requestedAt": "2026-04-21T12:00:00.000Z"
+  },
+  "truth": {
+    "runtimeState": {
+      "visibleReady": true,
+      "activeState": true,
+      "reviewed": true,
+      "proposalAttachable": true
+    },
+    "supportState": {
+      "supportStatus": "DEGRADED",
+      "supportingIds": [
+        "mem_support_001"
+      ],
+      "degradedIds": [
+        "mem_support_009"
+      ],
+      "orphanedIds": []
+    },
+    "continuityState": {
+      "continuityStatus": "INTACT",
+      "lineageIntact": true,
+      "unresolvedCount": 0,
+      "brokenCount": 0
+    },
+    "timingState": {
+      "timingStatus": "STALE",
+      "windowOpen": true,
+      "staleByMs": 5000
+    },
+    "hazardState": {
+      "hazardStatus": "ELEVATED",
+      "activeHazards": [
+        "support_drift"
+      ]
+    },
+    "maturityState": {
+      "maturityStatus": "EARLY",
+      "maturityScore": 0.62
+    },
+    "anomalyState": {
+      "anomalySignals": [
+        "support_misalignment"
+      ]
+    }
+  },
+  "envelope": {
+    "proposalId": "proposal_demo_001",
+    "proposedAction": "connect",
+    "runtimeClosureState": "CONSTRAINED",
+    "runtimeReasons": [
+      "ANOMALY_PRESENT",
+      "HAZARD_ELEVATED",
+      "MATURITY_EARLY",
+      "READY_WITH_LIMITS",
+      "SUPPORT_DEGRADED",
+      "TIMING_STALE"
+    ],
+    "continuityStatus": "INTACT",
+    "supportStatus": "DEGRADED",
+    "hazardStatus": "ELEVATED",
+    "maturityStatus": "EARLY",
+    "connectionHonorable": true,
+    "proofRequired": true,
+    "timestamp": "2026-04-22T02:55:10.505Z",
+    "deterministicReplayKey": "proposal_demo_001::connect::CONSTRAINED::ANOMALY_PRESENT|HAZARD_ELEVATED|MATURITY_EARLY|READY_WITH_LIMITS|SUPPORT_DEGRADED|TIMING_STALE::INTACT::DEGRADED::ELEVATED::EARLY::1::1"
+  },
+  "createdAt": "2026-04-22T02:55:10.506Z"
+}

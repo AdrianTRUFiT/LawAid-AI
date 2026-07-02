@@ -1,0 +1,12 @@
+{
+  "pendingId": "gov_pending_6d5f62c271296af6716adc35",
+  "triggerId": "routing_trigger_certified_closure_record_4aab26d0a81f1bd53959d19b",
+  "sourceRecordId": "certified_closure_record_4aab26d0a81f1bd53959d19b",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "triggerKind": "CERTIFIED_HOLD",
+  "status": "pending",
+  "reasonCodes": [
+    "DEFERRED_TRIGGER"
+  ],
+  "createdAt": "2026-04-23T02:55:39.277Z"
+}

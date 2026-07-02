@@ -1,0 +1,12 @@
+{
+  "consentId": "PGL-CONSENT-1777832349494-28e5ed62",
+  "identityRef": "PGL-ID-1777832349172-8e5d83b6",
+  "lawfulBasis": "CONSENT",
+  "scopes": [
+    "lead_processing",
+    "merchant_activation"
+  ],
+  "granted": true,
+  "revoked": false,
+  "grantedAt": "2026-05-03T18:19:09.494Z"
+}

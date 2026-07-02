@@ -1,0 +1,67 @@
+﻿{
+  "beforeId": "runtime_baseline_1776665017840",
+  "afterId": "runtime_baseline_1776665194596",
+  "beforeCreatedAt": "2026-04-20T06:03:37.839Z",
+  "afterCreatedAt": "2026-04-20T06:06:34.596Z",
+  "summaryDelta": {
+    "candidates": 0,
+    "acceptedNotActive": -1,
+    "rootsNeedingHardening": 0,
+    "activeRootsWithDescendants": 0,
+    "retiredIds": 0,
+    "lineageIssueRoots": 0
+  },
+  "stateClassDiff": {
+    "activeRoots": {
+      "added": [],
+      "removed": []
+    },
+    "acceptedNotActive": {
+      "added": [],
+      "removed": [
+        "mem_smoke_001"
+      ]
+    },
+    "candidates": {
+      "added": [],
+      "removed": []
+    },
+    "rootsNeedingHardening": {
+      "added": [],
+      "removed": []
+    },
+    "retired": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "rootStateChanges": [
+    {
+      "id": "mem_smoke_001",
+      "before": {
+        "promotion": "accepted",
+        "verification": "reviewed",
+        "truthLane": "semi_private",
+        "objectClass": "pattern"
+      }
+    }
+  ],
+  "lineageDelta": [
+    {
+      "rootId": "mem_20260419_103156",
+      "rootTitle": "layer-workflow-ollama",
+      "totalDescendantsDelta": 0,
+      "activeDescendantsDelta": 1,
+      "acceptedDescendantsDelta": -1,
+      "candidateDescendantsDelta": 0,
+      "capturedDescendantsDelta": 0,
+      "archivedDescendantsDelta": 0,
+      "unverifiedDescendantsDelta": 0,
+      "reviewedDescendantsDelta": 0,
+      "descendantIdsAdded": [],
+      "descendantIdsRemoved": [],
+      "issuesBefore": [],
+      "issuesAfter": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "recordId": "certified_closure_record_aeb82d0af173c8511b2447cc",
+  "recordClass": "CERTIFIED_REFUSE_INCOMPLETE",
+  "packetId": "ifact_incomplete_case",
+  "sourceParent": "PONG",
+  "receivingParent": "shared-core/governed-runtime",
+  "certifiedClosureResult": "CERTIFIED_CLOSURE_REFUSE_INCOMPLETE",
+  "hilReadyStatus": "CERTIFIED_CLOSURE_REFUSE_INCOMPLETE",
+  "reasonCodes": [
+    "INCOMPLETE_PACKET"
+  ],
+  "createdAt": "2026-04-23T00:26:53.202Z",
+  "deterministicKey": "aeb82d0af173c8511b2447cc3429e0ef45a5fe8db4f1b1ba4f8c9048771efc00",
+  "repeatStatus": "CREATED"
+}

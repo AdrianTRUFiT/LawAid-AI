@@ -1,0 +1,16 @@
+{
+  "recordId": "certified_closure_record_d6d80288d74dd2dedc638c3a",
+  "recordClass": "CERTIFIED_READY",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "sourceParent": "PONG",
+  "receivingParent": "shared-core/governed-runtime",
+  "certifiedClosureResult": "CLEARED",
+  "hilReadyStatus": "READY_FOR_HIL",
+  "reasonCodes": [
+    "GOVERNANCE_OK",
+    "HIL_OK"
+  ],
+  "createdAt": "2026-04-23T00:26:53.200Z",
+  "deterministicKey": "d6d80288d74dd2dedc638c3a2321cbd84bbb99e69585d508403db894acbbb903",
+  "repeatStatus": "CREATED"
+}

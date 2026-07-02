@@ -1,0 +1,12 @@
+{
+  "surfaceId": "PRIMARY",
+  "projectId": "AIVA_CORE",
+  "localFocus": [
+    "hardening",
+    "stores",
+    "searchability"
+  ],
+  "lastSeenActiveStateAt": "2026-04-19T14:33:56.721Z",
+  "confidenceToContinue": 0.94,
+  "relevanceStatus": "aligned"
+}

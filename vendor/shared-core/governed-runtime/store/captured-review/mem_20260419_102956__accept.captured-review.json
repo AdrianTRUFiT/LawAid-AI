@@ -1,0 +1,19 @@
+{
+  "decision": {
+    "memoryId": "mem_20260419_102956",
+    "decision": "accept",
+    "approvedBy": "Adrian",
+    "rationale": [
+      "captured_intake_review"
+    ],
+    "createdAt": "2026-04-20T20:12:25.460Z"
+  },
+  "before": {
+    "promotion": "captured",
+    "verification": "unverified"
+  },
+  "after": {
+    "promotion": "accepted",
+    "verification": "reviewed"
+  }
+}

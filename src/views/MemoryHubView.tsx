@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { BrainCircuit, Shield, Database, ArrowRight, Search, Plus, Filter, MoreHorizontal, Info, Loader2, Sparkles, Link as LinkIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useProject } from '../context/ProjectContext';
@@ -460,7 +460,7 @@ function VaultItem({ file, onAnalyze, onPromote, isAnalyzing }: any) {
           <div className="min-w-0">
             <p className="text-sm font-bold text-legal-navy truncate">{file.name}</p>
             <p className="text-[10px] text-slate-400 uppercase tracking-widest">
-              {new Date(file.uploadedAt).toLocaleDateString()} • {file.size} • 
+              {new Date(file.uploadedAt).toLocaleDateString()} â€¢ {file.size} â€¢ 
               <span className={`ml-1 ${file.status === 'analyzed' ? 'text-emerald-500' : file.status === 'promoted' ? 'text-amber-500' : 'text-slate-400'}`}>
                 {file.status.toUpperCase()}
               </span>

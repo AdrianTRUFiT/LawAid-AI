@@ -1,0 +1,9 @@
+﻿SESSION TITLE: Layer Workflow Ollama Runtime
+KEY SIGNALS:
+- workflow activates layers
+- code is retrieval signal
+- ollama is the local runtime target
+- governed memory runtime must preserve continuity
+- structure creates speed
+- trace beats recall
+- strategic thread intake decides merge sidecar interrupt or park

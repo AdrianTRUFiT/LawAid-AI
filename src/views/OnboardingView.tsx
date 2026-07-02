@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ChevronRight,
@@ -628,19 +628,19 @@ export default function OnboardingView({ onNavigate }: { onNavigate: (tab: strin
             </h3>
             <div className="space-y-5 text-sm leading-relaxed">
               <div>
-                <span className="mb-1 block font-bold text-amber-700">👉 The Record is the Product</span>
+                <span className="mb-1 block font-bold text-amber-700">ðŸ‘‰ The Record is the Product</span>
                 <p className="text-slate-600">
                   We do not just search documents. We build a structured truth foundation.
                 </p>
               </div>
               <div>
-                <span className="mb-1 block font-bold text-amber-700">👉 Context Gating</span>
+                <span className="mb-1 block font-bold text-amber-700">ðŸ‘‰ Context Gating</span>
                 <p className="text-slate-600">
                   Your matter type determines the intelligence layers applied downstream.
                 </p>
               </div>
               <div>
-                <span className="mb-1 block font-bold text-amber-700">👉 Gap Awareness</span>
+                <span className="mb-1 block font-bold text-amber-700">ðŸ‘‰ Gap Awareness</span>
                 <p className="text-slate-600">
                   Identifying what you do not know is as important as what you do know.
                 </p>

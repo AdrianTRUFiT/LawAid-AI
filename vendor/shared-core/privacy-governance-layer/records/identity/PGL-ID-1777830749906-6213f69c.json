@@ -1,0 +1,15 @@
+{
+  "identityId": "PGL-ID-1777830749906-6213f69c",
+  "privacyStatus": "PERMITTED",
+  "identityHash": "f9d84eb2b2ce56c98798c5ee85172f98821684cc650f77ed5b60a8e0389886d3",
+  "protectedFields": {
+    "username": "eu_user_mock",
+    "email": "eu@example.com",
+    "phone": null,
+    "name": null
+  },
+  "createdAt": "2026-05-03T17:52:29.906Z",
+  "activeRestrictionId": null,
+  "restrictionLiftedAt": "2026-05-03T17:52:29.909Z",
+  "restrictionLiftedBy": "PRIVACY_AUTHORITY"
+}

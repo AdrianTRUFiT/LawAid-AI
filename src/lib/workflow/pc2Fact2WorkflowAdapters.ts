@@ -1,4 +1,4 @@
-﻿import { processPc2, processFact2 } from "../../../node_modules/@aiva/shared-kernel/dist/index.js";
+﻿import { processPc2, processFact2 } from "../../../vendor/shared-kernel/dist/index.js";
 
 export function createPc2WorkflowItem(description: string) {
   return processPc2({

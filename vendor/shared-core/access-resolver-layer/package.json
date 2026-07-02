@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/access-resolver-layer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

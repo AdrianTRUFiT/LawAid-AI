@@ -1,0 +1,12 @@
+{
+  "pendingId": "gov_pending_1d89a962d09737401a18226f",
+  "triggerId": "trigger_deferred_001",
+  "sourceRecordId": "record_deferred_001",
+  "packetId": "packet_deferred_001",
+  "triggerKind": "CERTIFIED_HOLD",
+  "status": "pending",
+  "reasonCodes": [
+    "DEFERRED_TRIGGER"
+  ],
+  "createdAt": "2026-04-23T01:14:03.321Z"
+}

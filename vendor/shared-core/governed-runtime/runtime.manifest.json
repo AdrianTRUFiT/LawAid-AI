@@ -1,0 +1,6 @@
+{
+  "projectId": "AIVA_CORE",
+  "runtimeRoot": "shared-core/governed-runtime",
+  "truthLanes": ["public", "semi_private", "private"],
+  "createdAt": "2026-04-19T10:26:36.8416360-04:00"
+}

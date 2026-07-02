@@ -1,0 +1,25 @@
+{
+  "artifactType": "ADMISSION_INTAKE_SUMMARY",
+  "generatedAt": "2026-04-23T15:08:56.281Z",
+  "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-unreadable.bin.txt",
+  "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-unreadable.bin.normalized.md",
+  "readabilityState": "ADMISSION_UNREADABLE",
+  "normalizationState": "ADMISSION_NOT_NORMALIZED",
+  "divergenceState": "ADMISSION_NO_DIVERGENCE",
+  "linkage": {
+    "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-unreadable.bin.txt",
+    "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-unreadable.bin.normalized.md"
+  },
+  "fingerprintSummary": {
+    "rawHash": "ce8d40d4338462fb11805340c8868a2a421b369bc38f7f9994a9c2a7c8f5149f",
+    "normalizedHash": "ce8d40d4338462fb11805340c8868a2a421b369bc38f7f9994a9c2a7c8f5149f",
+    "tokenSetHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "visibleCharCount": 7,
+    "printableRatio": 0,
+    "tokenCount": 0
+  },
+  "reasonCodes": [
+    "NORMALIZATION_NO_CHANGE",
+    "VISIBLE_TEXT_MISSING"
+  ]
+}

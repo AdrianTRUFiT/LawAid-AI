@@ -1,0 +1,17 @@
+{
+  "name": "aiva-setup-and-depot-fulfillment",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "smoke": "tsx tests/smoke-setup-flow.ts",
+    "smoke:proof": "tsx tests/smoke-proof-packet-handoff.ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2"
+  }
+}

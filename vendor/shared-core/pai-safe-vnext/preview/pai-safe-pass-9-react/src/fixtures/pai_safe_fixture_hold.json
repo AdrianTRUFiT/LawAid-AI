@@ -1,0 +1,174 @@
+{
+  "scenario": "HOLD",
+  "fixtureId": "pai_safe_fixture_hold",
+  "generatedAt": "2026-05-11T16:00:00.000Z",
+  "source": "PAI_SAFE_PASS_6_FIXTURE_EXPORT_PACKET",
+  "authority": {
+    "createsTruth": false,
+    "mutatesState": false,
+    "authorizesPayment": false,
+    "writesCustody": false,
+    "promotesDoctrine": false,
+    "uiRendersLater": true
+  },
+  "uiState": {
+    "transactionId": "txn_fixture_hold",
+    "decision": "HOLD",
+    "merchantScreen": {
+      "screenRole": "MERCHANT_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "HOLD_STATE",
+      "transactionId": "txn_fixture_hold",
+      "decision": "HOLD",
+      "tone": "warning",
+      "headline": "This transaction is held for review.",
+      "primaryMessage": "Wait for review",
+      "proofLabel": "Review record available",
+      "reasonLabel": "Review required",
+      "nextStepLabel": "Wait for review",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "REQUEST_REVIEW",
+        "WAIT_FOR_REVIEW"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "MERCHANT_SURFACE",
+      "fulfillmentLabel": "Hold for review",
+      "disputeSupportLabel": "Review record available before fulfillment."
+    },
+    "consumerScreen": {
+      "screenRole": "CONSUMER_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "HOLD_STATE",
+      "transactionId": "txn_fixture_hold",
+      "decision": "HOLD",
+      "tone": "warning",
+      "headline": "This transaction is held for review.",
+      "primaryMessage": "Wait for review",
+      "proofLabel": "Review record available",
+      "reasonLabel": "Review required",
+      "nextStepLabel": "Wait for review",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "WAIT_FOR_REVIEW"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "CONSUMER_SURFACE",
+      "userMessage": "This transaction requires review before full confidence or fulfillment."
+    },
+    "internalReviewScreen": {
+      "screenRole": "INTERNAL_REVIEW_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "HOLD_STATE",
+      "transactionId": "txn_fixture_hold",
+      "decision": "HOLD",
+      "tone": "warning",
+      "headline": "Internal review packet: HOLD",
+      "primaryMessage": "Internal review required.",
+      "proofLabel": "Review record available",
+      "reasonLabel": "REVIEW_REQUIRED",
+      "nextStepLabel": "INTERNAL_REVIEW_REQUIRED",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued",
+        "Internal consistency hashes available"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "REQUEST_REVIEW",
+        "WAIT_FOR_REVIEW"
+      ],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "INTERNAL_REVIEW_SURFACE",
+      "riskCodes": [
+        "AMOUNT_REVIEW_REQUIRED"
+      ],
+      "hashes": {
+        "requestHash": "psh_c133d6de",
+        "decisionHash": "psh_d791501f",
+        "recordHash": "psh_b20ae957",
+        "receiptHash": "psh_b60b5259"
+      },
+      "consistency": {
+        "proofBackConsistent": true,
+        "receiptConsistent": true
+      },
+      "reviewRequired": true
+    },
+    "sourceSurfaceContractReadOnly": true,
+    "uiAuthority": {
+      "screenStatePrepares": true,
+      "uiRendersLater": true,
+      "createsTruth": false,
+      "mutatesState": false,
+      "authorizesPayment": false,
+      "writesCustody": false
+    }
+  }
+}

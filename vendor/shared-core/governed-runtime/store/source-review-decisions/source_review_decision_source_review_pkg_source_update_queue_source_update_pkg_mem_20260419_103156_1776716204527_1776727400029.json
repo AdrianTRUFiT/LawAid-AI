@@ -1,0 +1,13 @@
+{
+  "decisionId": "source_review_decision_source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527_1776727400029",
+  "reviewPackageId": "source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527",
+  "reviewer": "operator",
+  "decision": "approve",
+  "note": "approved_for_source_merge",
+  "previousStatus": "pending_source_side_review",
+  "nextStatus": "approved_for_source_merge",
+  "sourceId": "mem_20260419_103156",
+  "queueItemId": "source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527",
+  "updateCount": 1,
+  "createdAt": "2026-04-20T23:23:20.029Z"
+}

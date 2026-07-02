@@ -1,0 +1,25 @@
+{
+  "anchorId": "soul_bridge_anchor_4cd1724367891685866dcf73fc80241490e3cea80e2203b55554bdfc08490f3f",
+  "recordType": "soul_bridge_trace_anchor",
+  "anchoredAt": "2026-04-21T22:00:04.625Z",
+  "sourceEndpoint": "source.a",
+  "targetEndpoint": "target.a",
+  "decision": "hold",
+  "eventType": "held",
+  "reasonCodes": [
+    "DRIFT_DETECTED"
+  ],
+  "traceId": "soul_trace_0d305a8ada41477884409788111d74cb",
+  "traceTimestamp": "2026-04-21T22:00:04.624Z",
+  "state": {
+    "requestedState": "trusted_local",
+    "allowedMaxState": "session",
+    "resolvedState": "session",
+    "overExpansionBlocked": true
+  },
+  "trustClass": "verified",
+  "requestClass": "bridge",
+  "contextClass": "project",
+  "timingClass": "session",
+  "deterministicKey": "4cd1724367891685866dcf73fc80241490e3cea80e2203b55554bdfc08490f3f"
+}

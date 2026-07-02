@@ -1,0 +1,26 @@
+{
+  "anchorId": "soul_bridge_anchor_3fe9af22ee44c5abc779af9d6c26fbd14d2c32b6139f0c6ec9a08cd4ecbd5cac",
+  "recordType": "soul_bridge_trace_anchor",
+  "anchoredAt": "2026-04-21T22:00:13.727Z",
+  "sourceEndpoint": "iso.source.contract",
+  "targetEndpoint": "iso.target.contract",
+  "decision": "contract",
+  "eventType": "contracted",
+  "reasonCodes": [
+    "LOAD_VARIATION_HIGH",
+    "REQUEST_CONTRACTED"
+  ],
+  "traceId": "soul_trace_0fb7eb5b57914aa7999400927d7ff37d",
+  "traceTimestamp": "2026-04-21T22:00:13.727Z",
+  "state": {
+    "requestedState": "trusted_local",
+    "allowedMaxState": "ephemeral",
+    "resolvedState": "ephemeral",
+    "overExpansionBlocked": true
+  },
+  "trustClass": "verified",
+  "requestClass": "read",
+  "contextClass": "local",
+  "timingClass": "session",
+  "deterministicKey": "3fe9af22ee44c5abc779af9d6c26fbd14d2c32b6139f0c6ec9a08cd4ecbd5cac"
+}

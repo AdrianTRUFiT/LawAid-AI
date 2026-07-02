@@ -1,0 +1,224 @@
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+
+const HB_ROOT = 'D:/DEV/AIVA/homebase';
+
+const PATHS = {
+  review: path.join(HB_ROOT, 'REVIEW'),
+  routed: path.join(HB_ROOT, 'ROUTED'),
+  index: path.join(HB_ROOT, 'INDEX')
+};
+
+const ROUTE_DIRS: Record<string, string> = {
+  HARD: path.join(PATHS.routed, 'HARD'),
+  MARK: path.join(PATHS.routed, 'MARK'),
+  PONG: path.join(PATHS.routed, 'PONG'),
+  PING: path.join(PATHS.routed, 'PING'),
+  PAID: path.join(PATHS.routed, 'PAID'),
+  LAIW: path.join(PATHS.routed, 'LAIW'),
+  TRUFIT_AI: path.join(PATHS.routed, 'TRUFIT_AI'),
+  AIWELLNESS360: path.join(PATHS.routed, 'AIWELLNESS360'),
+  GOVERNANCE_REVIEW: path.join(PATHS.routed, 'GOVERNANCE_REVIEW')
+};
+
+function sha(value: string) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function ensureRoutes() {
+  fs.mkdirSync(PATHS.routed, { recursive: true });
+  for (const dir of Object.values(ROUTE_DIRS)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  fs.mkdirSync(PATHS.index, { recursive: true });
+}
+
+function readText(filePath: string) {
+  return fs.readFileSync(filePath, 'utf8');
+}
+
+function extractArtifactId(content: string) {
+  const match = content.match(/artifact_id:\s*\"([^\"]+)\"/);
+  return match ? match[1] : null;
+}
+
+function determineRoutes(content: string): string[] {
+  const text = content.toLowerCase();
+  const routes = new Set<string>();
+
+  routes.add('HARD');
+  routes.add('GOVERNANCE_REVIEW');
+
+  if (
+    text.includes('authority') ||
+    text.includes('doctrine') ||
+    text.includes('governance') ||
+    text.includes('boundary') ||
+    text.includes('authorship') ||
+    text.includes('ownership')
+  ) {
+    routes.add('MARK');
+    routes.add('PONG');
+  }
+
+  if (
+    text.includes('runtime') ||
+    text.includes('index') ||
+    text.includes('processing') ||
+    text.includes('continuity') ||
+    text.includes('ping')
+  ) {
+    routes.add('PING');
+  }
+
+  if (
+    text.includes('paid') ||
+    text.includes('dashboard') ||
+    text.includes('user-facing') ||
+    text.includes('interface')
+  ) {
+    routes.add('PAID');
+  }
+
+  if (
+    text.includes('laiw') ||
+    text.includes('logistics') ||
+    text.includes('supply chain') ||
+    text.includes('routing') ||
+    text.includes('vendor')
+  ) {
+    routes.add('LAIW');
+  }
+
+  if (
+    text.includes('trufit') ||
+    text.includes('mind mastery') ||
+    text.includes('wellness-cognition') ||
+    text.includes('assisted self-healing')
+  ) {
+    routes.add('TRUFIT_AI');
+  }
+
+  if (
+    text.includes('aiwellness360') ||
+    text.includes('wellness umbrella') ||
+    text.includes('burnout') ||
+    text.includes('emotional regulation')
+  ) {
+    routes.add('AIWELLNESS360');
+  }
+
+  if (
+    text.includes('bias') ||
+    text.includes('faircode') ||
+    text.includes('algorithmic')
+  ) {
+    routes.add('MARK');
+    routes.add('PONG');
+    routes.add('PAID');
+  }
+
+  return Array.from(routes);
+}
+
+function writeRouteManifest(records: any[]) {
+  const manifestPath = path.join(PATHS.index, 'hb-sos-route-manifest.json');
+  fs.writeFileSync(manifestPath, JSON.stringify({
+    manifestType: 'HB-SOS_ROUTE_MANIFEST_V1',
+    generatedAt: new Date().toISOString(),
+    routedRecords: records
+  }, null, 2), 'utf8');
+
+  const mdPath = path.join(PATHS.index, 'hb-sos-route-manifest.md');
+  const lines = [
+    '# HB-SOS Route Manifest',
+    '',
+    'Generated: ' + new Date().toISOString(),
+    '',
+    '## Routed Records',
+    ''
+  ];
+
+  for (const record of records) {
+    lines.push('- ' + record.file + ' | ' + record.artifactId + ' | ' + record.routes.join(', '));
+  }
+
+  fs.writeFileSync(mdPath, lines.join('\n'), 'utf8');
+
+  return { manifestPath, mdPath };
+}
+
+export import { getPaccMode } from '../pacc-control';
+
+function routeHomebaseReviewItems() {
+  ensureRoutes();
+
+  if (!fs.existsSync(PATHS.review)) {
+    return {
+      status: 'NO_REVIEW_FOLDER',
+      routedCount: 0,
+      records: []
+    };
+  }
+
+  const files = fs.readdirSync(PATHS.review)
+    .filter(file => file.endsWith('.md'));
+
+  const routedRecords: any[] = [];
+
+  for (const file of files) {
+    const sourcePath = path.join(PATHS.review, file);
+    const content = readText(sourcePath);
+    const artifactId = extractArtifactId(content) || 'NO_ARTIFACT_ID_' + sha(content).slice(0, 10);
+    const routes = determineRoutes(content);
+    const contentHash = sha(content).slice(0, 24);
+
+    for (const route of routes) {
+      const routeDir = ROUTE_DIRS[route];
+      if (!routeDir) continue;
+
+      const routedName = file.replace(/\.md$/, '') + '__ROUTE_' + route + '.md';
+      const routedPath = path.join(routeDir, routedName);
+
+      const routedContent = [
+        '---',
+        'route_packet: \"HB-SOS_ROUTE_PACKET_V1\"',
+        'source_file: \"' + file + '\"',
+        'artifact_id: \"' + artifactId + '\"',
+        'route_target: \"' + route + '\"',
+        'content_hash: \"' + contentHash + '\"',
+        'routed_at: \"' + new Date().toISOString() + '\"',
+        'authority: \"ROUTED_FOR_REVIEW_ONLY\"',
+        '---',
+        '',
+        '# Routed Review Packet — ' + route,
+        '',
+        'This packet is routed for review only.',
+        'It does not authorize execution, mutation, release, or doctrine change.',
+        '',
+        '---',
+        '',
+        content
+      ].join('\n');
+
+      fs.writeFileSync(routedPath, routedContent, 'utf8');
+    }
+
+    routedRecords.push({
+      file,
+      artifactId,
+      contentHash,
+      routes
+    });
+  }
+
+  const manifest = writeRouteManifest(routedRecords);
+
+  return {
+    status: 'HB-SOS_ROUTER_COMPLETE',
+    routedCount: routedRecords.length,
+    records: routedRecords,
+    manifest
+  };
+}

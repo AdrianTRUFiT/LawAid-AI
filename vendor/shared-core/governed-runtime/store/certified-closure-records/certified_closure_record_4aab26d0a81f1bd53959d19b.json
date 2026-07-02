@@ -1,0 +1,21 @@
+{
+  "recordId": "certified_closure_record_4aab26d0a81f1bd53959d19b",
+  "recordClass": "CERTIFIED_HOLD",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "sourceParent": "PONG",
+  "receivingParent": "shared-core/governed-runtime",
+  "certifiedClosureResult": "CONSTRAINED",
+  "hilReadyStatus": "HOLD_BEFORE_HIL",
+  "reasonCodes": [
+    "RUNTIME_CONSTRAINED",
+    "ACCEPTANCE_NOT_RELEASE",
+    "APPROVAL_REQUIRED",
+    "GOVERNANCE_PROOF_REQUIRED",
+    "NON_TERMINAL_NOT_HONORABLE",
+    "HIL_GOVERNANCE_NOT_HONORABLE",
+    "HIL_PROOF_REQUIRED"
+  ],
+  "createdAt": "2026-04-23T00:26:53.201Z",
+  "deterministicKey": "4aab26d0a81f1bd53959d19bda01f4aa2e942c5e44391010537293d2a8ca234f",
+  "repeatStatus": "CREATED"
+}

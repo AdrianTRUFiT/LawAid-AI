@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/release-window-source-selection-bridge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

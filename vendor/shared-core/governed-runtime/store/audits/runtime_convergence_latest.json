@@ -1,0 +1,54 @@
+﻿{
+  "gate": {
+    "candidates": 0,
+    "acceptedNotActive": 0,
+    "acceptedDerivativesPendingActivation": 0,
+    "rootsNeedingHardening": 0,
+    "activeRootsWithDescendants": 1,
+    "retiredIds": 1
+  },
+  "derivativeFamilies": [
+    {
+      "familyKey": "ollama_candidate_1776624379269_memory",
+      "counts": {
+        "accepted": 0,
+        "active": 1,
+        "retired": 0,
+        "captured": 0,
+        "archived": 0
+      }
+    },
+    {
+      "familyKey": "ollama_candidate_1776624458638_memory",
+      "counts": {
+        "accepted": 0,
+        "active": 1,
+        "retired": 2,
+        "captured": 0,
+        "archived": 0
+      }
+    }
+  ],
+  "orphanState": {
+    "totalOrphans": 7,
+    "activeOrphans": 2,
+    "standaloneActiveOrphans": [],
+    "duplicateActiveOrphans": [
+      {
+        "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+        "title": "Ollama Candidate - Produce an active operational summary for this governed memory object. [Accepted Derivative]",
+        "overlapCount": 1
+      },
+      {
+        "id": "ollama_candidate_1776624458638_memory_accepted_derivative",
+        "title": "Ollama Candidate - Produce a refined active operational summary from the resolved governed context. [Accepted Derivative]",
+        "overlapCount": 1
+      }
+    ]
+  },
+  "reviewArtifacts": {
+    "capturedReview": 1,
+    "activeOrphanReview": 1,
+    "derivativeFamilyReview": 1
+  }
+}

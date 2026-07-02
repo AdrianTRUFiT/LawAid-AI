@@ -1,0 +1,38 @@
+﻿{
+  "count": 2,
+  "activeOrphans": [
+    {
+      "id": "mem_20260419_102956",
+      "title": "layer-workflow-ollama",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note",
+      "sourceRefs": [
+        "D:\\DEV\\AIVA\\intake\\session-drops\\layer-workflow-ollama.txt"
+      ],
+      "overlappingActive": [
+        {
+          "id": "mem_20260419_103156",
+          "title": "layer-workflow-ollama",
+          "objectClass": "rule",
+          "truthLane": "semi_private"
+        }
+      ],
+      "overlapCount": 1
+    },
+    {
+      "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "title": "Ollama Candidate - Produce an active operational summary for this governed memory object. [Accepted Derivative]",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note",
+      "sourceRefs": [
+        "ollama_candidate_1776624379269",
+        "mem_20260419_103156",
+        "ollama_candidate_1776624379269_memory"
+      ],
+      "overlappingActive": [],
+      "overlapCount": 0
+    }
+  ]
+}

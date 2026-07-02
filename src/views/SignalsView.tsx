@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import { ShieldAlert, RefreshCw, CheckCircle2, XCircle, AlertTriangle, ExternalLink, ChevronRight, Info } from 'lucide-react';
 import { useProject, Signal } from '../context/ProjectContext';
 import { runSignalEngine } from '../lib/cppsService';
@@ -123,15 +123,15 @@ export default function SignalsView() {
             </h3>
             <div className="space-y-4 text-xs leading-relaxed">
               <p>
-                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">👉 Early Warning:</span>
+                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">ðŸ‘‰ Early Warning:</span>
                 <span className="text-slate-200">Identify patterns inside captured records before confusion, delay, or risk compounds.</span>
               </p>
               <p>
-                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">👉 Evidence-Bound:</span>
+                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">ðŸ‘‰ Evidence-Bound:</span>
                 <span className="text-slate-200">This system operates ONLY on captured, timestamped evidence and the structured Case Intake. It does not use assumptions.</span>
               </p>
               <p>
-                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">👉 Position Protection:</span>
+                <span className="font-bold text-amber-400 mr-2 whitespace-nowrap">ðŸ‘‰ Position Protection:</span>
                 <span className="text-slate-200">Restores your ability to see, question, and protect your position using your own records.</span>
               </p>
             </div>
@@ -282,7 +282,7 @@ function EvidenceLink({ recordId }: { recordId: string }) {
         </div>
         <div>
           <p className="text-xs font-bold text-legal-navy">{record.title}</p>
-          <p className="text-[9px] text-slate-400 uppercase tracking-widest">{record.type} • {new Date(record.date).toLocaleDateString()}</p>
+          <p className="text-[9px] text-slate-400 uppercase tracking-widest">{record.type} â€¢ {new Date(record.date).toLocaleDateString()}</p>
         </div>
       </div>
       <button className="text-[9px] font-bold text-slate-400 group-hover:text-legal-navy uppercase tracking-widest">View Record</button>

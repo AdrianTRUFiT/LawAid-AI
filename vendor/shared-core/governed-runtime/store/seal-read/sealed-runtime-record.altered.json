@@ -1,0 +1,20 @@
+{
+  "artifactType": "SEALED_RUNTIME_RECORD",
+  "sealedAt": "2026-04-23T04:29:19.632Z",
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalHash": "a6830f1877c2ebb90d7e90f7728be9e00b21f97e677b5ee95e590c781f4e2b10",
+    "sealedFields": [
+      "continuity",
+      "recordId",
+      "recordType",
+      "state"
+    ]
+  },
+  "payload": {
+    "recordId": "seal_demo_001",
+    "recordType": "runtime_record",
+    "state": "mutated",
+    "continuity": "intact"
+  }
+}

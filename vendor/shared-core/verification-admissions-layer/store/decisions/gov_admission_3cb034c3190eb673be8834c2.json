@@ -1,0 +1,13 @@
+{
+  "decisionId": "gov_admission_3cb034c3190eb673be8834c2",
+  "intakeId": "intake_divergence_001",
+  "governanceResult": "GOVERNANCE_HOLD_DIVERGENCE",
+  "reportable": true,
+  "unresolved": true,
+  "recoveryRequired": false,
+  "reasonCodes": [
+    "DIVERGENCE_DETECTED"
+  ],
+  "nextQueue": "bounded_governance_review",
+  "createdAt": "2026-04-23T14:59:37.951Z"
+}

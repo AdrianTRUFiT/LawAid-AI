@@ -1,0 +1,142 @@
+{
+  "snapshotId": "runtime_baseline_1776716094285",
+  "createdAt": "2026-04-20T20:14:54.285Z",
+  "scope": "governed_runtime",
+  "summary": {
+    "candidates": 0,
+    "acceptedNotActive": 0,
+    "acceptedDerivativesPendingActivation": 0,
+    "rootsNeedingHardening": 0,
+    "activeRootsWithDescendants": 1,
+    "retiredIds": 1,
+    "lineageIssueRoots": 0,
+    "derivativeFamilies": 2
+  },
+  "gateOverview": {
+    "candidates": [],
+    "acceptedNotActive": [],
+    "acceptedDerivativesPendingActivation": [],
+    "rootsNeedingHardening": [],
+    "activeRootsWithDescendants": [
+      {
+        "id": "mem_20260419_103156",
+        "projectId": "AIVA_CORE",
+        "title": "layer-workflow-ollama",
+        "summary": "Enhanced migrated session material staged into governed runtime.",
+        "content": "SESSION TITLE: Layer Workflow Ollama Runtime\nKEY SIGNALS:\n- workflow activates layers\n- code is retrieval signal\n- ollama is the local runtime target\n- governed memory runtime must preserve continuity\n- structure creates speed\n- trace beats recall\n- strategic thread intake decides merge sidecar interrupt or park\r\n",
+        "objectClass": "rule",
+        "scope": "project",
+        "verification": "reviewed",
+        "promotion": "active",
+        "truthLane": "semi_private",
+        "tags": [
+          "migrated",
+          "needs_review",
+          "workflow",
+          "layer",
+          "ollama",
+          "memory",
+          "runtime",
+          "continuity",
+          "trace",
+          "retrieval"
+        ],
+        "sourceRefs": [
+          "D:\\DEV\\AIVA\\intake\\session-drops\\layer-workflow-ollama.txt"
+        ],
+        "createdAt": "2026-04-19T10:31:56.7733678-04:00",
+        "updatedAt": "2026-04-20T05:49:58.071Z",
+        "downstreamChildrenCount": 4
+      }
+    ],
+    "retiredIds": [
+      "mem_20260419_102956"
+    ]
+  },
+  "lineageHealth": [
+    {
+      "rootId": "mem_20260419_103156",
+      "rootTitle": "layer-workflow-ollama",
+      "rootPromotion": "active",
+      "rootVerification": "reviewed",
+      "totalDescendants": 5,
+      "activeDescendants": 1,
+      "acceptedDescendants": 0,
+      "candidateDescendants": 0,
+      "capturedDescendants": 0,
+      "archivedDescendants": 0,
+      "unverifiedDescendants": 0,
+      "reviewedDescendants": 5,
+      "descendantIds": [
+        "mem_smoke_001",
+        "ollama_candidate_1776623929477_memory",
+        "ollama_candidate_1776624379269_memory",
+        "ollama_candidate_1776624458638_memory",
+        "ollama_candidate_1776663821579_memory"
+      ],
+      "issues": []
+    }
+  ],
+  "derivativeFamilies": [
+    {
+      "familyKey": "ollama_candidate_1776624379269_memory",
+      "members": [
+        {
+          "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+          "promotion": "active",
+          "verification": "reviewed",
+          "truthLane": "semi_private",
+          "derivativeDepth": 1,
+          "createdAt": "2026-04-20T06:28:50.926Z",
+          "isFamilyTip": true
+        }
+      ],
+      "counts": {
+        "accepted": 0,
+        "active": 1,
+        "retired": 0,
+        "captured": 0,
+        "archived": 0
+      }
+    },
+    {
+      "familyKey": "ollama_candidate_1776624458638_memory",
+      "members": [
+        {
+          "id": "ollama_candidate_1776624458638_memory_accepted_derivative",
+          "promotion": "accepted",
+          "verification": "reviewed",
+          "truthLane": "semi_private",
+          "derivativeDepth": 1,
+          "createdAt": "2026-04-20T06:29:07.230Z",
+          "isFamilyTip": false
+        },
+        {
+          "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative",
+          "promotion": "retired",
+          "verification": "reviewed",
+          "truthLane": "semi_private",
+          "derivativeDepth": 2,
+          "createdAt": "2026-04-20T06:34:10.612Z",
+          "isFamilyTip": false
+        },
+        {
+          "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative_accepted_derivative",
+          "promotion": "retired",
+          "verification": "reviewed",
+          "truthLane": "semi_private",
+          "derivativeDepth": 3,
+          "createdAt": "2026-04-20T18:25:41.378Z",
+          "isFamilyTip": true
+        }
+      ],
+      "counts": {
+        "accepted": 1,
+        "active": 0,
+        "retired": 2,
+        "captured": 0,
+        "archived": 0
+      }
+    }
+  ]
+}

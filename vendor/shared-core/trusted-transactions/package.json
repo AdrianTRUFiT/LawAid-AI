@@ -1,0 +1,15 @@
+{
+  "name": "trusted-transactions",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test:hil": "tsx tests/smoke-hil-negative-paths.ts",
+    "test:report": "tsx tests/smoke-read-only-report.ts",
+    "test": "npm run typecheck && npm run test:hil && npm run test:report"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0"
+  }
+}

@@ -1,0 +1,68 @@
+﻿{
+  "count": 7,
+  "routed": [
+    {
+      "id": "mem_20260419_102956",
+      "classification": "other_orphan",
+      "nextAction": "manual_review",
+      "promotion": "retired",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "mem_layer_grammar_planning_note_2026-04-19_122345",
+      "classification": "source_backed_standalone",
+      "nextAction": "preserve_park",
+      "promotion": "captured",
+      "verification": "source_backed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "mem_trufit_event_layer_proof_2026-04-19_122345",
+      "classification": "source_backed_standalone",
+      "nextAction": "preserve_park",
+      "promotion": "captured",
+      "verification": "source_backed",
+      "truthLane": "private",
+      "objectClass": "pattern"
+    },
+    {
+      "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "classification": "derivative_orphan",
+      "nextAction": "derivative_family_review",
+      "promotion": "active",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative",
+      "classification": "derivative_orphan",
+      "nextAction": "derivative_family_review",
+      "promotion": "accepted",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative",
+      "classification": "derivative_orphan",
+      "nextAction": "derivative_family_review",
+      "promotion": "retired",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative_accepted_derivative",
+      "classification": "derivative_orphan",
+      "nextAction": "derivative_family_review",
+      "promotion": "retired",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "mem_20260419_102956",
+  "projectId": "AIVA_CORE",
+  "title": "layer-workflow-ollama",
+  "summary": "Migrated session material staged into governed runtime.",
+  "content": "SESSION TITLE: Layer Workflow Ollama Runtime\nKEY SIGNALS:\n- workflow activates layers\n- code is retrieval signal\n- ollama is the local runtime target\n- governed memory runtime must preserve continuity\n- structure creates speed\n- trace beats recall\n- strategic thread intake decides merge sidecar interrupt or park\r\n",
+  "objectClass": "note",
+  "scope": "project",
+  "verification": "reviewed",
+  "promotion": "retired",
+  "truthLane": "semi_private",
+  "tags": [
+    "migrated",
+    "session_material",
+    "needs_review"
+  ],
+  "sourceRefs": [
+    "D:\\DEV\\AIVA\\intake\\session-drops\\layer-workflow-ollama.txt"
+  ],
+  "createdAt": "2026-04-19T10:29:56.8657719-04:00",
+  "updatedAt": "2026-04-20T23:19:37.197Z"
+}

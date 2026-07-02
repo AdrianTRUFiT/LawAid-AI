@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import Markdown from 'react-markdown';
 import { FileText, Plus, Search, Filter, ShieldCheck, MoreHorizontal, Download, Eye, ChevronDown, Trash2, CheckCircle, Sparkles, Loader2, BrainCircuit, X, Upload } from 'lucide-react';
 import { useProject, Record } from '../context/ProjectContext';

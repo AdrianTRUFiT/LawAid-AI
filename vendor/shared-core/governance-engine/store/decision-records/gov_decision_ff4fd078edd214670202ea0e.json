@@ -1,0 +1,22 @@
+{
+  "decisionId": "gov_decision_ff4fd078edd214670202ea0e",
+  "triggerId": "trigger_incomplete_001",
+  "sourceRecordId": "record_incomplete_001",
+  "triggerKind": "UNKNOWN",
+  "classificationState": "CLASSIFIED_INVALID",
+  "branchState": "BRANCH_HOLD",
+  "decisionReasons": [
+    "INCOMPLETE_TRIGGER"
+  ],
+  "nextActionPacket": {
+    "actionId": "gov_action_trigger_incomplete_001_hold",
+    "actionType": "HOLD_FOR_REVIEW",
+    "sourceRecordId": "record_incomplete_001",
+    "targetPath": "shared-core/governance-review",
+    "reasonCodes": [
+      "INCOMPLETE_TRIGGER"
+    ],
+    "createdAt": "2026-04-23T03:16:55.757Z"
+  },
+  "createdAt": "2026-04-23T03:16:55.757Z"
+}

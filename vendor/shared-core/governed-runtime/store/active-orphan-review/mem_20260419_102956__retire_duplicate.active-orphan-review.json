@@ -1,0 +1,19 @@
+{
+  "decision": {
+    "memoryId": "mem_20260419_102956",
+    "decision": "retire_duplicate",
+    "approvedBy": "Adrian",
+    "rationale": [
+      "active_orphan_disposition_review"
+    ],
+    "createdAt": "2026-04-20T23:19:37.196Z"
+  },
+  "before": {
+    "promotion": "active",
+    "verification": "reviewed"
+  },
+  "after": {
+    "promotion": "retired",
+    "verification": "reviewed"
+  }
+}

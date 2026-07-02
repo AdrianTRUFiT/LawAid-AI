@@ -1,0 +1,15 @@
+{
+  "recordId": "certified_closure_record_3e0ca4b0b3282c091d9179da",
+  "recordClass": "CERTIFIED_REFUSE_MUTATION",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "sourceParent": "PONG",
+  "receivingParent": "shared-core/governed-runtime",
+  "certifiedClosureResult": "CERTIFIED_CLOSURE_REFUSE_MUTATION",
+  "hilReadyStatus": "CERTIFIED_CLOSURE_REFUSE_MUTATION",
+  "reasonCodes": [
+    "AUTHORED_CORE_MUTATION"
+  ],
+  "createdAt": "2026-04-23T00:26:53.202Z",
+  "deterministicKey": "3e0ca4b0b3282c091d9179dafa53424f2ecaa638ad48772f34a4363aa29a1b0c",
+  "repeatStatus": "CREATED"
+}

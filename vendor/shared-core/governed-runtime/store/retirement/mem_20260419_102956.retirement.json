@@ -1,0 +1,11 @@
+{
+  "memoryId": "mem_20260419_102956",
+  "retiredInFavorOf": "mem_20260419_103156",
+  "rationale": [
+    "duplicate_cleanup",
+    "same_title",
+    "same_content"
+  ],
+  "approvedBy": "Adrian",
+  "createdAt": "2026-04-19T14:40:06.990Z"
+}

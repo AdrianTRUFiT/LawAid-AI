@@ -1,0 +1,42 @@
+{
+  "artifactType": "runtime_closure_latest_normalized_state",
+  "generatedAt": "2026-04-22T15:33:58.760Z",
+  "sourceAuditFile": "runtime_closure_audit_1776827832206.runtime-closure-audit.json",
+  "latest": {
+    "schemaVersion": "runtime_closure_audit.v1_inferred",
+    "auditId": "runtime_closure_audit_1776827832206",
+    "proposalId": "runtime_bound_demo",
+    "proposedAction": "connect",
+    "runtimeClosureState": "CONSTRAINED",
+    "deterministicReplayKey": "runtime_bound_demo::connect::CONSTRAINED::ANOMALY_PRESENT|HAZARD_ELEVATED|READY_WITH_LIMITS|SUPPORT_DEGRADED::INTACT::DEGRADED::ELEVATED::SUFFICIENT::1::1",
+    "reasons": [
+      "ANOMALY_PRESENT",
+      "HAZARD_ELEVATED",
+      "READY_WITH_LIMITS",
+      "SUPPORT_DEGRADED"
+    ],
+    "degradedIds": [
+      "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "ollama_candidate_1776624458638_memory_accepted_derivative"
+    ],
+    "activeHazards": [
+      "duplicate_active_orphan_pair:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+    ],
+    "anomalySignals": [
+      "source_ref_overlap_count:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative:1",
+      "source_ref_overlap_pair:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+    ],
+    "overlapPairs": [
+      {
+        "pairKey": "ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative",
+        "leftId": "ollama_candidate_1776624379269_memory_accepted_derivative",
+        "rightId": "ollama_candidate_1776624458638_memory_accepted_derivative",
+        "sharedSourceRefCount": 1,
+        "sharedSourceRefsKnown": false
+      }
+    ],
+    "overlapPairKeys": [
+      "ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "anchorId": "soul_bridge_anchor_5ac5166545638aa85c088cdfdd00609677bb4fea32502dfd5116c565628a853b",
+  "recordType": "soul_bridge_trace_anchor",
+  "anchoredAt": "2026-04-21T22:40:10.535Z",
+  "sourceEndpoint": "govctx.diff.source",
+  "targetEndpoint": "govctx.diff.target",
+  "decision": "allow",
+  "eventType": "allowed",
+  "reasonCodes": [
+    "OK"
+  ],
+  "traceId": "soul_trace_9856abdd0ba042a9a082adec6cd6bdfb",
+  "traceTimestamp": "2026-04-21T22:40:10.535Z",
+  "state": {
+    "requestedState": "trusted_local",
+    "allowedMaxState": "trusted_local",
+    "resolvedState": "trusted_local",
+    "overExpansionBlocked": false
+  },
+  "trustClass": "verified",
+  "requestClass": "bridge",
+  "contextClass": "project",
+  "timingClass": "session",
+  "packageId": "pkg_diff",
+  "sourceRef": "src_diff",
+  "workflowStage": "approved",
+  "deterministicKey": "5ac5166545638aa85c088cdfdd00609677bb4fea32502dfd5116c565628a853b"
+}

@@ -1,0 +1,19 @@
+{
+  "decision": {
+    "memoryId": "ollama_candidate_1776624458638_memory_accepted_derivative",
+    "decision": "activate_pending",
+    "approvedBy": "Adrian",
+    "rationale": [
+      "derivative_family_closeout_review"
+    ],
+    "createdAt": "2026-04-20T23:22:04.071Z"
+  },
+  "before": {
+    "promotion": "accepted",
+    "verification": "reviewed"
+  },
+  "after": {
+    "promotion": "active",
+    "verification": "reviewed"
+  }
+}

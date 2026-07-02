@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Plus, Clock, AlertCircle, CheckCircle2, Trash2, Edit2, X, CheckCircle } from 'lucide-react';
 import { useProject, Record } from '../context/ProjectContext';
 import { motion, AnimatePresence } from 'motion/react';

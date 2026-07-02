@@ -1,0 +1,10 @@
+{
+  "memoryId": "ollama_candidate_1776624458638_memory",
+  "fromPromotion": "accepted",
+  "toPromotion": "active",
+  "approvedBy": "Adrian",
+  "rationale": [
+    "query_pipeline_activate"
+  ],
+  "createdAt": "2026-04-19T18:47:38.640Z"
+}

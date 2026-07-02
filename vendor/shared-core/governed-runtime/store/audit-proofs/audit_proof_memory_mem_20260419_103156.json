@@ -1,0 +1,33 @@
+{
+  "proofId": "audit_proof_memory_mem_20260419_103156",
+  "kind": "memory",
+  "id": "mem_20260419_103156",
+  "filePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\memory\\mem_20260419_103156.memory.json",
+  "objectHash": "0cc568a2aa19914913daaf1fbea817e6c111f416a718ec096c2677b632554d42",
+  "attributedActor": "unknown",
+  "actionMath": {
+    "evaluated": true,
+    "enforced": true,
+    "recorded": true,
+    "surfaced": [
+      "render-memory-status-brief.ts",
+      "render-lineage-brief.ts",
+      "render-query-family-brief.ts"
+    ]
+  },
+  "currentState": {
+    "promotion": "active",
+    "packageStatus": null,
+    "queueStatus": null,
+    "candidateStatus": null,
+    "verification": "reviewed",
+    "truthLane": "semi_private"
+  },
+  "linkage": {
+    "sourceId": null,
+    "packageId": null,
+    "queueItemId": null,
+    "reviewPackageId": null
+  },
+  "proofCreatedAt": "2026-04-21T04:07:45.470Z"
+}

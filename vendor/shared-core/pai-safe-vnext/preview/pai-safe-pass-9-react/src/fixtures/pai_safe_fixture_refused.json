@@ -1,0 +1,176 @@
+{
+  "scenario": "REFUSED",
+  "fixtureId": "pai_safe_fixture_refused",
+  "generatedAt": "2026-05-11T16:00:00.000Z",
+  "source": "PAI_SAFE_PASS_6_FIXTURE_EXPORT_PACKET",
+  "authority": {
+    "createsTruth": false,
+    "mutatesState": false,
+    "authorizesPayment": false,
+    "writesCustody": false,
+    "promotesDoctrine": false,
+    "uiRendersLater": true
+  },
+  "uiState": {
+    "transactionId": "txn_fixture_refused",
+    "decision": "REFUSED",
+    "merchantScreen": {
+      "screenRole": "MERCHANT_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "REFUSED_STATE",
+      "transactionId": "txn_fixture_refused",
+      "decision": "REFUSED",
+      "tone": "danger",
+      "headline": "This transaction is refused for this advisory pass.",
+      "primaryMessage": "Do not fulfill",
+      "proofLabel": "Refusal record available",
+      "reasonLabel": "Destination integrity issue",
+      "nextStepLabel": "Do not fulfill",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "DO_NOT_FULFILL"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "MERCHANT_SURFACE",
+      "fulfillmentLabel": "Do not fulfill",
+      "disputeSupportLabel": "Refusal record available. Do not fulfill."
+    },
+    "consumerScreen": {
+      "screenRole": "CONSUMER_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "REFUSED_STATE",
+      "transactionId": "txn_fixture_refused",
+      "decision": "REFUSED",
+      "tone": "danger",
+      "headline": "This transaction is refused for this advisory pass.",
+      "primaryMessage": "Do not pay",
+      "proofLabel": "Refusal record available",
+      "reasonLabel": "Destination integrity issue",
+      "nextStepLabel": "Do not pay",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "DO_NOT_PAY"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "CONSUMER_SURFACE",
+      "userMessage": "This transaction was refused in the advisory safety check due to blocking risk."
+    },
+    "internalReviewScreen": {
+      "screenRole": "INTERNAL_REVIEW_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "REFUSED_STATE",
+      "transactionId": "txn_fixture_refused",
+      "decision": "REFUSED",
+      "tone": "danger",
+      "headline": "Internal review packet: REFUSED",
+      "primaryMessage": "Internal review packet available.",
+      "proofLabel": "Refusal record available",
+      "reasonLabel": "DESTINATION_INTEGRITY",
+      "nextStepLabel": "INTERNAL_REFUSAL_RECORD_REQUIRED",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued",
+        "Internal consistency hashes available"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "DO_NOT_FULFILL",
+        "DO_NOT_PAY"
+      ],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "INTERNAL_REVIEW_SURFACE",
+      "riskCodes": [
+        "MERCHANT_DESTINATION_MISMATCH",
+        "DESTINATION_MISMATCH",
+        "HIGH_CONTRADICTION_RISK",
+        "MULTIPLE_RISK_COMBINATION"
+      ],
+      "hashes": {
+        "requestHash": "psh_10620957",
+        "decisionHash": "psh_8f98c672",
+        "recordHash": "psh_861bdcaf",
+        "receiptHash": "psh_56b65663"
+      },
+      "consistency": {
+        "proofBackConsistent": true,
+        "receiptConsistent": true
+      },
+      "reviewRequired": false
+    },
+    "sourceSurfaceContractReadOnly": true,
+    "uiAuthority": {
+      "screenStatePrepares": true,
+      "uiRendersLater": true,
+      "createsTruth": false,
+      "mutatesState": false,
+      "authorizesPayment": false,
+      "writesCustody": false
+    }
+  }
+}

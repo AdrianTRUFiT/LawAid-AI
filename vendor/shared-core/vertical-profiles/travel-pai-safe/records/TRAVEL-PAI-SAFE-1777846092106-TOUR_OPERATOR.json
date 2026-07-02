@@ -1,0 +1,98 @@
+{
+  "profileId": "TRAVEL-PAI-SAFE-1777846092106-TOUR_OPERATOR",
+  "profileType": "TRAVEL_PAI_SAFE_VERTICAL_PROFILE_V1",
+  "architectureBoundary": {
+    "travelIsEngine": false,
+    "travelIsVerticalProfile": true,
+    "paiSafeIsRail": true,
+    "paidIsControlSurface": true,
+    "tpsIsMerchantPackage": true,
+    "fundTrackerAIIsTransactionTruth": true,
+    "fintechionAIIsOperatorGovernance": true,
+    "rateRemainsWorkflowLaw": true
+  },
+  "rail": {
+    "name": "PAI-SAFE",
+    "expansion": "Pay Securely",
+    "role": "verified_payment_safety_rail",
+    "vap": [
+      "VERIFY",
+      "AUTHORIZE",
+      "PROOF"
+    ],
+    "boundary": "rail_not_wallet_first_product"
+  },
+  "dashboardType": "TOUR_OPERATOR",
+  "dashboardFields": [
+    "bookings",
+    "deposits",
+    "waivers",
+    "add_ons",
+    "cancellations",
+    "group_payments",
+    "guide_vendor_payouts",
+    "refund_rules",
+    "customer_proof_records",
+    "loyalty_continuity",
+    "currency_conversion"
+  ],
+  "transactionMoments": [
+    "planning",
+    "booking",
+    "deposit",
+    "installment",
+    "upgrade",
+    "seat_selection",
+    "baggage",
+    "hotel_hold",
+    "car_rental_hold",
+    "excursion_payment",
+    "travel_protection",
+    "cancellation",
+    "refund",
+    "reschedule",
+    "voucher",
+    "loyalty_redemption",
+    "currency_conversion",
+    "post_trip_expense_reconciliation",
+    "vendor_payout",
+    "wholesale_inventory_settlement"
+  ],
+  "continuityFields": [
+    "who_paid",
+    "what_was_approved",
+    "what_was_promised",
+    "what_changed",
+    "what_was_refunded",
+    "what_credit_was_issued",
+    "what_loyalty_value_was_earned",
+    "what_customer_state_carries_forward",
+    "what_currency_was_requested",
+    "what_conversion_rate_was_applied",
+    "what_best_rate_option_was_available",
+    "what_location_based_currency_option_was_chosen"
+  ],
+  "currencyIntelligence": {
+    "enabled": true,
+    "role": "traveler_currency_protection",
+    "boundary": "profile_capability_only_no_live_fx_integration",
+    "capabilities": [
+      "location_based_currency_options",
+      "merchant_requested_currency_capture",
+      "best_available_rate_selection",
+      "conversion_rate_proof_record",
+      "traveler_authorization_before_payment",
+      "post_transaction_currency_proof"
+    ],
+    "doctrineLine": "The traveler should not have to trust the merchant's conversion blindly. PAI-SAFE should verify, compare, authorize, and preserve the currency decision before payment consequence."
+  },
+  "proofLanguage": {
+    "cleanLine": "Free dashboard. Embedded trusted processing. Proof-backed transactions.",
+    "travelLine": "Travel needs verified continuity across every payment moment.",
+    "loyaltyLine": "PAI-SAFE turns travel loyalty from points into verified continuity.",
+    "cruiseLine": "Cruise lines are floating travel ecosystems.",
+    "currencyLine": "The traveler should not have to trust the merchant's conversion blindly. PAI-SAFE should verify, compare, authorize, and preserve the currency decision before payment consequence."
+  },
+  "outputBoundary": "demo_profile_only_no_live_integration",
+  "createdAt": "2026-05-03T22:08:12.106Z"
+}

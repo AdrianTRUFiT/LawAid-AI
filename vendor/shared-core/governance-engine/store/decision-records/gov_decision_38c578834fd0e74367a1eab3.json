@@ -1,0 +1,26 @@
+{
+  "decisionId": "gov_decision_38c578834fd0e74367a1eab3",
+  "triggerId": "routing_trigger_conflict_001",
+  "sourceRecordId": "routing_record_conflict_001",
+  "packetId": "routing_packet_conflict_001",
+  "triggerKind": "CERTIFIED_READY",
+  "classificationState": "CLASSIFIED_INVALID",
+  "branchState": "BRANCH_REROUTE",
+  "decisionReasons": [
+    "CONFLICTING_TRIGGER",
+    "DEFERRED_TRIGGER"
+  ],
+  "nextActionPacket": {
+    "actionId": "gov_action_routing_trigger_conflict_001_reroute",
+    "actionType": "REROUTE_TO_PARENT",
+    "sourceRecordId": "routing_record_conflict_001",
+    "packetId": "routing_packet_conflict_001",
+    "targetPath": "shared-core/parent-review",
+    "reasonCodes": [
+      "CONFLICTING_TRIGGER",
+      "DEFERRED_TRIGGER"
+    ],
+    "createdAt": "2026-04-23T01:48:48.416Z"
+  },
+  "createdAt": "2026-04-23T01:48:48.416Z"
+}

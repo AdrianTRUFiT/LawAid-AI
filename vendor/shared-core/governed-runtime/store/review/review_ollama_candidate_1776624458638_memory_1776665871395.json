@@ -1,0 +1,12 @@
+{
+  "reviewId": "review_ollama_candidate_1776624458638_memory_1776665871395",
+  "candidateId": "ollama_candidate_1776624458638_memory",
+  "reviewer": "operator",
+  "decision": "accept",
+  "note": "accepted_from_family_queue",
+  "previousPromotion": "active",
+  "nextPromotion": "accepted",
+  "truthLane": "semi_private",
+  "title": "Ollama Candidate - Produce a refined active operational summary from the resolved governed context.",
+  "createdAt": "2026-04-20T06:17:51.394Z"
+}

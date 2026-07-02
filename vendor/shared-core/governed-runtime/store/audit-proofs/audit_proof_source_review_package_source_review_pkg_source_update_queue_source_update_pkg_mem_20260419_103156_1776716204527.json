@@ -1,0 +1,33 @@
+{
+  "proofId": "audit_proof_source_review_package_source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527",
+  "kind": "source_review_package",
+  "id": "source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527",
+  "filePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\source-review-packages\\source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527.json",
+  "objectHash": "163015c24f4393acbb6946b2f8fb75116e104f835a6ad9390d5f0901a092a604",
+  "attributedActor": "operator",
+  "actionMath": {
+    "evaluated": true,
+    "enforced": true,
+    "recorded": true,
+    "surfaced": [
+      "render-source-review-package-brief.ts",
+      "render-source-review-package-status-brief.ts",
+      "render-source-review-decision-ledger-brief.ts"
+    ]
+  },
+  "currentState": {
+    "promotion": null,
+    "packageStatus": "approved_for_source_merge",
+    "queueStatus": null,
+    "candidateStatus": null,
+    "verification": null,
+    "truthLane": "semi_private"
+  },
+  "linkage": {
+    "sourceId": "mem_20260419_103156",
+    "packageId": "source_update_pkg_mem_20260419_103156_1776716204527",
+    "queueItemId": "source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527",
+    "reviewPackageId": "source_review_pkg_source_update_queue_source_update_pkg_mem_20260419_103156_1776716204527"
+  },
+  "proofCreatedAt": "2026-04-21T04:07:47.894Z"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/provisioning-entitlement-bridge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

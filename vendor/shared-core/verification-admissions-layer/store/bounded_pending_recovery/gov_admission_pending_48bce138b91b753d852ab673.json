@@ -1,0 +1,11 @@
+{
+  "pendingId": "gov_admission_pending_48bce138b91b753d852ab673",
+  "intakeId": "intake_unreadable_001",
+  "governanceResult": "GOVERNANCE_PENDING_RECOVERY",
+  "reasonCodes": [
+    "UNREADABLE_INTAKE"
+  ],
+  "status": "pending",
+  "queue": "bounded_pending_recovery",
+  "createdAt": "2026-04-23T14:59:37.951Z"
+}

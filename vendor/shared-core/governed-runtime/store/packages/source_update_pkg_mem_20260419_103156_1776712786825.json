@@ -1,0 +1,12 @@
+{
+  "packageId": "source_update_pkg_mem_20260419_103156_1776712786825",
+  "packageType": "source_update_candidate_package",
+  "sourceId": "mem_20260419_103156",
+  "sourceTitle": "layer-workflow-ollama",
+  "sourceTruthLane": "semi_private",
+  "sourcePromotion": "active",
+  "packageStatus": "candidate",
+  "createdAt": "2026-04-20T19:19:46.825Z",
+  "updateCount": 0,
+  "proposedUpdates": []
+}

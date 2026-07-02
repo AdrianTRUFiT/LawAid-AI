@@ -1,0 +1,14 @@
+{
+  "pendingId": "pong_pending_47b6353534ae49f22886",
+  "createdAt": "2026-04-22T15:35:56.289Z",
+  "updateId": "tx_later_001",
+  "title": "History summary surface",
+  "summary": "Add read-model summary after current seam closes.",
+  "tags": [
+    "summary",
+    "history_surface"
+  ],
+  "classification": "later_lane_awareness",
+  "targetSeam": "hil_ready_handoff",
+  "status": "pending"
+}

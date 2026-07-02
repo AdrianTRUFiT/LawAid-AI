@@ -1,0 +1,12 @@
+{
+  "reviewId": "review_ollama_candidate_1776663821579_memory_1776665876379",
+  "candidateId": "ollama_candidate_1776663821579_memory",
+  "reviewer": "operator",
+  "decision": "reject",
+  "note": "rejected_from_review_queue",
+  "previousPromotion": "active",
+  "nextPromotion": "rejected",
+  "truthLane": "semi_private",
+  "title": "Ollama Candidate - Produce an active operational summary for this governed memory object.",
+  "createdAt": "2026-04-20T06:17:56.379Z"
+}

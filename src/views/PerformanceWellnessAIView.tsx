@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Activity, 
   ShieldAlert, 
@@ -140,7 +140,7 @@ export default function PerformanceWellnessAIView() {
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Upcoming Event</p>
                   <p className="font-bold text-legal-navy">Custody Mediation Session</p>
-                  <p className="text-xs text-slate-500">April 12, 2024 • 10:00 AM</p>
+                  <p className="text-xs text-slate-500">April 12, 2024 â€¢ 10:00 AM</p>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Current State</p>

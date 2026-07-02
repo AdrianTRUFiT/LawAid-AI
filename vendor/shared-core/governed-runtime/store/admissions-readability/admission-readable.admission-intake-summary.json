@@ -1,0 +1,25 @@
+{
+  "artifactType": "ADMISSION_INTAKE_SUMMARY",
+  "generatedAt": "2026-04-23T15:08:55.423Z",
+  "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-readable.md",
+  "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-readable.normalized.md",
+  "readabilityState": "ADMISSION_READABLE",
+  "normalizationState": "ADMISSION_NORMALIZED",
+  "divergenceState": "ADMISSION_NO_DIVERGENCE",
+  "linkage": {
+    "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-readable.md",
+    "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-readable.normalized.md"
+  },
+  "fingerprintSummary": {
+    "rawHash": "7f8ce9d7bd50a02935279135722e01c97147b0c1efe9f29e6eb085069683208a",
+    "normalizedHash": "742480ae45f3227e045efd5299fbe5a8d451bb5e95e4b898ee31256251b10772",
+    "tokenSetHash": "674151fb048e5b50e4c4a2daddcc01b2468a842c8e4a8f464a9c266da1b13b76",
+    "visibleCharCount": 113,
+    "printableRatio": 1,
+    "tokenCount": 16
+  },
+  "reasonCodes": [
+    "NORMALIZATION_CHANGED_TEXT",
+    "VISIBLE_TEXT_PRESENT"
+  ]
+}

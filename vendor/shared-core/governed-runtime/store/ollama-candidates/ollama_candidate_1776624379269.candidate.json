@@ -1,0 +1,13 @@
+{
+  "artifactId": "ollama_candidate_1776624379269",
+  "projectId": "AIVA_CORE",
+  "sourceIds": [
+    "mem_20260419_103156"
+  ],
+  "model": "llama3.2",
+  "promptIntent": "Produce an active operational summary for this governed memory object.",
+  "truthLane": "semi_private",
+  "responseText": "Here's a concise candidate output for an active operational summary:\n\n**Operational Summary: mem_20260419_103156**\n\n**Status:** Active\n**Type:** Rule-based Workflow Ollama Runtime\n**Preservation Flag:** Governed Memory Runtime (Continuous)\n\n**Key Signals:**\n- Workflow activates layers\n- Code retrieval signal received\n- Local runtime target: Ollama\n- Governed memory runtime preserves continuity\n- Structure enhances speed\n- Trace beats recall enabled\n\nThis operational summary aims to provide a concise overview of the governed memory object's status, type, and key signals that contribute to its active operation.",
+  "status": "candidate",
+  "createdAt": "2026-04-19T18:46:19.269Z"
+}

@@ -1,0 +1,19 @@
+{
+  "accepted": false,
+  "refusalType": "ERASURE_REQUEST_ACTIVE",
+  "refusalSource": "PRIVACY_GOVERNANCE_LAYER",
+  "affectedArtifact": "LWI-DICE-CAPTURED-1777832349691",
+  "stage": "Acquire",
+  "reason": "PGL blocked AIOP qualification before intake acceptance.",
+  "timestamp": "2026-05-03T18:19:09.696Z",
+  "authority": "Privacy Governance Layer",
+  "nextAllowedAction": "PRIVACY_REVIEW_REQUIRED",
+  "blockedActions": [
+    "QUALIFY_SIGNAL",
+    "EMIT_VERIFIED_OPPORTUNITY"
+  ],
+  "detail": {
+    "privacyStatus": "ERASED",
+    "identityRef": "PGL-ID-1777832349172-8e5d83b6"
+  }
+}

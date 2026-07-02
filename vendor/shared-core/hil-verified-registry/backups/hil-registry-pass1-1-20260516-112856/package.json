@@ -1,0 +1,16 @@
+{
+  "name": "hil-verified-registry",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "smoke:pass1": "tsx tests/smoke-hil-verified-registry-pass1.ts",
+    "verify:pass1": "npm run typecheck && npm run smoke:pass1"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

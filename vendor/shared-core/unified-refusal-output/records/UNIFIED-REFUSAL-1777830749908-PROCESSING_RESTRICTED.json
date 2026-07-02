@@ -1,0 +1,19 @@
+{
+  "accepted": false,
+  "refusalType": "PROCESSING_RESTRICTED",
+  "refusalSource": "PRIVACY_GOVERNANCE_LAYER",
+  "affectedArtifact": "Captured Signal",
+  "stage": "Recruit",
+  "reason": "PGL blocked DICE capture before Captured Signal creation.",
+  "timestamp": "2026-05-03T17:52:29.908Z",
+  "authority": "Privacy Governance Layer",
+  "nextAllowedAction": "PRIVACY_REVIEW_REQUIRED",
+  "blockedActions": [
+    "CAPTURE_SIGNAL",
+    "AIOP_HANDOFF"
+  ],
+  "detail": {
+    "privacyStatus": "RESTRICTED",
+    "identityRef": "PGL-ID-1777830749906-6213f69c"
+  }
+}

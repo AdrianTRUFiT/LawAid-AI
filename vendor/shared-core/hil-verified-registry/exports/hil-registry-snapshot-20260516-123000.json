@@ -1,0 +1,251 @@
+{
+  "createdAt": "2026-05-16T16:30:51.944Z",
+  "registryId": "HIL_VERIFIED_MODULE_REGISTRY_PASS1_4",
+  "records": [
+    {
+      "moduleId": "ARMANIS_PASS1",
+      "moduleName": "ARMANIS Certification Engine v0 Pass 1",
+      "moduleClass": "CERTIFICATION_ENGINE",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\armanis",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\armanis\\reports\\armanis-pass1-verified-20260516-110318.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\AIVA\\shared-core\\armanis\\reports\\armanis-pass1-FALSE-PASS-20260516-110059.md",
+        "D:\\DEV\\AIVA\\shared-core\\armanis\\reports\\armanis-pass1-FALSE-PASS-20260516-110229.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "No live negotiation",
+        "No payments",
+        "No blockchain",
+        "No marketplace",
+        "No legal authority",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\armanis\\reports\\armanis-pass1-verified-20260516-110318.md",
+      "nextAction": "Condition normalization only; no scope expansion.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "DEVAS_PASS1",
+      "moduleName": "DEVAS Deal Evaluation Value Assessment Pass 1",
+      "moduleClass": "DEAL_VALUE_ASSESSMENT",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\armanis\\devas",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\armanis\\devas\\reports\\devas-pass1-verified-20260516-122717.md"
+      ],
+      "knownFalsePassReports": [],
+      "status": "VERIFIED",
+      "verified": true,
+      "hasFalsePassHistory": false,
+      "boundaries": [
+        "Inside ARMANIS",
+        "No finance model",
+        "No legal advice",
+        "No investment advice",
+        "No live negotiation",
+        "No external APIs",
+        "No final deal authority",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\armanis\\devas\\reports\\devas-pass1-verified-20260516-122717.md",
+      "nextAction": "Use DEVAS output as bounded deal-value intelligence for later NEIL posture only.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "NEIL_PASS1",
+      "moduleName": "NEIL Negotiation Intelligence Layer v0 Pass 1",
+      "moduleClass": "NEGOTIATION_INTELLIGENCE",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\neil",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\neil\\reports\\neil-pass1-verified-20260516-111204.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\AIVA\\shared-core\\neil\\reports\\neil-pass1-FALSE-PASS-20260516-111048.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "No live negotiation",
+        "No payments",
+        "No signature execution",
+        "No legal authority",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\neil\\reports\\neil-pass1-verified-20260516-111204.md",
+      "nextAction": "Use only as negotiation posture preparation.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "NEIL_PASS1_1",
+      "moduleName": "NEIL Pass 1.1 Strategy Normalization + Primetime Safety Hardening",
+      "moduleClass": "NEGOTIATION_INTELLIGENCE",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\neil",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\neil\\reports\\neil-pass1-1-verified-20260516-111746.md"
+      ],
+      "knownFalsePassReports": [],
+      "status": "VERIFIED",
+      "verified": true,
+      "hasFalsePassHistory": false,
+      "boundaries": [
+        "No live negotiation",
+        "No legal authority",
+        "No payments",
+        "No external APIs",
+        "No autonomous agreement",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\neil\\reports\\neil-pass1-1-verified-20260516-111746.md",
+      "nextAction": "Ready for registry visibility; do not create live agent yet.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "HIL_REGISTRY_PASS1",
+      "moduleName": "HIL Verified Module Registry Pass 1",
+      "moduleClass": "READINESS_ENGINE",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry\\reports\\hil-verified-registry-pass1-verified-20260516-112628.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry\\reports\\hil-FALSE-PASS-registry-pass1-1-FALSE-PASS-20260516-112859.md",
+        "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry\\reports\\hil-FALSE-PASS-registry-pass1-4-FALSE-PASS-20260516-122946.md",
+        "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry\\reports\\hil-FALSE-PASS-registry-pass1-FALSE-PASS-20260516-112511.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "Registry only",
+        "No authority mutation",
+        "No launch behavior",
+        "No external APIs",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\hil-verified-registry\\reports\\hil-verified-registry-pass1-verified-20260516-112628.md",
+      "nextAction": "Expand registry visibility only.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "PAI_OFF_PASS1",
+      "moduleName": "PAI-OFF Commerce Model Pass 1",
+      "moduleClass": "COMMERCE_MODEL",
+      "modulePath": "D:\\DEV\\AIVA\\src\\lib\\pai-off",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\reports\\pai-off-pass1-verified-20260516-011153.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\AIVA\\reports\\pai-off-pass1-FALSE-PASS-20260516-010827.md",
+        "D:\\DEV\\AIVA\\reports\\pai-off-pass1-FALSE-PASS-20260516-011038.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "No marketplace",
+        "No booking engine",
+        "No supplier integrations",
+        "No payment execution",
+        "No autonomous purchasing",
+        "TravelFlowAI remains umbrella",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\reports\\pai-off-pass1-verified-20260516-011153.md",
+      "nextAction": "If missing, run or re-lock PAI-OFF Pass 1 before UI exposure.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "SLIM_WORKSPACE_V0",
+      "moduleName": "SLiM Workspace v0 Local Sovereign Cockpit",
+      "moduleClass": "LOCAL_COCKPIT",
+      "modulePath": "D:\\\\DEV\\\\OLLAMA\\\\slim-paid-local",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-workspace-v0-verified-20260515-164814.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-workspace-v0-hardening-verified-20260515-194958.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-verified-20260515-201556.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-FALSE-PASS-20260515-200351.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-FALSE-PASS-20260515-200901.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-FALSE-PASS-20260515-201253.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-FALSE-PASS-20260515-201350.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-sovereign-boundary-hardening-pass1-FALSE-PASS-20260515-194641.md",
+        "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-workspace-v0-FALSE-PASS-20260515-163836.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "Local only",
+        "No cloud calls",
+        "No external telemetry",
+        "No Final Coder promotion authority",
+        "Candidate artifacts only",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\OLLAMA\\slim-paid-local\\reports\\slim-context-quality-ui-pass2-verified-20260515-201556.md",
+      "nextAction": "Seed governed project context; do not add promotion authority.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    },
+    {
+      "moduleId": "AIM_V01_V02_CHAIN",
+      "moduleName": "AIM v0.1 Core + v0.2 Local Product Demo Chain",
+      "moduleClass": "READINESS_ENGINE",
+      "modulePath": "D:\\DEV\\AIVA\\shared-core\\aim",
+      "expectedVerifiedReports": [
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass1-core-verified-20260513-021858.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass2-evidence-intake-verified-20260513-024759.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass3-decision-queue-verified-20260514-111303.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass4-journal-feedback-verified-20260514-112333.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass5-fixture-export-verified-20260514-112942.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass6-preview-harness-verified-20260514-115402.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-feedback-demo-audit-sprint5-verified-20260514-140846.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-manual-intake-ui-sprint2-verified-20260514-135954.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-preview-record-viewer-sprint3-verified-20260514-140252.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-shell-connection-sprint1-verified-20260514-134910.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-watchlist-human-review-sprint4-verified-20260514-140546.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-product-readiness-pass15-verified-20260514-122442.md"
+      ],
+      "knownFalsePassReports": [
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-local-memory-review-sprint-pass11-pass14-FALSE-PASS-20260514-122110.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-operator-workflow-sprint-pass9-pass10-FALSE-PASS-20260514-121449.md",
+        "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-pass3-decision-queue-FALSE-PASS-20260514-111139.md"
+      ],
+      "status": "VERIFIED_WITH_FALSE_PASS_HISTORY",
+      "verified": true,
+      "hasFalsePassHistory": true,
+      "boundaries": [
+        "No brokerage APIs",
+        "No trade execution",
+        "No financial advice authority",
+        "No live market data dependency",
+        "Readiness and review only",
+        "Human final authority"
+      ],
+      "latestVerifiedReport": "D:\\DEV\\AIVA\\shared-core\\aim\\reports\\aim-v02-feedback-demo-audit-sprint5-verified-20260514-140846.md",
+      "nextAction": "Move toward runtime assembly and polished demo only after registry visibility.",
+      "humanFinalAuthority": true,
+      "finalAction": ""
+    }
+  ],
+  "verifiedCount": 8,
+  "verifiedCleanCount": 2,
+  "verifiedWithFalsePassHistoryCount": 6,
+  "falsePassCount": 17,
+  "missingReportCount": 0,
+  "allCriticalVerified": true,
+  "humanFinalAuthority": true,
+  "finalAction": ""
+}

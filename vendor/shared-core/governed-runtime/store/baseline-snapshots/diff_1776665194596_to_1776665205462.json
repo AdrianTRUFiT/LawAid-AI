@@ -1,0 +1,38 @@
+﻿{
+  "beforeId": "runtime_baseline_1776665194596",
+  "afterId": "runtime_baseline_1776665205462",
+  "beforeCreatedAt": "2026-04-20T06:06:34.596Z",
+  "afterCreatedAt": "2026-04-20T06:06:45.462Z",
+  "summaryDelta": {
+    "candidates": 0,
+    "acceptedNotActive": 0,
+    "rootsNeedingHardening": 0,
+    "activeRootsWithDescendants": 0,
+    "retiredIds": 0,
+    "lineageIssueRoots": 0
+  },
+  "stateClassDiff": {
+    "activeRoots": {
+      "added": [],
+      "removed": []
+    },
+    "acceptedNotActive": {
+      "added": [],
+      "removed": []
+    },
+    "candidates": {
+      "added": [],
+      "removed": []
+    },
+    "rootsNeedingHardening": {
+      "added": [],
+      "removed": []
+    },
+    "retired": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "rootStateChanges": [],
+  "lineageDelta": []
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "ROUTING_RUNTIME_CONTEXT",
+  "generatedAt": "2026-04-23T01:46:42.686Z",
+  "sourceRuntimeReportFile": "runtime_current_report.json",
+  "runtimeClosureState": "CONSTRAINED",
+  "deterministicReplayStable": true,
+  "hilStateTags": [
+    "HELD_STILL_INTELLIGENT"
+  ],
+  "degradedSupportCount": 2,
+  "overlapPairCount": 1,
+  "reasons": [
+    "ANOMALY_PRESENT",
+    "HAZARD_ELEVATED",
+    "READY_WITH_LIMITS",
+    "SUPPORT_DEGRADED"
+  ]
+}

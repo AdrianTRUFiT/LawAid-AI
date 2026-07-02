@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/treasury-visibility-ledger",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

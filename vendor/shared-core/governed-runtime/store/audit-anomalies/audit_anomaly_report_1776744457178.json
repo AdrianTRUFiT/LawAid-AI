@@ -1,0 +1,24 @@
+{
+  "reportId": "audit_anomaly_report_1776744457178",
+  "createdAt": "2026-04-21T04:07:37.178Z",
+  "proofCount": 4,
+  "anomalyCount": 2,
+  "anomalies": [
+    {
+      "proofId": "audit_proof_memory_mem_20260419_103156",
+      "kind": "memory",
+      "id": "mem_20260419_103156",
+      "code": "UNKNOWN_ACTOR",
+      "severity": "high",
+      "detail": "Proof has no attributable actor."
+    },
+    {
+      "proofId": "chain_mem_20260419_103156",
+      "kind": "chain",
+      "id": "mem_20260419_103156",
+      "code": "CHAIN_ATTRIBUTION_GAP",
+      "severity": "high",
+      "detail": "Chain contains unknown actor alongside actors: unknown, operator"
+    }
+  ]
+}

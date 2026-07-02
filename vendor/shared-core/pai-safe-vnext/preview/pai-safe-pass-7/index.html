@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAI-SAFE Pass 7 Read-Only Preview Harness</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #090b10;
+      color: #eef2f7;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(55, 65, 81, 0.45), transparent 34rem), #090b10;
+    }
+
+    main {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    .top {
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(15, 23, 42, 0.76);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .top h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -0.04em;
+    }
+
+    .top p {
+      margin: 6px 0;
+      color: #cbd5e1;
+      max-width: 980px;
+      line-height: 1.6;
+    }
+
+    .sequence {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .sequence span {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #dbeafe;
+      background: rgba(30, 41, 59, 0.8);
+      font-size: 13px;
+    }
+
+    .scenario {
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(2, 6, 23, 0.54);
+      border-radius: 24px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .scenario > header {
+      margin-bottom: 18px;
+    }
+
+    .scenario h1 {
+      margin: 4px 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .scenario header p {
+      margin: 0;
+      color: #94a3b8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.78);
+      min-width: 0;
+    }
+
+    .card h2 {
+      margin: 4px 0 10px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .card h3 {
+      margin: 18px 0 8px;
+      font-size: 13px;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card p, .card li, .card dd {
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      color: #94a3b8;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 8px 12px;
+      margin: 18px 0 0;
+    }
+
+    dt {
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .read-only {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+      font-size: 13px;
+    }
+
+    .tone-success {
+      box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.2);
+    }
+
+    .tone-warning {
+      box-shadow: inset 0 0 0 1px rgba(234, 179, 8, 0.22);
+    }
+
+    .tone-danger {
+      box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.24);
+    }
+
+    .tone-neutral {
+      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.18);
+    }
+
+    .internal {
+      background: rgba(17, 24, 39, 0.92);
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="top">
+      <p class="eyebrow">PAI-SAFE Pass 7</p>
+      <h1>Read-Only Preview Harness</h1>
+      <p>This static preview consumes exported Pass 6 fixture JSON. It does not run transaction logic, create truth, authorize payment, write custody, call external APIs, or mutate ProofBack Protection records.</p>
+      <div class="sequence">
+        <span>Circuit decides</span>
+        <span>Projection reflects</span>
+        <span>Surface contract maps</span>
+        <span>Screen state prepares</span>
+        <span>Fixture packet exports</span>
+        <span>Preview reads fixtures</span>
+        <span>UI renders later</span>
+      </div>
+    </section>
+
+    
+    <article class="scenario" id="scenario-safe">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>SAFE</h1>
+        <p>Fixture ID: pai_safe_fixture_safe</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-success" data-role="merchant" data-scenario="SAFE">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>This transaction is marked safe for this advisory pass.</h2>
+      <p>Fulfill with confidence</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_safe</dd>
+        <dt>Decision</dt><dd>SAFE</dd>
+        <dt>State</dt><dd>SAFE_STATE</dd>
+        <dt>Fulfillment</dt><dd>Ready to fulfill</dd>
+        <dt>Proof</dt><dd>Proof available</dd>
+        <dt>Reason</dt><dd>No blocking issue detected</dd>
+        <dt>Dispute Support</dt><dd>Proof record available for transaction support.</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li><li>FULFILL_TRANSACTION</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-success" data-role="consumer" data-scenario="SAFE">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>This transaction is marked safe for this advisory pass.</h2>
+      <p>This transaction passed the advisory safety check and has a proof-backed record.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_safe</dd>
+        <dt>Decision</dt><dd>SAFE</dd>
+        <dt>State</dt><dd>SAFE_STATE</dd>
+        <dt>Proof</dt><dd>Proof available</dd>
+        <dt>Reason</dt><dd>No blocking issue detected</dd>
+        <dt>Next Step</dt><dd>Payment can proceed with proof</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-success" data-role="internal-review" data-scenario="SAFE">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>Internal review packet: SAFE</h2>
+      <p>Internal review packet available.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_safe</dd>
+        <dt>Decision</dt><dd>SAFE</dd>
+        <dt>State</dt><dd>SAFE_STATE</dd>
+        <dt>Review Required</dt><dd>false</dd>
+        <dt>Risk Codes</dt><dd>NO_BLOCKING_RISK</dd>
+        <dt>Request Hash</dt><dd>psh_9fb86a24</dd>
+        <dt>Decision Hash</dt><dd>psh_5dec4ef2</dd>
+        <dt>Record Hash</dt><dd>psh_8c6944c1</dd>
+        <dt>Receipt Hash</dt><dd>psh_f148eed5</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li><li>Internal consistency hashes available</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+
+    <article class="scenario" id="scenario-hold">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>HOLD</h1>
+        <p>Fixture ID: pai_safe_fixture_hold</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-warning" data-role="merchant" data-scenario="HOLD">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>This transaction is held for review.</h2>
+      <p>Wait for review</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_hold</dd>
+        <dt>Decision</dt><dd>HOLD</dd>
+        <dt>State</dt><dd>HOLD_STATE</dd>
+        <dt>Fulfillment</dt><dd>Hold for review</dd>
+        <dt>Proof</dt><dd>Review record available</dd>
+        <dt>Reason</dt><dd>Review required</dd>
+        <dt>Dispute Support</dt><dd>Review record available before fulfillment.</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li><li>REQUEST_REVIEW</li><li>WAIT_FOR_REVIEW</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-warning" data-role="consumer" data-scenario="HOLD">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>This transaction is held for review.</h2>
+      <p>This transaction requires review before full confidence or fulfillment.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_hold</dd>
+        <dt>Decision</dt><dd>HOLD</dd>
+        <dt>State</dt><dd>HOLD_STATE</dd>
+        <dt>Proof</dt><dd>Review record available</dd>
+        <dt>Reason</dt><dd>Review required</dd>
+        <dt>Next Step</dt><dd>Wait for review</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li><li>WAIT_FOR_REVIEW</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-warning" data-role="internal-review" data-scenario="HOLD">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>Internal review packet: HOLD</h2>
+      <p>Internal review required.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_hold</dd>
+        <dt>Decision</dt><dd>HOLD</dd>
+        <dt>State</dt><dd>HOLD_STATE</dd>
+        <dt>Review Required</dt><dd>true</dd>
+        <dt>Risk Codes</dt><dd>AMOUNT_REVIEW_REQUIRED</dd>
+        <dt>Request Hash</dt><dd>psh_c133d6de</dd>
+        <dt>Decision Hash</dt><dd>psh_d791501f</dd>
+        <dt>Record Hash</dt><dd>psh_b20ae957</dd>
+        <dt>Receipt Hash</dt><dd>psh_b60b5259</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li><li>Internal consistency hashes available</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+
+    <article class="scenario" id="scenario-refused">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>REFUSED</h1>
+        <p>Fixture ID: pai_safe_fixture_refused</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-danger" data-role="merchant" data-scenario="REFUSED">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>This transaction is refused for this advisory pass.</h2>
+      <p>Do not fulfill</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_refused</dd>
+        <dt>Decision</dt><dd>REFUSED</dd>
+        <dt>State</dt><dd>REFUSED_STATE</dd>
+        <dt>Fulfillment</dt><dd>Do not fulfill</dd>
+        <dt>Proof</dt><dd>Refusal record available</dd>
+        <dt>Reason</dt><dd>Destination integrity issue</dd>
+        <dt>Dispute Support</dt><dd>Refusal record available. Do not fulfill.</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li><li>DO_NOT_FULFILL</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-danger" data-role="consumer" data-scenario="REFUSED">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>This transaction is refused for this advisory pass.</h2>
+      <p>This transaction was refused in the advisory safety check due to blocking risk.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_refused</dd>
+        <dt>Decision</dt><dd>REFUSED</dd>
+        <dt>State</dt><dd>REFUSED_STATE</dd>
+        <dt>Proof</dt><dd>Refusal record available</dd>
+        <dt>Reason</dt><dd>Destination integrity issue</dd>
+        <dt>Next Step</dt><dd>Do not pay</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>VIEW_RECEIPT</li><li>VIEW_PROOF_STATUS</li><li>DO_NOT_PAY</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-danger" data-role="internal-review" data-scenario="REFUSED">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>Internal review packet: REFUSED</h2>
+      <p>Internal review packet available.</p>
+      <dl>
+        <dt>Transaction</dt><dd>txn_fixture_refused</dd>
+        <dt>Decision</dt><dd>REFUSED</dd>
+        <dt>State</dt><dd>REFUSED_STATE</dd>
+        <dt>Review Required</dt><dd>false</dd>
+        <dt>Risk Codes</dt><dd>MERCHANT_DESTINATION_MISMATCH, DESTINATION_MISMATCH, HIGH_CONTRADICTION_RISK, MULTIPLE_RISK_COMBINATION</dd>
+        <dt>Request Hash</dt><dd>psh_10620957</dd>
+        <dt>Decision Hash</dt><dd>psh_8f98c672</dd>
+        <dt>Record Hash</dt><dd>psh_861bdcaf</dd>
+        <dt>Receipt Hash</dt><dd>psh_56b65663</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>Transaction request created</li><li>Advisory trust check completed</li><li>ProofBack Protection record generated</li><li>Proof-backed receipt issued</li><li>Internal consistency hashes available</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+
+    <article class="scenario" id="scenario-empty">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>EMPTY</h1>
+        <p>Fixture ID: pai_safe_fixture_empty</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-neutral" data-role="merchant" data-scenario="EMPTY">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>No transaction selected.</h2>
+      <p>Select a transaction to view its safety state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>EMPTY_STATE</dd>
+        <dt>Fulfillment</dt><dd>none</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Dispute Support</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-neutral" data-role="consumer" data-scenario="EMPTY">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>No transaction selected.</h2>
+      <p>Select a transaction to view safe-pay status.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>EMPTY_STATE</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Next Step</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-neutral" data-role="internal-review" data-scenario="EMPTY">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>No transaction selected.</h2>
+      <p>Select a transaction to view internal review state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>EMPTY_STATE</dd>
+        <dt>Review Required</dt><dd>none</dd>
+        <dt>Risk Codes</dt><dd>none</dd>
+        <dt>Request Hash</dt><dd>none</dd>
+        <dt>Decision Hash</dt><dd>none</dd>
+        <dt>Record Hash</dt><dd>none</dd>
+        <dt>Receipt Hash</dt><dd>none</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li><li>VIEW_INTERNAL_RISK_CODES</li><li>VIEW_INTERNAL_HASHES</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+
+    <article class="scenario" id="scenario-loading">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>LOADING</h1>
+        <p>Fixture ID: pai_safe_fixture_loading</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-neutral" data-role="merchant" data-scenario="LOADING">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>Loading transaction state.</h2>
+      <p>Preparing merchant screen state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>LOADING_STATE</dd>
+        <dt>Fulfillment</dt><dd>none</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Dispute Support</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-neutral" data-role="consumer" data-scenario="LOADING">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>Loading safe-pay status.</h2>
+      <p>Preparing consumer screen state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>LOADING_STATE</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Next Step</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-neutral" data-role="internal-review" data-scenario="LOADING">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>Loading internal review packet.</h2>
+      <p>Preparing internal review screen state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>LOADING_STATE</dd>
+        <dt>Review Required</dt><dd>none</dd>
+        <dt>Risk Codes</dt><dd>none</dd>
+        <dt>Request Hash</dt><dd>none</dd>
+        <dt>Decision Hash</dt><dd>none</dd>
+        <dt>Record Hash</dt><dd>none</dd>
+        <dt>Receipt Hash</dt><dd>none</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li><li>VIEW_INTERNAL_RISK_CODES</li><li>VIEW_INTERNAL_HASHES</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+
+    <article class="scenario" id="scenario-unavailable">
+      <header>
+        <p class="eyebrow">Fixture Scenario</p>
+        <h1>UNAVAILABLE</h1>
+        <p>Fixture ID: pai_safe_fixture_unavailable</p>
+      </header>
+      <div class="grid">
+        
+    <section class="card tone-neutral" data-role="merchant" data-scenario="UNAVAILABLE">
+      <div class="eyebrow">Merchant Preview</div>
+      <h2>Transaction unavailable.</h2>
+      <p>Fixture unavailable state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>UNAVAILABLE_STATE</dd>
+        <dt>Fulfillment</dt><dd>none</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Dispute Support</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No payment, custody, or trust mutation authority.</p>
+    </section>
+  
+        
+    <section class="card tone-neutral" data-role="consumer" data-scenario="UNAVAILABLE">
+      <div class="eyebrow">Consumer Preview</div>
+      <h2>Safe-pay state unavailable.</h2>
+      <p>Fixture unavailable state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>UNAVAILABLE_STATE</dd>
+        <dt>Proof</dt><dd>none</dd>
+        <dt>Reason</dt><dd>none</dd>
+        <dt>Next Step</dt><dd>none</dd>
+      </dl>
+      <h3>Allowed Actions</h3>
+      <ul><li>None</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Read-only. No internal risk logic exposed.</p>
+    </section>
+  
+        
+    <section class="card internal tone-neutral" data-role="internal-review" data-scenario="UNAVAILABLE">
+      <div class="eyebrow">Internal Review Preview</div>
+      <h2>Internal review unavailable.</h2>
+      <p>Fixture unavailable state.</p>
+      <dl>
+        <dt>Transaction</dt><dd>none</dd>
+        <dt>Decision</dt><dd>none</dd>
+        <dt>State</dt><dd>UNAVAILABLE_STATE</dd>
+        <dt>Review Required</dt><dd>none</dd>
+        <dt>Risk Codes</dt><dd>none</dd>
+        <dt>Request Hash</dt><dd>none</dd>
+        <dt>Decision Hash</dt><dd>none</dd>
+        <dt>Record Hash</dt><dd>none</dd>
+        <dt>Receipt Hash</dt><dd>none</dd>
+      </dl>
+      <h3>Blocked Authority</h3>
+      <ul><li>AUTHORIZE_PAYMENT</li><li>WRITE_CUSTODY</li><li>PROMOTE_DOCTRINE</li><li>MODIFY_TRUST_DECISION</li><li>MODIFY_PROOF_RECORD</li><li>VIEW_INTERNAL_RISK_CODES</li><li>VIEW_INTERNAL_HASHES</li></ul>
+      <h3>Timeline</h3>
+      <ul><li>No timeline visible</li></ul>
+      <p class="read-only">Internal visibility only. Still cannot authorize payment, write custody, promote doctrine, or mutate trust.</p>
+    </section>
+  
+      </div>
+    </article>
+  
+  </main>
+</body>
+</html>

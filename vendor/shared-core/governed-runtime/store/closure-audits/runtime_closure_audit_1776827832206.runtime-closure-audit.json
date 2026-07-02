@@ -1,0 +1,73 @@
+{
+  "auditId": "runtime_closure_audit_1776827832206",
+  "proposal": {
+    "proposalId": "runtime_bound_demo",
+    "proposedAction": "connect",
+    "requestedAt": "2026-04-22T03:17:12.182Z"
+  },
+  "truth": {
+    "runtimeState": {
+      "visibleReady": true,
+      "activeState": true,
+      "reviewed": true,
+      "proposalAttachable": true
+    },
+    "supportState": {
+      "supportStatus": "DEGRADED",
+      "supportingIds": [
+        "mem_20260419_103156"
+      ],
+      "degradedIds": [
+        "ollama_candidate_1776624379269_memory_accepted_derivative",
+        "ollama_candidate_1776624458638_memory_accepted_derivative"
+      ],
+      "orphanedIds": []
+    },
+    "continuityState": {
+      "continuityStatus": "INTACT",
+      "lineageIntact": true,
+      "unresolvedCount": 0,
+      "brokenCount": 0
+    },
+    "timingState": {
+      "timingStatus": "VALID",
+      "windowOpen": true
+    },
+    "hazardState": {
+      "hazardStatus": "ELEVATED",
+      "activeHazards": [
+        "duplicate_active_orphan_pair:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+      ]
+    },
+    "maturityState": {
+      "maturityStatus": "SUFFICIENT",
+      "maturityScore": 1
+    },
+    "anomalyState": {
+      "anomalySignals": [
+        "source_ref_overlap_count:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative:1",
+        "source_ref_overlap_pair:ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+      ]
+    }
+  },
+  "envelope": {
+    "proposalId": "runtime_bound_demo",
+    "proposedAction": "connect",
+    "runtimeClosureState": "CONSTRAINED",
+    "runtimeReasons": [
+      "ANOMALY_PRESENT",
+      "HAZARD_ELEVATED",
+      "READY_WITH_LIMITS",
+      "SUPPORT_DEGRADED"
+    ],
+    "continuityStatus": "INTACT",
+    "supportStatus": "DEGRADED",
+    "hazardStatus": "ELEVATED",
+    "maturityStatus": "SUFFICIENT",
+    "connectionHonorable": true,
+    "proofRequired": true,
+    "timestamp": "2026-04-22T03:17:12.206Z",
+    "deterministicReplayKey": "runtime_bound_demo::connect::CONSTRAINED::ANOMALY_PRESENT|HAZARD_ELEVATED|READY_WITH_LIMITS|SUPPORT_DEGRADED::INTACT::DEGRADED::ELEVATED::SUFFICIENT::1::1"
+  },
+  "createdAt": "2026-04-22T03:17:12.206Z"
+}

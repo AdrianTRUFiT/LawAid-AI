@@ -1,0 +1,12 @@
+{
+  "reviewId": "pkg_review_source_update_pkg_mem_20260419_103156_1776715340440_1776716148595",
+  "packageId": "source_update_pkg_mem_20260419_103156_1776715340440",
+  "reviewer": "operator",
+  "decision": "admit",
+  "note": "package_admitted",
+  "previousStatus": "candidate",
+  "nextStatus": "admitted",
+  "sourceId": "mem_20260419_103156",
+  "updateCount": 1,
+  "createdAt": "2026-04-20T20:15:48.595Z"
+}

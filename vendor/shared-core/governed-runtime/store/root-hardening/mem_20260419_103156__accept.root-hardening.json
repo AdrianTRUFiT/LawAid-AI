@@ -1,0 +1,64 @@
+{
+  "decision": {
+    "memoryId": "mem_20260419_103156",
+    "action": "accept",
+    "approvedBy": "Adrian",
+    "rationale": [
+      "root_state_hardening"
+    ],
+    "createdAt": "2026-04-20T05:48:11.686Z"
+  },
+  "contextSummary": {
+    "upstreamPath": [
+      "mem_20260419_103156"
+    ],
+    "directLinks": [
+      {
+        "fromId": "mem_smoke_001",
+        "toId": "mem_20260419_103156",
+        "relation": "supports"
+      },
+      {
+        "fromId": "ollama_candidate_1776623929477_memory",
+        "toId": "mem_20260419_103156",
+        "relation": "supports"
+      },
+      {
+        "fromId": "ollama_candidate_1776624379269_memory",
+        "toId": "mem_20260419_103156",
+        "relation": "supports"
+      },
+      {
+        "fromId": "ollama_candidate_1776663821579_memory",
+        "toId": "mem_20260419_103156",
+        "relation": "supports"
+      }
+    ],
+    "downstreamTree": {
+      "memoryId": "mem_20260419_103156",
+      "children": [
+        {
+          "memoryId": "mem_smoke_001",
+          "children": []
+        },
+        {
+          "memoryId": "ollama_candidate_1776623929477_memory",
+          "children": []
+        },
+        {
+          "memoryId": "ollama_candidate_1776624379269_memory",
+          "children": [
+            {
+              "memoryId": "ollama_candidate_1776624458638_memory",
+              "children": []
+            }
+          ]
+        },
+        {
+          "memoryId": "ollama_candidate_1776663821579_memory",
+          "children": []
+        }
+      ]
+    }
+  }
+}

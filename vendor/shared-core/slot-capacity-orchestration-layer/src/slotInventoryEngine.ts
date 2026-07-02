@@ -1,0 +1,90 @@
+import type {
+  LogisticsSearchBoxQuery,
+  SlotInventoryRecord,
+} from "./slotCapacityTypes.js";
+import { makeId, round2 } from "./slotCapacityUtils.js";
+
+export function buildSlotInventory(
+  query: Required<LogisticsSearchBoxQuery>,
+): SlotInventoryRecord[] {
+  const sizeFactor = query.weightKg * 0.015 + query.volumeM3 * 4;
+  const urgencyFactor = query.urgencyScore * 0.08;
+
+  return [
+    {
+      slotId: makeId("slot"),
+      nodeId: "node_near_open",
+      laneId: "lane_truck_fast",
+      state: "open",
+      distanceToDestinationKm: round2(45),
+      estimatedHoursToDestination: round2(5.5 - urgencyFactor * 0.03 + sizeFactor * 0.01),
+      authorizationRequired: false,
+      occupiedUnits: 4,
+      maxUnits: 10,
+      downstreamFrictionScore: 18,
+      checkpointBurdenScore: 20,
+      holdNodeBenefitScore: 22,
+      costEstimate: round2(190 + sizeFactor * 1.1),
+    },
+    {
+      slotId: makeId("slot"),
+      nodeId: "node_reserved_balanced",
+      laneId: "lane_mixed_balanced",
+      state: "reserved",
+      distanceToDestinationKm: round2(62),
+      estimatedHoursToDestination: round2(7.2 - urgencyFactor * 0.02 + sizeFactor * 0.012),
+      authorizationRequired: false,
+      occupiedUnits: 7,
+      maxUnits: 10,
+      downstreamFrictionScore: 15,
+      checkpointBurdenScore: 24,
+      holdNodeBenefitScore: 35,
+      costEstimate: round2(175 + sizeFactor * 1.0),
+    },
+    {
+      slotId: makeId("slot"),
+      nodeId: "node_auth_air",
+      laneId: "lane_air_authorized",
+      state: "authorization_required",
+      distanceToDestinationKm: round2(35),
+      estimatedHoursToDestination: round2(3.5 - urgencyFactor * 0.025 + sizeFactor * 0.008),
+      authorizationRequired: true,
+      occupiedUnits: 5,
+      maxUnits: 8,
+      downstreamFrictionScore: 12,
+      checkpointBurdenScore: 30,
+      holdNodeBenefitScore: 10,
+      costEstimate: round2(310 + sizeFactor * 1.8),
+    },
+    {
+      slotId: makeId("slot"),
+      nodeId: "node_occupied_rail",
+      laneId: "lane_rail_low_cost",
+      state: "occupied",
+      distanceToDestinationKm: round2(80),
+      estimatedHoursToDestination: round2(9.5 - urgencyFactor * 0.015 + sizeFactor * 0.015),
+      authorizationRequired: false,
+      occupiedUnits: 10,
+      maxUnits: 10,
+      downstreamFrictionScore: 28,
+      checkpointBurdenScore: 18,
+      holdNodeBenefitScore: 30,
+      costEstimate: round2(145 + sizeFactor * 0.9),
+    },
+    {
+      slotId: makeId("slot"),
+      nodeId: "node_blocked_border",
+      laneId: "lane_border_blocked",
+      state: "blocked",
+      distanceToDestinationKm: round2(55),
+      estimatedHoursToDestination: round2(8.8 - urgencyFactor * 0.01 + sizeFactor * 0.014),
+      authorizationRequired: false,
+      occupiedUnits: 3,
+      maxUnits: 12,
+      downstreamFrictionScore: 70,
+      checkpointBurdenScore: 55,
+      holdNodeBenefitScore: 18,
+      costEstimate: round2(205 + sizeFactor * 1.2),
+    },
+  ];
+}

@@ -1,0 +1,13 @@
+{
+  "decisionId": "gov_admission_cdf94a04113be680797dfdbf",
+  "intakeId": "intake_admit_001",
+  "governanceResult": "GOVERNANCE_ADMIT",
+  "reportable": true,
+  "unresolved": false,
+  "recoveryRequired": false,
+  "reasonCodes": [
+    "READABLE_NORMALIZED_ELIGIBLE"
+  ],
+  "nextQueue": "normal_admission_flow",
+  "createdAt": "2026-04-23T14:59:37.950Z"
+}

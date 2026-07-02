@@ -1,0 +1,17 @@
+{
+  "exportId": "LAUNCH-EXPORT-CONSUMER-1778103792134-09b846",
+  "lane": "CONSUMER",
+  "sourceRecordId": "SOULSEED-1778103792134-2b5c31",
+  "paidRelationshipId": "PAID-1778103792134-05d630",
+  "activationIntentId": "PAI-SAFE-INTENT-1778103792134-e361d9",
+  "setupPacketId": "c548c9ac-8b0c-4971-a088-321ef6ebca74",
+  "receiverDecision": "ACCEPT",
+  "liveActivationId": "LIVE-ACTIVATION-1778103792134-f9befe",
+  "tsReference": "TS-AUTH-PAI-SAFE-INTENT-1778103792134-e361d9",
+  "fundTrackerRequired": true,
+  "financialAuthorityGranted": false,
+  "paymentRailsConnected": false,
+  "walletCreated": false,
+  "createdAt": "2026-05-06T21:43:12.134Z",
+  "issuedBy": "AIVA_LAUNCH_RECORD_EXPORT_V1"
+}

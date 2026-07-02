@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Settings as SettingsIcon, User, Shield, Bell, CreditCard, HelpCircle, LogOut, ChevronRight, Download, Trash2, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { motion, AnimatePresence } from 'motion/react';

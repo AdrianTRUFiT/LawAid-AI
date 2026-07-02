@@ -1,0 +1,48 @@
+{
+  "artifactType": "runtime_current_report",
+  "generatedAt": "2026-04-23T01:06:51.321Z",
+  "sourceAuditFile": "runtime_closure_audit_1776827832206.runtime-closure-audit.json",
+  "sourceDeltaFiles": {
+    "leftFile": "runtime_closure_audit_1776826900960.runtime-closure-audit.json",
+    "rightFile": "runtime_closure_audit_1776827832206.runtime-closure-audit.json"
+  },
+  "runtimeClosureState": "CONSTRAINED",
+  "deterministicReplayKey": "runtime_bound_demo::connect::CONSTRAINED::ANOMALY_PRESENT|HAZARD_ELEVATED|READY_WITH_LIMITS|SUPPORT_DEGRADED::INTACT::DEGRADED::ELEVATED::SUFFICIENT::1::1",
+  "deterministicReplayStable": true,
+  "degradedIds": [
+    "ollama_candidate_1776624379269_memory_accepted_derivative",
+    "ollama_candidate_1776624458638_memory_accepted_derivative"
+  ],
+  "overlapPairKeys": [
+    "ollama_candidate_1776624379269_memory_accepted_derivative|ollama_candidate_1776624458638_memory_accepted_derivative"
+  ],
+  "reasons": [
+    "ANOMALY_PRESENT",
+    "HAZARD_ELEVATED",
+    "READY_WITH_LIMITS",
+    "SUPPORT_DEGRADED"
+  ],
+  "changed": {
+    "runtimeClosureState": false,
+    "deterministicReplayKey": false,
+    "overlapPairs": false,
+    "degradedIds": false,
+    "reasons": false
+  },
+  "unchanged": {
+    "runtimeClosureState": true,
+    "deterministicReplayKey": true,
+    "overlapPairs": true,
+    "degradedIds": true,
+    "reasons": true
+  },
+  "hilStateTags": [
+    "HELD_STILL_INTELLIGENT"
+  ],
+  "evidence": {
+    "supportStatus": "DEGRADED",
+    "continuityStatus": "INTACT",
+    "degradedCount": 2,
+    "overlapPairCount": 1
+  }
+}

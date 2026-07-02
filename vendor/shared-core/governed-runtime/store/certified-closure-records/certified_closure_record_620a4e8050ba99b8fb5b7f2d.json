@@ -1,0 +1,15 @@
+{
+  "recordId": "certified_closure_record_620a4e8050ba99b8fb5b7f2d",
+  "recordClass": "CERTIFIED_REFUSE_UNCERTIFIED",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "sourceParent": "PONG",
+  "receivingParent": "shared-core/governed-runtime",
+  "certifiedClosureResult": "CERTIFIED_CLOSURE_REFUSE_UNCERTIFIED",
+  "hilReadyStatus": "CERTIFIED_CLOSURE_REFUSE_UNCERTIFIED",
+  "reasonCodes": [
+    "UNCERTIFIED_PACKET"
+  ],
+  "createdAt": "2026-04-23T00:26:53.278Z",
+  "deterministicKey": "620a4e8050ba99b8fb5b7f2d2c1629fb046306cf19d369ff2a675bbd25179295",
+  "repeatStatus": "CREATED"
+}

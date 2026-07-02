@@ -1,0 +1,11 @@
+{
+  "pendingId": "gov_admission_pending_45de79f3c6f358c26c3de1b5",
+  "intakeId": "intake_divergence_001",
+  "governanceResult": "GOVERNANCE_HOLD_DIVERGENCE",
+  "reasonCodes": [
+    "DIVERGENCE_DETECTED"
+  ],
+  "status": "pending",
+  "queue": "bounded_governance_review",
+  "createdAt": "2026-04-23T14:59:37.952Z"
+}

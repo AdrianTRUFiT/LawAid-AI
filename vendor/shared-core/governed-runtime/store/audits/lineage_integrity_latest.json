@@ -1,0 +1,70 @@
+﻿{
+  "counts": {
+    "memories": 13,
+    "links": 5,
+    "missingFromLinks": 0,
+    "missingToLinks": 0,
+    "duplicateLinks": 0,
+    "orphanMemories": 7,
+    "retiredParentsWithActiveChildren": 0,
+    "activeParentsWithNoHardening": 0,
+    "acceptedParentsWithDescendants": 0
+  },
+  "missingFromLinks": [],
+  "missingToLinks": [],
+  "duplicateLinks": [],
+  "orphanMemories": [
+    {
+      "id": "mem_20260419_102956",
+      "promotion": "captured",
+      "verification": "unverified",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "mem_layer_grammar_planning_note_2026-04-19_122345",
+      "promotion": "captured",
+      "verification": "source_backed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "mem_trufit_event_layer_proof_2026-04-19_122345",
+      "promotion": "captured",
+      "verification": "source_backed",
+      "truthLane": "private",
+      "objectClass": "pattern"
+    },
+    {
+      "id": "ollama_candidate_1776624379269_memory_accepted_derivative",
+      "promotion": "active",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative",
+      "promotion": "accepted",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative",
+      "promotion": "retired",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    },
+    {
+      "id": "ollama_candidate_1776624458638_memory_accepted_derivative_accepted_derivative_accepted_derivative",
+      "promotion": "retired",
+      "verification": "reviewed",
+      "truthLane": "semi_private",
+      "objectClass": "note"
+    }
+  ],
+  "retiredParentsWithActiveChildren": [],
+  "activeParentsWithNoHardening": [],
+  "acceptedParentsWithDescendants": []
+}

@@ -1,0 +1,10 @@
+{
+  "memoryId": "mem_20260419_103156",
+  "fromPromotion": "accepted",
+  "toPromotion": "active",
+  "approvedBy": "Adrian",
+  "rationale": [
+    "root_activate_after_hardening"
+  ],
+  "createdAt": "2026-04-20T05:49:58.071Z"
+}

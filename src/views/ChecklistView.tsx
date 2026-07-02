@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { CheckSquare, Plus, Trash2, ClipboardList, AlertCircle } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import type { ChecklistCategory, ChecklistItem, ChecklistPriority, ChecklistStatus } from '../types/checklist';

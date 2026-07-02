@@ -1,0 +1,13 @@
+{
+  "name": "homebase-operator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "smoke:idempotency": "tsx tests/smoke-homebase-idempotency-seal.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}

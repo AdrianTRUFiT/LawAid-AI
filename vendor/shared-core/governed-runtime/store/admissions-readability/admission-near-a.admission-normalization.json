@@ -1,0 +1,35 @@
+{
+  "artifactType": "ADMISSION_NORMALIZATION_ARTIFACT",
+  "generatedAt": "2026-04-23T15:02:32.856Z",
+  "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-a.md",
+  "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-a.normalized.md",
+  "linkage": {
+    "sourceFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-a.md",
+    "normalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-a.normalized.md"
+  },
+  "readabilityState": "ADMISSION_READABLE",
+  "normalizationState": "ADMISSION_NORMALIZED",
+  "divergenceState": "ADMISSION_DIVERGENCE_DETECTED",
+  "reasonCodes": [
+    "NEAR_DUPLICATE_DIVERGENCE",
+    "NORMALIZATION_CHANGED_TEXT",
+    "VISIBLE_TEXT_PRESENT"
+  ],
+  "originalTextLength": 164,
+  "normalizedTextLength": 162,
+  "fingerprints": {
+    "rawHash": "a9d2ac2fa43462576e87bd75ea0cd4731da6db901647827524df90810b2afe58",
+    "normalizedHash": "c5d46808996f3c9616be6f3aebf5bc7fa6d4f04bdfc997aa70d91bdd8e378b3d",
+    "tokenSetHash": "9e751f85a50b920babc7832873f32038e0cfa341ed2375332395a3cbd5ca9521",
+    "visibleCharCount": 136,
+    "printableRatio": 1,
+    "tokenCount": 23
+  },
+  "divergence": {
+    "comparedAgainstFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.md",
+    "comparedAgainstNormalizedFilePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\admissions-readability\\admission-near-b.normalized.md",
+    "jaccardSimilarity": 0.916667,
+    "tokenOverlapCount": 22,
+    "comparedTokenCount": 24
+  }
+}

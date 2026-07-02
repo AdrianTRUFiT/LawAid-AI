@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-05-11T17:00:00.000Z",
+  "sourceFixtureDir": "fixtures/pai-safe-pass-6",
+  "previewPath": "preview/pai-safe-pass-7/index.html",
+  "scenarioCount": 6,
+  "scenarios": [
+    "SAFE",
+    "HOLD",
+    "REFUSED",
+    "EMPTY",
+    "LOADING",
+    "UNAVAILABLE"
+  ],
+  "authority": {
+    "createsTruth": false,
+    "mutatesState": false,
+    "authorizesPayment": false,
+    "writesCustody": false,
+    "promotesDoctrine": false,
+    "runsBusinessLogic": false,
+    "consumesFixturesOnly": true
+  },
+  "boundary": {
+    "noReactUi": true,
+    "noDashboardApp": true,
+    "noPayments": true,
+    "noExternalApis": true,
+    "noCustody": true,
+    "noSoulWritePath": true,
+    "noFundTrackerBridge": true
+  }
+}

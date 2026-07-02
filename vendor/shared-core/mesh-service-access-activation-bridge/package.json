@@ -1,0 +1,6 @@
+{
+  "name": "@aiva/mesh-service-access-activation-bridge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module"
+}

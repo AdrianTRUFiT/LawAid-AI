@@ -1,0 +1,24 @@
+{
+  "decisionId": "gov_decision_b0446254bdf2623a3d993ed7",
+  "triggerId": "routing_trigger_certified_closure_record_3e0ca4b0b3282c091d9179da",
+  "sourceRecordId": "certified_closure_record_3e0ca4b0b3282c091d9179da",
+  "packetId": "ifact_2f75b63f4b2268661f4350f3",
+  "triggerKind": "CERTIFIED_REFUSE_MUTATION",
+  "classificationState": "CLASSIFIED_VALID",
+  "branchState": "BRANCH_CONTINUE",
+  "decisionReasons": [
+    "VALID_TRIGGER"
+  ],
+  "nextActionPacket": {
+    "actionId": "gov_action_routing_trigger_certified_closure_record_3e0ca4b0b3282c091d9179da_continue",
+    "actionType": "CONTINUE_TO_NEXT_STAGE",
+    "sourceRecordId": "certified_closure_record_3e0ca4b0b3282c091d9179da",
+    "packetId": "ifact_2f75b63f4b2268661f4350f3",
+    "targetPath": "shared-core/next-stage",
+    "reasonCodes": [
+      "VALID_TRIGGER"
+    ],
+    "createdAt": "2026-04-23T02:55:39.278Z"
+  },
+  "createdAt": "2026-04-23T02:55:39.278Z"
+}

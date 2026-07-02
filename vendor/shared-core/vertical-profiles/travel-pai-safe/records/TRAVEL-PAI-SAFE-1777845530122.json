@@ -1,0 +1,113 @@
+{
+  "profileId": "TRAVEL-PAI-SAFE-1777845530122",
+  "profileType": "TRAVEL_PAI_SAFE_VERTICAL_PROFILE_V1",
+  "architectureBoundary": {
+    "travelIsEngine": false,
+    "travelIsVerticalProfile": true,
+    "paiSafeIsRail": true,
+    "paidIsControlSurface": true,
+    "tpsIsMerchantPackage": true,
+    "fundTrackerAIIsTransactionTruth": true,
+    "fintechionAIIsOperatorGovernance": true,
+    "rateRemainsWorkflowLaw": true
+  },
+  "rail": {
+    "name": "PAI-SAFE",
+    "expansion": "Pay Securely",
+    "role": "verified_payment_safety_rail",
+    "vap": [
+      "VERIFY",
+      "AUTHORIZE",
+      "PROOF"
+    ],
+    "boundary": "rail_not_wallet_first_product"
+  },
+  "actionModes": [
+    "PAI-ROLL",
+    "PAI-LATER",
+    "PAI-NOW",
+    "PAI-FOR",
+    "PAI-ME",
+    "PAI-U",
+    "PAI-AHEAD",
+    "PAI-ADVANCE"
+  ],
+  "dashboardType": "CRUISE_LINE",
+  "dashboardFields": [
+    "reservations",
+    "deposits",
+    "cabin_upgrades",
+    "excursion_bookings",
+    "drink_packages",
+    "dining_packages",
+    "port_fees",
+    "onboard_spend",
+    "casino_or_restricted_spend_flags",
+    "cancellations",
+    "refunds",
+    "travel_credits",
+    "loyalty_status",
+    "family_group_payments",
+    "vendor_excursion_payouts",
+    "charge_dispute_proof",
+    "passenger_authorization_records",
+    "currency_conversion",
+    "port_location_currency_options",
+    "best_available_rate_capture"
+  ],
+  "transactionMoments": [
+    "booking",
+    "deposit",
+    "upgrade",
+    "baggage",
+    "seat_selection",
+    "cancellation",
+    "refund",
+    "rebooking",
+    "hotel_hold",
+    "incidentals",
+    "rental_hold",
+    "insurance",
+    "excursion",
+    "loyalty_redemption",
+    "partner_payout",
+    "currency_conversion",
+    "foreign_exchange_rate_capture",
+    "best_rate_selection"
+  ],
+  "continuityFields": [
+    "who_paid",
+    "what_was_approved",
+    "what_was_promised",
+    "what_changed",
+    "what_was_refunded",
+    "what_credit_was_issued",
+    "what_loyalty_value_was_earned",
+    "what_customer_state_carries_forward",
+    "what_currency_was_requested",
+    "what_conversion_rate_was_applied",
+    "what_best_rate_option_was_available",
+    "what_location_based_currency_option_was chosen"
+  ],
+  "proofLanguage": {
+    "cleanLine": "Free dashboard. Embedded trusted processing. Proof-backed transactions.",
+    "travelLine": "Travel needs verified continuity across every payment moment.",
+    "loyaltyLine": "PAI-SAFE turns travel loyalty from points into verified continuity.",
+    "cruiseLine": "Cruise lines are floating travel ecosystems.",
+    "currencyLine": "Travelers should see and capture the best available currency conversion before payment consequence."
+  },
+  "outputBoundary": "demo_profile_only_no_live_integration",
+  "currencyIntelligence": {
+    "enabled": true,
+    "role": "traveler_currency_protection",
+    "capabilities": [
+      "location_based_currency_options",
+      "merchant_requested_currency_capture",
+      "best_available_rate_selection",
+      "conversion_rate_proof_record",
+      "traveler_authorization_before_payment"
+    ],
+    "boundary": "profile_capability_only_no_live_fx_integration"
+  },
+  "createdAt": "2026-05-03T21:58:50.122Z"
+}

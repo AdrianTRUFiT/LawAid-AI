@@ -1,0 +1,18 @@
+{
+  "reportId": "soul_bridge_anchor_phase_report_69112bb5671feb7666d7238b6e130f431fcf96fddc171af0aa558031c55b5dee",
+  "recordType": "soul_bridge_anchor_phase_report",
+  "phase": "soul_bridge_anchor_stability_phase_1",
+  "createdAt": "2026-04-21T21:26:06.805Z",
+  "total": 13,
+  "passed": 0,
+  "failed": 1,
+  "complete": false,
+  "deterministicKey": "69112bb5671feb7666d7238b6e130f431fcf96fddc171af0aa558031c55b5dee",
+  "results": [
+    {
+      "command": "npx tsc --noEmit",
+      "ok": false,
+      "output": "\u001b[41m                                                                               \u001b[0m\n\u001b[41m\u001b[37m                This is not the tsc command you are looking for                \u001b[0m\n\u001b[41m                                                                               \u001b[0m\n\nTo get access to the TypeScript compiler, \u001b[34mtsc\u001b[0m, from the command line either:\n\n- Use \u001b[1mnpm install typescript\u001b[0m to first add TypeScript to your project \u001b[1mbefore\u001b[0m using npx\n- Use \u001b[1myarn\u001b[0m to avoid accidentally running code from un-installed packages"
+    }
+  ]
+}

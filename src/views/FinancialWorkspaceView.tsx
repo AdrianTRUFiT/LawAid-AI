@@ -1,4 +1,4 @@
-// src/views/FinancialWorkspaceView.tsx
+﻿// src/views/FinancialWorkspaceView.tsx
 
 import React, { useEffect, useMemo, useState } from 'react';
 import {
@@ -675,7 +675,7 @@ export default function FinancialWorkspaceView() {
                       { value: '', label: 'No linked invoice yet' },
                       ...workspace.invoices.map((invoice) => ({
                         value: invoice.id,
-                        label: `${invoice.vendorName} Â· ${invoice.invoiceNumber} Â· $${invoice.total}`,
+                        label: `${invoice.vendorName} Ã‚Â· ${invoice.invoiceNumber} Ã‚Â· $${invoice.total}`,
                       })),
                     ]}
                   />
@@ -721,13 +721,13 @@ export default function FinancialWorkspaceView() {
                         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                           <div>
                             <h3 className="text-lg font-bold text-legal-navy">
-                              {invoice.vendorName} Â· {invoice.invoiceNumber}
+                              {invoice.vendorName} Ã‚Â· {invoice.invoiceNumber}
                             </h3>
                             <p className="mt-1 text-sm text-slate-500">
-                              Invoice date {invoice.invoiceDate} Â· Due {invoice.dueDate}
+                              Invoice date {invoice.invoiceDate} Ã‚Â· Due {invoice.dueDate}
                             </p>
                             <p className="mt-2 text-sm text-slate-700">
-                              Total: <strong>${invoice.total.toLocaleString()}</strong> Â·
+                              Total: <strong>${invoice.total.toLocaleString()}</strong> Ã‚Â·
                               Balance:{' '}
                               <strong>${balance.toLocaleString()}</strong>
                             </p>
@@ -797,7 +797,7 @@ export default function FinancialWorkspaceView() {
                                       {line.description}
                                     </td>
                                     <td className="px-3 py-2 text-slate-700">
-                                      {line.billedRole || 'â€”'}
+                                      {line.billedRole || 'Ã¢â‚¬â€'}
                                     </td>
                                     <td className="px-3 py-2 text-right font-medium text-slate-800">
                                       ${line.amount.toLocaleString()}
@@ -969,10 +969,10 @@ export default function FinancialWorkspaceView() {
                           <div className="flex items-start justify-between gap-4">
                             <div>
                               <div className="font-bold text-legal-navy">
-                                {invoice.vendorName} Â· {invoice.invoiceNumber}
+                                {invoice.vendorName} Ã‚Â· {invoice.invoiceNumber}
                               </div>
                               <div className="mt-1 text-sm text-slate-500">
-                                Total ${invoice.total.toLocaleString()} Â· Due {invoice.dueDate}
+                                Total ${invoice.total.toLocaleString()} Ã‚Â· Due {invoice.dueDate}
                               </div>
                             </div>
                             {eligiblePayments[0] && (
@@ -1016,7 +1016,7 @@ export default function FinancialWorkspaceView() {
                           {payment.vendorName}
                         </div>
                         <div className="mt-1 text-sm text-slate-500">
-                          ${payment.amount.toLocaleString()} Â· {payment.datePaid} Â·{' '}
+                          ${payment.amount.toLocaleString()} Ã‚Â· {payment.datePaid} Ã‚Â·{' '}
                           {payment.paymentMethodSummary}
                         </div>
                       </div>

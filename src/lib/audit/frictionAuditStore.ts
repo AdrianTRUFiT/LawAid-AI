@@ -1,4 +1,4 @@
-export type FrictionSeverity = "low" | "medium" | "high";
+﻿export type FrictionSeverity = "low" | "medium" | "high";
 export type FrictionCategory =
   | "structural"
   | "workflow"

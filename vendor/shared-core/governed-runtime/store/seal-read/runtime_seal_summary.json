@@ -1,0 +1,58 @@
+{
+  "artifactType": "RUNTIME_SEAL_SUMMARY",
+  "generatedAt": "2026-04-23T04:35:00.915Z",
+  "totals": {
+    "valid": 1,
+    "broken": 1,
+    "invalid": 1
+  },
+  "summaries": [
+    {
+      "artifactType": "RUNTIME_SEALED_RECORD_READ_RESULT",
+      "evaluatedAt": "2026-04-23T04:35:00.915Z",
+      "filePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\seal-read\\sealed-runtime-record.valid.json",
+      "sealStatus": "READ_SEAL_VALID",
+      "reasonCodes": [
+        "SEAL_HASH_MATCH"
+      ],
+      "expectedHash": "a6830f1877c2ebb90d7e90f7728be9e00b21f97e677b5ee95e590c781f4e2b10",
+      "computedHash": "a6830f1877c2ebb90d7e90f7728be9e00b21f97e677b5ee95e590c781f4e2b10",
+      "sealedFields": [
+        "continuity",
+        "recordId",
+        "recordType",
+        "state"
+      ],
+      "recordArtifactType": "SEALED_RUNTIME_RECORD"
+    },
+    {
+      "artifactType": "RUNTIME_SEALED_RECORD_READ_RESULT",
+      "evaluatedAt": "2026-04-23T04:35:00.915Z",
+      "filePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\seal-read\\sealed-runtime-record.altered.json",
+      "sealStatus": "READ_SEAL_BROKEN",
+      "reasonCodes": [
+        "SEAL_HASH_MISMATCH"
+      ],
+      "expectedHash": "a6830f1877c2ebb90d7e90f7728be9e00b21f97e677b5ee95e590c781f4e2b10",
+      "computedHash": "bc8da769da511c4b2101ff8902524f7e2afe1c87c83d0bef9e7da6c837ffbf7b",
+      "sealedFields": [
+        "continuity",
+        "recordId",
+        "recordType",
+        "state"
+      ],
+      "recordArtifactType": "SEALED_RUNTIME_RECORD"
+    },
+    {
+      "artifactType": "RUNTIME_SEALED_RECORD_READ_RESULT",
+      "evaluatedAt": "2026-04-23T04:35:00.915Z",
+      "filePath": "D:\\DEV\\AIVA\\shared-core\\governed-runtime\\store\\seal-read\\sealed-runtime-record.partial.json",
+      "sealStatus": "READ_SEAL_INVALID",
+      "reasonCodes": [
+        "SEALED_FIELDS_PARTIAL"
+      ],
+      "sealedFields": [],
+      "recordArtifactType": "SEALED_RUNTIME_RECORD"
+    }
+  ]
+}

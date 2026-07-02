@@ -1,0 +1,170 @@
+{
+  "scenario": "SAFE",
+  "fixtureId": "pai_safe_fixture_safe",
+  "generatedAt": "2026-05-11T16:00:00.000Z",
+  "source": "PAI_SAFE_PASS_6_FIXTURE_EXPORT_PACKET",
+  "authority": {
+    "createsTruth": false,
+    "mutatesState": false,
+    "authorizesPayment": false,
+    "writesCustody": false,
+    "promotesDoctrine": false,
+    "uiRendersLater": true
+  },
+  "uiState": {
+    "transactionId": "txn_fixture_safe",
+    "decision": "SAFE",
+    "merchantScreen": {
+      "screenRole": "MERCHANT_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "SAFE_STATE",
+      "transactionId": "txn_fixture_safe",
+      "decision": "SAFE",
+      "tone": "success",
+      "headline": "This transaction is marked safe for this advisory pass.",
+      "primaryMessage": "Fulfill with confidence",
+      "proofLabel": "Proof available",
+      "reasonLabel": "No blocking issue detected",
+      "nextStepLabel": "Fulfill with confidence",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS",
+        "FULFILL_TRANSACTION"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "MERCHANT_SURFACE",
+      "fulfillmentLabel": "Ready to fulfill",
+      "disputeSupportLabel": "Proof record available for transaction support."
+    },
+    "consumerScreen": {
+      "screenRole": "CONSUMER_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "SAFE_STATE",
+      "transactionId": "txn_fixture_safe",
+      "decision": "SAFE",
+      "tone": "success",
+      "headline": "This transaction is marked safe for this advisory pass.",
+      "primaryMessage": "Payment can proceed with proof",
+      "proofLabel": "Proof available",
+      "reasonLabel": "No blocking issue detected",
+      "nextStepLabel": "Payment can proceed with proof",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS"
+      ],
+      "blockedActions": [
+        "VIEW_INTERNAL_RISK_CODES",
+        "VIEW_INTERNAL_HASHES",
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "CONSUMER_SURFACE",
+      "userMessage": "This transaction passed the advisory safety check and has a proof-backed record."
+    },
+    "internalReviewScreen": {
+      "screenRole": "INTERNAL_REVIEW_SCREEN",
+      "screenMode": "READY",
+      "stateKind": "SAFE_STATE",
+      "transactionId": "txn_fixture_safe",
+      "decision": "SAFE",
+      "tone": "success",
+      "headline": "Internal review packet: SAFE",
+      "primaryMessage": "Internal review packet available.",
+      "proofLabel": "Proof available",
+      "reasonLabel": "NONE",
+      "nextStepLabel": "INTERNAL_REVIEW_NOT_REQUIRED",
+      "timelineLabels": [
+        "Transaction request created",
+        "Advisory trust check completed",
+        "ProofBack Protection record generated",
+        "Proof-backed receipt issued",
+        "Internal consistency hashes available"
+      ],
+      "allowedActions": [
+        "VIEW_RECEIPT",
+        "VIEW_PROOF_STATUS"
+      ],
+      "blockedActions": [
+        "AUTHORIZE_PAYMENT",
+        "WRITE_CUSTODY",
+        "PROMOTE_DOCTRINE",
+        "MODIFY_TRUST_DECISION",
+        "MODIFY_PROOF_RECORD"
+      ],
+      "readOnlyGuard": {
+        "readOnly": true,
+        "canMutateSourceContract": false,
+        "canModifyTrustDecision": false,
+        "canModifyProofRecord": false,
+        "canAuthorizePayment": false,
+        "canWriteCustody": false,
+        "canPromoteDoctrine": false
+      },
+      "sourceSurface": "INTERNAL_REVIEW_SURFACE",
+      "riskCodes": [
+        "NO_BLOCKING_RISK"
+      ],
+      "hashes": {
+        "requestHash": "psh_9fb86a24",
+        "decisionHash": "psh_5dec4ef2",
+        "recordHash": "psh_8c6944c1",
+        "receiptHash": "psh_f148eed5"
+      },
+      "consistency": {
+        "proofBackConsistent": true,
+        "receiptConsistent": true
+      },
+      "reviewRequired": false
+    },
+    "sourceSurfaceContractReadOnly": true,
+    "uiAuthority": {
+      "screenStatePrepares": true,
+      "uiRendersLater": true,
+      "createsTruth": false,
+      "mutatesState": false,
+      "authorizesPayment": false,
+      "writesCustody": false
+    }
+  }
+}

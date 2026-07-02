@@ -1,0 +1,17 @@
+{
+  "exportId": "LAUNCH-EXPORT-MERCHANT-1778103792134-c6da33",
+  "lane": "MERCHANT",
+  "sourceRecordId": "MERCHANT-SOULSEED-1778103792134-295945",
+  "paidRelationshipId": "MERCHANT-PAID-1778103792134-4b9ff8",
+  "activationIntentId": "PAI-SAFE-MERCHANT-INTENT-1778103792134-127718",
+  "setupPacketId": "700a391d-6f51-4c58-ac06-e004e1eb0713",
+  "receiverDecision": "ACCEPT",
+  "liveActivationId": "MERCHANT-LIVE-ACTIVATION-1778103792134-2a7f48",
+  "tsReference": "TS-REC-PAI-SAFE-MERCHANT-INTENT-1778103792134-127718",
+  "fundTrackerRequired": true,
+  "financialAuthorityGranted": false,
+  "paymentRailsConnected": false,
+  "walletCreated": false,
+  "createdAt": "2026-05-06T21:43:12.134Z",
+  "issuedBy": "AIVA_LAUNCH_RECORD_EXPORT_V1"
+}

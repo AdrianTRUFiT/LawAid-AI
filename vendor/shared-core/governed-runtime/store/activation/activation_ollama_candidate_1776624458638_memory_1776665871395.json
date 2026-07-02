@@ -1,0 +1,10 @@
+{
+  "activationId": "activation_ollama_candidate_1776624458638_memory_1776665871395",
+  "candidateId": "ollama_candidate_1776624458638_memory",
+  "reviewer": "operator",
+  "sourceTitle": "Ollama Candidate - Produce a refined active operational summary from the resolved governed context.",
+  "truthLane": "semi_private",
+  "promotion": "accepted",
+  "createdAt": "2026-04-20T06:17:51.394Z",
+  "note": "accepted_from_family_queue"
+}
