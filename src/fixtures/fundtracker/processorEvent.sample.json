@@ -1,1 +1,1 @@
-﻿{ "processorReference": "pi_001", "transactionId": "tx_001", "eventType": "payment_succeeded", "amount": 99, "currency": "USD", "rawStatus": "succeeded" }
+{ "processorReference": "pi_001", "transactionId": "tx_001", "eventType": "payment_succeeded", "amount": 99, "currency": "USD", "rawStatus": "succeeded" }
