@@ -1,0 +1,3 @@
+﻿// transactionArtifacts.ts
+// scaffold placeholder
+

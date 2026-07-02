@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-04-06T23:46:56.313Z",
+  "projectRoot": "D:\\DEV\\PROJECTS\\LawAidAI",
+  "results": [
+    {
+      "name": "wrong-target",
+      "expected": "WRONG_TARGET",
+      "exitCode": 1,
+      "output": "STEP 6 REFUSED: Wrong target app. Both artifacts must target LawAidAI.",
+      "passed": true
+    },
+    {
+      "name": "unapproved-shell",
+      "expected": "UNAPPROVED_REVIEW_STATE",
+      "exitCode": 1,
+      "output": "STEP 6 REFUSED: Reviewed shell is not approved.",
+      "passed": true
+    },
+    {
+      "name": "missing-transaction-id",
+      "expected": "MISSING_REQUIRED_FIELD",
+      "exitCode": 1,
+      "output": "STEP 6 REFUSED: Missing transactionStateId on Activated Transaction State.",
+      "passed": true
+    }
+  ]
+}

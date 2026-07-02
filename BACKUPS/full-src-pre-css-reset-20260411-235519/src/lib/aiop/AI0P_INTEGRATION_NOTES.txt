@@ -1,0 +1,23 @@
+﻿AIOP integration notes
+
+1. Add a route or registry entry to render:
+   src/views/AiopIntakeView.tsx
+
+2. Suggested temporary route path:
+   /aiop-intake
+
+3. If your shell uses a registry pattern, register:
+   key: aiop-intake
+   label: AIOP Intake
+   component: AiopIntakeView
+
+4. Do not wire this view directly into transaction logic.
+   It emits Verified Opportunity only.
+
+5. Do not mutate LawAidAI workspace state from this view.
+   Preserve contract boundary:
+   AIOP -> Handoff Contract -> Receiving System
+
+6. Optional next step:
+   Add a receiver adapter that writes the emitted Verified Opportunity
+   into an admin inbox or controlled ingest surface instead of direct state mutation.

@@ -1,0 +1,76 @@
+[
+  {
+    "eventId": "event_review_tx_vo_block11_001_1775976217828_5351",
+    "reviewId": "review_tx_vo_block11_001",
+    "transactionId": "tx_vo_block11_001",
+    "eventType": "review_status_updated",
+    "reviewerId": "reviewer_beta",
+    "reviewerNote": "Rejected in block 11.",
+    "payload": {
+      "status": "rejected"
+    },
+    "createdAt": "2026-04-12T06:43:37.828Z"
+  },
+  {
+    "eventId": "event_review_tx_vo_block11_001_1775976217829_502",
+    "reviewId": "review_tx_vo_block11_001",
+    "transactionId": "tx_vo_block11_001",
+    "eventType": "review_rejected",
+    "reviewerId": "reviewer_beta",
+    "reviewerNote": "Rejected in block 11.",
+    "payload": {
+      "status": "rejected"
+    },
+    "createdAt": "2026-04-12T06:43:37.829Z"
+  },
+  {
+    "eventId": "event_review_tx_vo_block11_001_1775976217829_2462",
+    "reviewId": "review_tx_vo_block11_001",
+    "transactionId": "tx_vo_block11_001",
+    "eventType": "permanent_refusal_recorded",
+    "reviewerId": "reviewer_beta",
+    "reviewerNote": "Rejected in block 11.",
+    "payload": {
+      "reasonCount": 5
+    },
+    "createdAt": "2026-04-12T06:43:37.829Z"
+  },
+  {
+    "eventId": "event_review_tx_vo_block11_002_1775976217830_538",
+    "reviewId": "review_tx_vo_block11_002",
+    "transactionId": "tx_vo_block11_002",
+    "eventType": "review_status_updated",
+    "reviewerId": "reviewer_alpha",
+    "reviewerNote": "Approved in block 11.",
+    "payload": {
+      "status": "approved"
+    },
+    "createdAt": "2026-04-12T06:43:37.830Z"
+  },
+  {
+    "eventId": "event_review_tx_vo_block11_002_1775976217830_6643",
+    "reviewId": "review_tx_vo_block11_002",
+    "transactionId": "tx_vo_block11_002",
+    "eventType": "review_approved",
+    "reviewerId": "reviewer_alpha",
+    "reviewerNote": "Approved in block 11.",
+    "payload": {
+      "status": "approved"
+    },
+    "createdAt": "2026-04-12T06:43:37.830Z"
+  },
+  {
+    "eventId": "event_review_tx_vo_block11_002_1775976217830_2795",
+    "reviewId": "review_tx_vo_block11_002",
+    "transactionId": "tx_vo_block11_002",
+    "eventType": "activated_from_review",
+    "reviewerId": "reviewer_alpha",
+    "reviewerNote": "Approved in block 11.",
+    "payload": {
+      "destination": "subscription_activation",
+      "grossAmount": 2100,
+      "currency": "EUR"
+    },
+    "createdAt": "2026-04-12T06:43:37.830Z"
+  }
+]

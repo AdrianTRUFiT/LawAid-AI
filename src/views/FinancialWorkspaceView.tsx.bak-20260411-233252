@@ -1,0 +1,1272 @@
+// src/views/FinancialWorkspaceView.tsx
+
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  AlertTriangle,
+  CheckCircle2,
+  DollarSign,
+  FileText,
+  Plus,
+  Receipt,
+  ShieldAlert,
+} from 'lucide-react';
+import { useProject } from '../context/ProjectContext';
+import type { FinancialWorkspaceState } from '../types/financial';
+import type { PaymentGovernanceState } from '../types/paymentGovernance';
+import {
+  addInvoiceRecord,
+  addPaymentRecord,
+  addReviewFlag,
+  createExactMatch,
+  loadFinancialWorkspace,
+  resolveReviewFlag,
+  setInvoiceStatus,
+  upsertBudget,
+  upsertEstimate,
+} from '../lib/financial/financialStore';
+import {
+  computeInvoiceBalance,
+  deriveFinancialAlerts,
+  selectEligiblePaymentsForInvoice,
+  selectLedgerRows,
+  selectUnmatchedInvoices,
+  selectUnmatchedPayments,
+  summarizeReconciliation,
+} from '../lib/financial/financialSelectors';
+import {
+  loadPaymentGovernanceState,
+  savePaymentGovernanceState,
+} from '../lib/financial/paymentGovernanceStore';
+import PreProcessorGovernancePanel from '../components/financial/PreProcessorGovernancePanel';
+
+type TabKey =
+  | 'estimate'
+  | 'budget'
+  | 'invoiceReview'
+  | 'preProcessor'
+  | 'ledger'
+  | 'reconciliation'
+  | 'alerts';
+
+const TABS: Array<{ id: TabKey; label: string }> = [
+  { id: 'estimate', label: 'Estimate' },
+  { id: 'budget', label: 'Budget' },
+  { id: 'invoiceReview', label: 'Invoice Review' },
+  { id: 'preProcessor', label: 'Pre-Processor' },
+  { id: 'ledger', label: 'Ledger' },
+  { id: 'reconciliation', label: 'Reconciliation' },
+  { id: 'alerts', label: 'Alerts' },
+];
+
+export default function FinancialWorkspaceView() {
+  const { activeProject } = useProject();
+  const [activeTab, setActiveTab] = useState<TabKey>('invoiceReview');
+  const [workspace, setWorkspace] = useState<FinancialWorkspaceState | null>(null);
+  const [governance, setGovernance] = useState<PaymentGovernanceState | null>(null);
+
+  const [invoiceForm, setInvoiceForm] = useState({
+    vendorName: '',
+    invoiceNumber: '',
+    invoiceDate: '',
+    dueDate: '',
+    total: '',
+    lineDescription: '',
+    lineAmount: '',
+    billedRole: '',
+    category: 'legal_fee',
+    notes: '',
+  });
+
+  const [paymentForm, setPaymentForm] = useState({
+    vendorName: '',
+    amount: '',
+    datePaid: '',
+    paymentMethodSummary: 'Manual Entry',
+    invoiceId: '',
+    notes: '',
+  });
+
+  const [budgetForm, setBudgetForm] = useState({
+    projectedLow: '',
+    projectedHigh: '',
+    allocatedTotal: '',
+    availableFunds: '',
+    notes: '',
+  });
+
+  const [estimateForm, setEstimateForm] = useState({
+    lowEstimate: '',
+    highEstimate: '',
+    confidence: 'medium' as 'low' | 'medium' | 'high',
+    assumptions: '',
+  });
+
+  useEffect(() => {
+    if (!activeProject) {
+      setWorkspace(null);
+      setGovernance(null);
+      return;
+    }
+
+    const loadedWorkspace = loadFinancialWorkspace(activeProject.id);
+    setWorkspace(loadedWorkspace);
+
+    const loadedGovernance = loadPaymentGovernanceState(activeProject.id);
+    setGovernance(loadedGovernance);
+
+    if (loadedWorkspace.budget) {
+      setBudgetForm({
+        projectedLow: String(loadedWorkspace.budget.projectedLow || ''),
+        projectedHigh: String(loadedWorkspace.budget.projectedHigh || ''),
+        allocatedTotal: String(loadedWorkspace.budget.allocatedTotal || ''),
+        availableFunds: String(loadedWorkspace.budget.availableFunds || ''),
+        notes: loadedWorkspace.budget.notes || '',
+      });
+    } else {
+      setBudgetForm({
+        projectedLow: '',
+        projectedHigh: '',
+        allocatedTotal: '',
+        availableFunds: '',
+        notes: '',
+      });
+    }
+
+    if (loadedWorkspace.estimate) {
+      setEstimateForm({
+        lowEstimate: String(loadedWorkspace.estimate.lowEstimate || ''),
+        highEstimate: String(loadedWorkspace.estimate.highEstimate || ''),
+        confidence: loadedWorkspace.estimate.confidence,
+        assumptions: loadedWorkspace.estimate.assumptions || '',
+      });
+    } else {
+      setEstimateForm({
+        lowEstimate: '',
+        highEstimate: '',
+        confidence: 'medium',
+        assumptions: '',
+      });
+    }
+  }, [activeProject]);
+
+  const alerts = useMemo(
+    () => (workspace ? deriveFinancialAlerts(workspace) : []),
+    [workspace]
+  );
+
+  const ledgerRows = useMemo(
+    () => (workspace ? selectLedgerRows(workspace) : []),
+    [workspace]
+  );
+
+  const unmatchedInvoices = useMemo(
+    () => (workspace ? selectUnmatchedInvoices(workspace) : []),
+    [workspace]
+  );
+
+  const unmatchedPayments = useMemo(
+    () => (workspace ? selectUnmatchedPayments(workspace) : []),
+    [workspace]
+  );
+
+  const reconciliationSummary = useMemo(
+    () => (workspace ? summarizeReconciliation(workspace) : null),
+    [workspace]
+  );
+
+  if (!activeProject) {
+    return (
+      <EmptyState
+        title="No active case selected"
+        body="Choose or create a case before opening the financial workspace."
+      />
+    );
+  }
+
+  if (!workspace || !governance) {
+    return (
+      <EmptyState
+        title="Loading financial workspace"
+        body="Preparing matter-linked financial orchestration surfaces."
+      />
+    );
+  }
+
+  const handleWorkspaceChange = (next: FinancialWorkspaceState) => {
+    setWorkspace(next);
+  };
+
+  const handleGovernanceChange = (next: PaymentGovernanceState) => {
+    setGovernance(next);
+    savePaymentGovernanceState(next);
+  };
+
+  const handleInvoiceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (
+      !invoiceForm.vendorName ||
+      !invoiceForm.invoiceNumber ||
+      !invoiceForm.invoiceDate ||
+      !invoiceForm.dueDate ||
+      !invoiceForm.total
+    ) {
+      return;
+    }
+
+    const next = addInvoiceRecord(workspace, {
+      vendorName: invoiceForm.vendorName,
+      invoiceNumber: invoiceForm.invoiceNumber,
+      invoiceDate: invoiceForm.invoiceDate,
+      dueDate: invoiceForm.dueDate,
+      total: Number(invoiceForm.total),
+      notes: invoiceForm.notes,
+      lineDescription: invoiceForm.lineDescription || undefined,
+      lineAmount: invoiceForm.lineAmount ? Number(invoiceForm.lineAmount) : undefined,
+      billedRole: invoiceForm.billedRole || undefined,
+      category: invoiceForm.category || undefined,
+    });
+
+    handleWorkspaceChange(next);
+
+    setInvoiceForm({
+      vendorName: '',
+      invoiceNumber: '',
+      invoiceDate: '',
+      dueDate: '',
+      total: '',
+      lineDescription: '',
+      lineAmount: '',
+      billedRole: '',
+      category: 'legal_fee',
+      notes: '',
+    });
+  };
+
+  const handlePaymentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (
+      !paymentForm.vendorName ||
+      !paymentForm.amount ||
+      !paymentForm.datePaid ||
+      !paymentForm.paymentMethodSummary
+    ) {
+      return;
+    }
+
+    const next = addPaymentRecord(workspace, {
+      vendorName: paymentForm.vendorName,
+      amount: Number(paymentForm.amount),
+      datePaid: paymentForm.datePaid,
+      paymentMethodSummary: paymentForm.paymentMethodSummary,
+      invoiceId: paymentForm.invoiceId || undefined,
+      notes: paymentForm.notes,
+    });
+
+    handleWorkspaceChange(next);
+
+    setPaymentForm({
+      vendorName: '',
+      amount: '',
+      datePaid: '',
+      paymentMethodSummary: 'Manual Entry',
+      invoiceId: '',
+      notes: '',
+    });
+  };
+
+  const handleGovernedPaymentRecord = (input: {
+    vendorName: string;
+    amount: number;
+    datePaid: string;
+    paymentMethodSummary: string;
+    invoiceId?: string;
+    notes?: string;
+  }) => {
+    const before = workspace.payments[0]?.id;
+    const next = addPaymentRecord(workspace, input);
+    handleWorkspaceChange(next);
+    const after = next.payments[0]?.id;
+    return after !== before ? after : after;
+  };
+
+  const handleBudgetSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const next = upsertBudget(workspace, {
+      projectedLow: Number(budgetForm.projectedLow || 0),
+      projectedHigh: Number(budgetForm.projectedHigh || 0),
+      allocatedTotal: Number(budgetForm.allocatedTotal || 0),
+      availableFunds: budgetForm.availableFunds
+        ? Number(budgetForm.availableFunds)
+        : undefined,
+      notes: budgetForm.notes || undefined,
+    });
+
+    handleWorkspaceChange(next);
+  };
+
+  const handleEstimateSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const next = upsertEstimate(workspace, {
+      lowEstimate: Number(estimateForm.lowEstimate || 0),
+      highEstimate: Number(estimateForm.highEstimate || 0),
+      confidence: estimateForm.confidence,
+      assumptions: estimateForm.assumptions,
+    });
+
+    handleWorkspaceChange(next);
+  };
+
+  const totalPaid = workspace.payments
+    .filter((payment) => payment.status === 'paid')
+    .reduce((sum, payment) => sum + payment.amount, 0);
+
+  const totalInvoiced = workspace.invoices.reduce(
+    (sum, invoice) => sum + invoice.total,
+    0
+  );
+
+  const renderTab = () => {
+    switch (activeTab) {
+      case 'estimate':
+        return (
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <Panel title="Case Cost Estimate" icon={DollarSign}>
+              <form onSubmit={handleEstimateSubmit} className="space-y-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Input
+                    label="Low estimate"
+                    value={estimateForm.lowEstimate}
+                    onChange={(value) =>
+                      setEstimateForm((prev) => ({ ...prev, lowEstimate: value }))
+                    }
+                    type="number"
+                  />
+                  <Input
+                    label="High estimate"
+                    value={estimateForm.highEstimate}
+                    onChange={(value) =>
+                      setEstimateForm((prev) => ({ ...prev, highEstimate: value }))
+                    }
+                    type="number"
+                  />
+                </div>
+
+                <Select
+                  label="Confidence"
+                  value={estimateForm.confidence}
+                  onChange={(value) =>
+                    setEstimateForm((prev) => ({
+                      ...prev,
+                      confidence: value as 'low' | 'medium' | 'high',
+                    }))
+                  }
+                  options={[
+                    { value: 'low', label: 'Low' },
+                    { value: 'medium', label: 'Medium' },
+                    { value: 'high', label: 'High' },
+                  ]}
+                />
+
+                <TextArea
+                  label="Assumptions"
+                  value={estimateForm.assumptions}
+                  onChange={(value) =>
+                    setEstimateForm((prev) => ({ ...prev, assumptions: value }))
+                  }
+                  placeholder="Examples: mediation likely, expert possible, filing fees expected..."
+                />
+
+                <button className="rounded-xl bg-legal-navy px-4 py-2 text-sm font-bold text-white">
+                  Save Estimate
+                </button>
+              </form>
+            </Panel>
+
+            <Panel title="Estimate Snapshot" icon={FileText}>
+              {workspace.estimate ? (
+                <div className="space-y-4 text-sm">
+                  <Stat
+                    label="Low"
+                    value={`$${workspace.estimate.lowEstimate.toLocaleString()}`}
+                  />
+                  <Stat
+                    label="High"
+                    value={`$${workspace.estimate.highEstimate.toLocaleString()}`}
+                  />
+                  <Stat
+                    label="Confidence"
+                    value={workspace.estimate.confidence}
+                  />
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Assumptions
+                    </div>
+                    <p className="mt-2 whitespace-pre-wrap text-slate-700">
+                      {workspace.estimate.assumptions || 'No assumptions saved yet.'}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-slate-500">
+                  No estimate saved yet. V1 supports manual-first entry so the
+                  workspace remains usable even when documents are messy or incomplete.
+                </p>
+              )}
+            </Panel>
+          </div>
+        );
+
+      case 'budget':
+        return (
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <Panel title="Budget Plan" icon={DollarSign}>
+              <form onSubmit={handleBudgetSubmit} className="space-y-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Input
+                    label="Projected low"
+                    value={budgetForm.projectedLow}
+                    onChange={(value) =>
+                      setBudgetForm((prev) => ({ ...prev, projectedLow: value }))
+                    }
+                    type="number"
+                  />
+                  <Input
+                    label="Projected high"
+                    value={budgetForm.projectedHigh}
+                    onChange={(value) =>
+                      setBudgetForm((prev) => ({ ...prev, projectedHigh: value }))
+                    }
+                    type="number"
+                  />
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Input
+                    label="Allocated total"
+                    value={budgetForm.allocatedTotal}
+                    onChange={(value) =>
+                      setBudgetForm((prev) => ({ ...prev, allocatedTotal: value }))
+                    }
+                    type="number"
+                  />
+                  <Input
+                    label="Available funds"
+                    value={budgetForm.availableFunds}
+                    onChange={(value) =>
+                      setBudgetForm((prev) => ({ ...prev, availableFunds: value }))
+                    }
+                    type="number"
+                  />
+                </div>
+
+                <TextArea
+                  label="Budget notes"
+                  value={budgetForm.notes}
+                  onChange={(value) =>
+                    setBudgetForm((prev) => ({ ...prev, notes: value }))
+                  }
+                  placeholder="Examples: retainer risk, mediation reserve, filing fee pressure..."
+                />
+
+                <button className="rounded-xl bg-legal-navy px-4 py-2 text-sm font-bold text-white">
+                  Save Budget
+                </button>
+              </form>
+            </Panel>
+
+            <Panel title="Budget Status" icon={ShieldAlert}>
+              {workspace.budget ? (
+                <div className="space-y-4 text-sm">
+                  <Stat
+                    label="Allocated"
+                    value={`$${workspace.budget.allocatedTotal.toLocaleString()}`}
+                  />
+                  <Stat
+                    label="Actual spend"
+                    value={`$${totalPaid.toLocaleString()}`}
+                  />
+                  <Stat
+                    label="Remaining"
+                    value={`$${Math.max(
+                      0,
+                      workspace.budget.allocatedTotal - totalPaid
+                    ).toLocaleString()}`}
+                  />
+                  <div className="h-3 overflow-hidden rounded-full bg-slate-100">
+                    <div
+                      className={`h-full ${
+                        totalPaid > workspace.budget.allocatedTotal
+                          ? 'bg-rose-500'
+                          : 'bg-emerald-500'
+                      }`}
+                      style={{
+                        width: `${Math.min(
+                          100,
+                          workspace.budget.allocatedTotal > 0
+                            ? (totalPaid / workspace.budget.allocatedTotal) * 100
+                            : 0
+                        )}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-slate-500">No budget saved yet.</p>
+              )}
+            </Panel>
+          </div>
+        );
+
+      case 'invoiceReview':
+        return (
+          <div className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              <Panel title="Manual Invoice Intake" icon={Plus}>
+                <form onSubmit={handleInvoiceSubmit} className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      label="Vendor / firm name"
+                      value={invoiceForm.vendorName}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, vendorName: value }))
+                      }
+                    />
+                    <Input
+                      label="Invoice number"
+                      value={invoiceForm.invoiceNumber}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, invoiceNumber: value }))
+                      }
+                    />
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <Input
+                      label="Invoice date"
+                      type="date"
+                      value={invoiceForm.invoiceDate}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, invoiceDate: value }))
+                      }
+                    />
+                    <Input
+                      label="Due date"
+                      type="date"
+                      value={invoiceForm.dueDate}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, dueDate: value }))
+                      }
+                    />
+                    <Input
+                      label="Total"
+                      type="number"
+                      value={invoiceForm.total}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, total: value }))
+                      }
+                    />
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      label="Line item description"
+                      value={invoiceForm.lineDescription}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({
+                          ...prev,
+                          lineDescription: value,
+                        }))
+                      }
+                    />
+                    <Input
+                      label="Line item amount"
+                      type="number"
+                      value={invoiceForm.lineAmount}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, lineAmount: value }))
+                      }
+                    />
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      label="Billed role"
+                      value={invoiceForm.billedRole}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, billedRole: value }))
+                      }
+                    />
+                    <Input
+                      label="Category"
+                      value={invoiceForm.category}
+                      onChange={(value) =>
+                        setInvoiceForm((prev) => ({ ...prev, category: value }))
+                      }
+                    />
+                  </div>
+
+                  <TextArea
+                    label="Notes"
+                    value={invoiceForm.notes}
+                    onChange={(value) =>
+                      setInvoiceForm((prev) => ({ ...prev, notes: value }))
+                    }
+                    placeholder="Manual-first intake note, dispute note, or supporting context."
+                  />
+
+                  <button className="rounded-xl bg-legal-navy px-4 py-2 text-sm font-bold text-white">
+                    Add Invoice
+                  </button>
+                </form>
+              </Panel>
+
+              <Panel title="Manual Payment / Receipt Intake" icon={Receipt}>
+                <form onSubmit={handlePaymentSubmit} className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      label="Vendor / firm name"
+                      value={paymentForm.vendorName}
+                      onChange={(value) =>
+                        setPaymentForm((prev) => ({ ...prev, vendorName: value }))
+                      }
+                    />
+                    <Input
+                      label="Amount"
+                      type="number"
+                      value={paymentForm.amount}
+                      onChange={(value) =>
+                        setPaymentForm((prev) => ({ ...prev, amount: value }))
+                      }
+                    />
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      label="Date paid"
+                      type="date"
+                      value={paymentForm.datePaid}
+                      onChange={(value) =>
+                        setPaymentForm((prev) => ({ ...prev, datePaid: value }))
+                      }
+                    />
+                    <Input
+                      label="Payment method"
+                      value={paymentForm.paymentMethodSummary}
+                      onChange={(value) =>
+                        setPaymentForm((prev) => ({
+                          ...prev,
+                          paymentMethodSummary: value,
+                        }))
+                      }
+                    />
+                  </div>
+
+                  <Select
+                    label="Linked invoice"
+                    value={paymentForm.invoiceId}
+                    onChange={(value) =>
+                      setPaymentForm((prev) => ({ ...prev, invoiceId: value }))
+                    }
+                    options={[
+                      { value: '', label: 'No linked invoice yet' },
+                      ...workspace.invoices.map((invoice) => ({
+                        value: invoice.id,
+                        label: `${invoice.vendorName} · ${invoice.invoiceNumber} · $${invoice.total}`,
+                      })),
+                    ]}
+                  />
+
+                  <TextArea
+                    label="Notes"
+                    value={paymentForm.notes}
+                    onChange={(value) =>
+                      setPaymentForm((prev) => ({ ...prev, notes: value }))
+                    }
+                    placeholder="Receipt context, confirmation detail, or manual note."
+                  />
+
+                  <button className="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-bold text-white">
+                    Add Payment
+                  </button>
+                </form>
+              </Panel>
+            </div>
+
+            <Panel title="Invoices in Review" icon={FileText}>
+              {workspace.invoices.length === 0 ? (
+                <p className="text-sm text-slate-500">
+                  No invoices yet. V1 should support manual entry as a first-class
+                  path, not just file upload.
+                </p>
+              ) : (
+                <div className="space-y-4">
+                  {workspace.invoices.map((invoice) => {
+                    const balance = computeInvoiceBalance(
+                      invoice,
+                      workspace.payments
+                    );
+                    const invoiceFlags = workspace.flags.filter(
+                      (flag) =>
+                        flag.status === 'open' &&
+                        (flag.targetId === invoice.id ||
+                          invoice.lineItems.some((line) => line.id === flag.targetId))
+                    );
+
+                    return (
+                      <div key={invoice.id} className="rounded-2xl border border-slate-200 p-4">
+                        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                          <div>
+                            <h3 className="text-lg font-bold text-legal-navy">
+                              {invoice.vendorName} · {invoice.invoiceNumber}
+                            </h3>
+                            <p className="mt-1 text-sm text-slate-500">
+                              Invoice date {invoice.invoiceDate} · Due {invoice.dueDate}
+                            </p>
+                            <p className="mt-2 text-sm text-slate-700">
+                              Total: <strong>${invoice.total.toLocaleString()}</strong> ·
+                              Balance:{' '}
+                              <strong>${balance.toLocaleString()}</strong>
+                            </p>
+                          </div>
+
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              onClick={() =>
+                                handleWorkspaceChange(
+                                  setInvoiceStatus(workspace, invoice.id, 'approved')
+                                )
+                              }
+                              className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700"
+                            >
+                              Approve
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleWorkspaceChange(
+                                  setInvoiceStatus(workspace, invoice.id, 'disputed')
+                                )
+                              }
+                              className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-bold text-rose-700"
+                            >
+                              Mark Disputed
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleWorkspaceChange(
+                                  addReviewFlag(workspace, {
+                                    targetType: 'invoice',
+                                    targetId: invoice.id,
+                                    flagType: 'missing_support',
+                                    severity: 'medium',
+                                    explanation:
+                                      'Manual review requested: add supporting billing context or linked proof.',
+                                  })
+                                )
+                              }
+                              className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700"
+                            >
+                              Add Review Flag
+                            </button>
+                          </div>
+                        </div>
+
+                        {invoice.lineItems.length > 0 && (
+                          <div className="mt-4 overflow-hidden rounded-xl border border-slate-100">
+                            <table className="min-w-full divide-y divide-slate-100 text-sm">
+                              <thead className="bg-slate-50">
+                                <tr>
+                                  <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                                    Description
+                                  </th>
+                                  <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                                    Role
+                                  </th>
+                                  <th className="px-3 py-2 text-right font-semibold text-slate-500">
+                                    Amount
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-100 bg-white">
+                                {invoice.lineItems.map((line) => (
+                                  <tr key={line.id}>
+                                    <td className="px-3 py-2 text-slate-700">
+                                      {line.description}
+                                    </td>
+                                    <td className="px-3 py-2 text-slate-700">
+                                      {line.billedRole || '—'}
+                                    </td>
+                                    <td className="px-3 py-2 text-right font-medium text-slate-800">
+                                      ${line.amount.toLocaleString()}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
+
+                        {invoiceFlags.length > 0 && (
+                          <div className="mt-4 space-y-2">
+                            {invoiceFlags.map((flag) => (
+                              <div
+                                key={flag.id}
+                                className="flex items-start justify-between rounded-xl border border-amber-200 bg-amber-50 px-3 py-3 text-sm"
+                              >
+                                <div>
+                                  <div className="font-semibold text-amber-800">
+                                    {flag.flagType}
+                                  </div>
+                                  <div className="mt-1 text-amber-700">
+                                    {flag.explanation}
+                                  </div>
+                                </div>
+                                <button
+                                  onClick={() =>
+                                    handleWorkspaceChange(
+                                      resolveReviewFlag(workspace, flag.id)
+                                    )
+                                  }
+                                  className="ml-4 rounded-lg border border-amber-300 px-3 py-1 text-xs font-bold text-amber-800"
+                                >
+                                  Resolve
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </Panel>
+          </div>
+        );
+
+      case 'preProcessor':
+        return (
+          <PreProcessorGovernancePanel
+            workspaceId={workspace.workspaceId}
+            matterId={activeProject.id}
+            governance={governance}
+            invoices={workspace.invoices}
+            obligations={workspace.obligations}
+            onGovernanceChange={handleGovernanceChange}
+          />
+        );
+
+      case 'ledger':
+        return (
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-3">
+              <SummaryCard
+                label="Total invoiced"
+                value={`$${totalInvoiced.toLocaleString()}`}
+              />
+              <SummaryCard
+                label="Total paid"
+                value={`$${totalPaid.toLocaleString()}`}
+              />
+              <SummaryCard
+                label="Open balance"
+                value={`$${Math.max(0, totalInvoiced - totalPaid).toLocaleString()}`}
+              />
+            </div>
+
+            <Panel title="Matter Ledger" icon={DollarSign}>
+              {ledgerRows.length === 0 ? (
+                <p className="text-sm text-slate-500">No ledger activity yet.</p>
+              ) : (
+                <div className="overflow-hidden rounded-xl border border-slate-100">
+                  <table className="min-w-full divide-y divide-slate-100 text-sm">
+                    <thead className="bg-slate-50">
+                      <tr>
+                        <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                          Date
+                        </th>
+                        <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                          Type
+                        </th>
+                        <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                          Counterparty
+                        </th>
+                        <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                          Label
+                        </th>
+                        <th className="px-3 py-2 text-right font-semibold text-slate-500">
+                          Amount
+                        </th>
+                        <th className="px-3 py-2 text-left font-semibold text-slate-500">
+                          Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 bg-white">
+                      {ledgerRows.map((row) => (
+                        <tr key={row.id}>
+                          <td className="px-3 py-2 text-slate-700">{row.date}</td>
+                          <td className="px-3 py-2 capitalize text-slate-700">
+                            {row.type}
+                          </td>
+                          <td className="px-3 py-2 text-slate-700">
+                            {row.vendorName}
+                          </td>
+                          <td className="px-3 py-2 text-slate-700">{row.label}</td>
+                          <td className="px-3 py-2 text-right font-medium text-slate-800">
+                            ${row.amount.toLocaleString()}
+                          </td>
+                          <td className="px-3 py-2 text-slate-700">{row.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </Panel>
+          </div>
+        );
+
+      case 'reconciliation':
+        return (
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-4">
+              <SummaryCard
+                label="Matched"
+                value={String(reconciliationSummary?.matched || 0)}
+              />
+              <SummaryCard
+                label="Partial"
+                value={String(reconciliationSummary?.partial || 0)}
+              />
+              <SummaryCard
+                label="Unmatched invoices"
+                value={String(reconciliationSummary?.unmatchedInvoices || 0)}
+              />
+              <SummaryCard
+                label="Unmatched payments"
+                value={String(reconciliationSummary?.unmatchedPayments || 0)}
+              />
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Panel title="Invoices needing match" icon={FileText}>
+                {unmatchedInvoices.length === 0 ? (
+                  <p className="text-sm text-slate-500">No unmatched invoices.</p>
+                ) : (
+                  <div className="space-y-4">
+                    {unmatchedInvoices.map((invoice) => {
+                      const eligiblePayments = selectEligiblePaymentsForInvoice(
+                        workspace,
+                        invoice.id
+                      );
+
+                      return (
+                        <div key={invoice.id} className="rounded-xl border border-slate-200 p-4">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <div className="font-bold text-legal-navy">
+                                {invoice.vendorName} · {invoice.invoiceNumber}
+                              </div>
+                              <div className="mt-1 text-sm text-slate-500">
+                                Total ${invoice.total.toLocaleString()} · Due {invoice.dueDate}
+                              </div>
+                            </div>
+                            {eligiblePayments[0] && (
+                              <button
+                                onClick={() =>
+                                  handleWorkspaceChange(
+                                    createExactMatch(
+                                      workspace,
+                                      invoice.id,
+                                      eligiblePayments[0].id
+                                    )
+                                  )
+                                }
+                                className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700"
+                              >
+                                Exact / nearest match
+                              </button>
+                            )}
+                          </div>
+
+                          {eligiblePayments.length === 0 && (
+                            <p className="mt-3 text-sm text-slate-500">
+                              No likely payment candidates yet.
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </Panel>
+
+              <Panel title="Payments needing match" icon={Receipt}>
+                {unmatchedPayments.length === 0 ? (
+                  <p className="text-sm text-slate-500">No unmatched payments.</p>
+                ) : (
+                  <div className="space-y-4">
+                    {unmatchedPayments.map((payment) => (
+                      <div key={payment.id} className="rounded-xl border border-slate-200 p-4">
+                        <div className="font-bold text-legal-navy">
+                          {payment.vendorName}
+                        </div>
+                        <div className="mt-1 text-sm text-slate-500">
+                          ${payment.amount.toLocaleString()} · {payment.datePaid} ·{' '}
+                          {payment.paymentMethodSummary}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </Panel>
+            </div>
+          </div>
+        );
+
+      case 'alerts':
+        return (
+          <Panel title="Financial Alerts" icon={AlertTriangle}>
+            {alerts.length === 0 ? (
+              <p className="text-sm text-slate-500">No active financial alerts.</p>
+            ) : (
+              <div className="space-y-3">
+                {alerts.map((alert) => (
+                  <div
+                    key={alert.id}
+                    className={`rounded-xl border px-4 py-3 ${
+                      alert.severity === 'critical'
+                        ? 'border-rose-200 bg-rose-50'
+                        : alert.severity === 'warning'
+                        ? 'border-amber-200 bg-amber-50'
+                        : 'border-blue-200 bg-blue-50'
+                    }`}
+                  >
+                    <div className="font-bold text-legal-navy">{alert.title}</div>
+                    <div className="mt-1 text-sm text-slate-700">
+                      {alert.description}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Panel>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="space-y-6 pb-20">
+      <div className="rounded-2xl border border-legal-border bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+              Financial Workspace
+            </div>
+            <h1 className="mt-2 text-3xl font-bold text-legal-navy">
+              {activeProject.name}
+            </h1>
+            <p className="mt-2 max-w-3xl text-sm text-slate-500">
+              Manual-first financial orchestration for invoices, payments,
+              review flags, reconciliation, and proof preservation. For
+              LawAidAI coding, treat FundTrackerAI references as upstream
+              architecture context, not a required immediate implementation dependency.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <SummaryCard
+              label="Invoices"
+              value={String(workspace.invoices.length)}
+            />
+            <SummaryCard
+              label="Payments"
+              value={String(workspace.payments.length)}
+            />
+            <SummaryCard
+              label="Open flags"
+              value={String(workspace.flags.filter((flag) => flag.status === 'open').length)}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
+              activeTab === tab.id
+                ? 'bg-legal-navy text-white'
+                : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {renderTab()}
+
+      <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-4 text-sm text-slate-600">
+        <strong className="text-legal-navy">V1 success definition:</strong> a
+        user can take scattered invoices, receipts, and payment records and turn
+        them into a structured, reviewable, matter-linked ledger with reconciliation
+        and flags.
+      </div>
+
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+        Do not block V1 on AI extraction quality, OCR perfection, payment
+        processor integration, or bank connectivity.
+      </div>
+    </div>
+  );
+}
+
+function Panel({
+  title,
+  icon: Icon,
+  children,
+}: {
+  title: string;
+  icon: React.ElementType;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border border-legal-border bg-white p-5 shadow-sm">
+      <div className="mb-4 flex items-center gap-2">
+        <div className="rounded-lg bg-slate-50 p-2 text-legal-navy">
+          <Icon size={18} />
+        </div>
+        <h2 className="text-lg font-bold text-legal-navy">{title}</h2>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function SummaryCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+        {label}
+      </div>
+      <div className="mt-1 text-xl font-bold text-legal-navy">{value}</div>
+    </div>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+        {label}
+      </div>
+      <div className="mt-1 text-lg font-bold text-legal-navy">{value}</div>
+    </div>
+  );
+}
+
+function Input({
+  label,
+  value,
+  onChange,
+  type = 'text',
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: string;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">
+        {label}
+      </div>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition-all focus:border-slate-400"
+      />
+    </label>
+  );
+}
+
+function Select({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: Array<{ value: string; label: string }>;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">
+        {label}
+      </div>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition-all focus:border-slate-400"
+      >
+        {options.map((option) => (
+          <option key={option.value || option.label} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function TextArea({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">
+        {label}
+      </div>
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        rows={4}
+        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition-all focus:border-slate-400"
+      />
+    </label>
+  );
+}
+
+function EmptyState({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-legal-border bg-white p-10 text-center shadow-sm">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-slate-50 text-slate-500">
+        <CheckCircle2 size={28} />
+      </div>
+      <h2 className="mt-4 text-2xl font-bold text-legal-navy">{title}</h2>
+      <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">{body}</p>
+    </div>
+  );
+}

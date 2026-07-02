@@ -1,0 +1,17 @@
+[
+  {
+    "id": "wf-seed-1",
+    "projectId": "demo-project",
+    "title": "Respond to opposing counsel email",
+    "description": "Incoming communication that likely needs a response draft.",
+    "postType": "incoming-communication",
+    "refinementState": "review",
+    "actionState": "in-progress",
+    "timingState": "due-soon",
+    "outboxType": "none",
+    "createdAt": "2026-04-07T12:00:00.000Z",
+    "updatedAt": "2026-04-07T12:00:00.000Z",
+    "dueAt": "2026-04-09T17:00:00.000Z",
+    "nextRecommendedAction": "Compare and consolidate response options."
+  }
+]

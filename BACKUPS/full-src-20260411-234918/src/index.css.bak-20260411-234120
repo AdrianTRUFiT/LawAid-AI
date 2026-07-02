@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Fraunces", serif;
+
+  --color-legal-navy: #0f172a;
+  --color-legal-gold: #b45309;
+  --color-legal-slate: #f8fafc;
+  --color-legal-border: rgba(15, 23, 42, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-legal-slate text-legal-navy font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-sm border border-legal-border shadow-sm rounded-xl;
+}
+
+.sidebar-item-active {
+  @apply bg-legal-navy text-white shadow-md;
+}
+
+.sidebar-item-inactive {
+  @apply text-slate-600 hover:bg-slate-100 transition-colors;
+}

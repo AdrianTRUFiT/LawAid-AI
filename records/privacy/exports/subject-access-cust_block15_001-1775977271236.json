@@ -1,0 +1,77 @@
+{
+  "subjectId": "cust_block15_001",
+  "generatedAt": "2026-04-12T07:01:11.236Z",
+  "summary": {
+    "reviewQueueCount": 1,
+    "approvedReviewCount": 0,
+    "auditCount": 0,
+    "permanentRefusalCount": 0
+  },
+  "artifacts": {
+    "reviewQueue": [
+      {
+        "artifactType": "ReviewQueueItem",
+        "privacy": {
+          "artifactType": "ReviewQueueItem",
+          "containsDirectIdentifiers": true,
+          "containsBehavioralRiskSignals": true,
+          "containsFinancialSignals": true,
+          "containsReviewerIdentity": false,
+          "containsFreeText": true,
+          "accessClass": "sensitive",
+          "retentionClass": "dispute",
+          "purposes": [
+            "review_governance",
+            "fraud_prevention",
+            "auditability"
+          ],
+          "lawfulBasisPlaceholder": "legitimate_interest",
+          "minimizationNotes": [
+            "Reason summaries should avoid unnecessary personal detail.",
+            "Review context should remain bounded to decision-relevant fields."
+          ]
+        },
+        "retention": {
+          "retentionClass": "dispute",
+          "expiresAt": "2028-04-11T07:01:11.234Z",
+          "deletionAction": "retain_for_obligation",
+          "notes": [
+            "Dispute records may need longer retention for legal defense."
+          ]
+        },
+        "deletion": {
+          "artifactType": "ReviewQueueItem",
+          "action": "redact",
+          "rationale": "Queue items may need operational review while minimizing identifiers.",
+          "fieldsToRedact": [
+            "merchantId",
+            "customerId"
+          ]
+        },
+        "roles": {
+          "artifactType": "ReviewQueueItem",
+          "primaryRole": "controller",
+          "secondaryRole": "processor",
+          "controllerEntity": "FundTrackerAI",
+          "processorEntity": "FinTechionAI",
+          "notes": [
+            "Controller/processor mapping is provisional and must be finalized per deployment.",
+            "No external processor role should be assumed without contract review."
+          ]
+        },
+        "preview": {
+          "reviewId": "review_tx_vo_block15_001",
+          "transactionId": "tx_vo_block15_001",
+          "merchantId": "m_****01",
+          "customerId": "cu****01",
+          "status": "pending_review",
+          "source": "refused",
+          "reasonSummary": "[HIGH_AMOUNT] Transaction amount exceeds the merchant risk threshold. | [NON_USD] Currency is outside the merchant low-risk profile. | [MISSING_METADATA] Verified opportunity metadata is missing or empty. | [HIGH_RISK_SOURCE] Source system is categorized as higher risk. | [SUSPICIOUS_RAIL] Processor rail is categorized as non-production or suspicious."
+        }
+      }
+    ],
+    "approvedReviews": [],
+    "reviewAudit": [],
+    "permanentRefusals": []
+  }
+}

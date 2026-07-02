@@ -1,0 +1,10 @@
+[
+  {
+    "holdId": "hold_1775977271234_24448",
+    "transactionId": "tx_vo_block15_001",
+    "artifactType": "ReviewQueueItem",
+    "createdAt": "2026-04-12T07:01:11.234Z",
+    "reason": "Chargeback dispute opened.",
+    "status": "active"
+  }
+]

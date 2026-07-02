@@ -1,0 +1,3 @@
+﻿// anomalyEngine.ts
+// scaffold placeholder
+

@@ -1,0 +1,71 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --color-legal-navy: #0f172a;
+  --color-legal-gold: #b45309;
+  --color-legal-slate: #f8fafc;
+  --color-legal-border: rgba(15, 23, 42, 0.08);
+
+  --bg-primary: #f8fafc;
+  --surface-primary: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --brand-primary: #10b981;
+  --brand-primary-hover: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --success: #16a34a;
+
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.text-legal-navy {
+  color: var(--color-legal-navy);
+}
+
+.bg-legal-navy {
+  background-color: var(--color-legal-navy);
+}
+
+.border-legal-border {
+  border-color: var(--color-legal-border);
+}
+
+.bg-app {
+  background: var(--bg-primary);
+}
+
+.bg-surface {
+  background: var(--surface-primary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}

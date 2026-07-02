@@ -1,0 +1,394 @@
+// src/components/financial/PaymentQueuePanel.tsx
+
+import React, { useMemo, useState } from 'react';
+import {
+  addAuthorizationEvent,
+  addPaymentSource,
+  createProofBundle,
+  evaluateInvoiceWithPaymeter,
+  recordFacilitationEvent,
+  schedulePayment,
+} from '../../lib/financial/paymentGovernanceStore';
+import {
+  selectDefaultPaymentSource,
+  selectGovernanceSummary,
+  selectQueueCandidates,
+} from '../../lib/financial/paymentGovernanceSelectors';
+import type { InvoiceRecord, PaymentRecord } from '../../types/financial';
+import type { PaymentGovernanceState } from '../../types/paymentGovernance';
+
+type Props = {
+  invoices: InvoiceRecord[];
+  payments: PaymentRecord[];
+  governance: PaymentGovernanceState;
+  onGovernanceChange: (next: PaymentGovernanceState) => void;
+  onRecordPayment: (input: {
+    vendorName: string;
+    amount: number;
+    datePaid: string;
+    paymentMethodSummary: string;
+    invoiceId?: string;
+    notes?: string;
+  }) => string | undefined;
+};
+
+export default function PaymentQueuePanel({
+  invoices,
+  payments,
+  governance,
+  onGovernanceChange,
+  onRecordPayment,
+}: Props) {
+  const [sourceForm, setSourceForm] = useState({
+    label: '',
+    sourceType: 'manual_external',
+    last4: '',
+    providerName: '',
+  });
+
+  const queue = useMemo(
+    () => selectQueueCandidates(invoices, payments, governance),
+    [invoices, payments, governance]
+  );
+
+  const summary = useMemo(
+    () => selectGovernanceSummary(governance),
+    [governance]
+  );
+
+  const defaultSource = useMemo(
+    () => selectDefaultPaymentSource(governance),
+    [governance]
+  );
+
+  const handleAddSource = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!sourceForm.label) return;
+
+    const next = addPaymentSource(governance, {
+      label: sourceForm.label,
+      sourceType: sourceForm.sourceType as any,
+      last4: sourceForm.last4 || undefined,
+      providerName: sourceForm.providerName || undefined,
+      isDefault: governance.sources.length === 0,
+    });
+
+    onGovernanceChange(next);
+    setSourceForm({
+      label: '',
+      sourceType: 'manual_external',
+      last4: '',
+      providerName: '',
+    });
+  };
+
+  const handleEvaluate = (invoice: InvoiceRecord) => {
+    const next = evaluateInvoiceWithPaymeter(governance, {
+      invoiceId: invoice.id,
+      invoiceStatus: invoice.status,
+      vendorName: invoice.vendorName,
+      amount: invoice.total,
+      dueDate: invoice.dueDate,
+    });
+
+    onGovernanceChange(next);
+  };
+
+  const handleAuthorize = (invoice: InvoiceRecord) => {
+    const source = defaultSource;
+    if (!source) return;
+
+    const next = addAuthorizationEvent(governance, {
+      invoiceId: invoice.id,
+      vendorName: invoice.vendorName,
+      approvedAmount: invoice.total,
+      paymentSourceId: source.id,
+      reason: 'Manual client-side authorization through Payment Queue.',
+    });
+
+    onGovernanceChange(next);
+  };
+
+  const handleSchedule = (invoice: InvoiceRecord) => {
+    const source = defaultSource;
+    const authorization = governance.authorizations.find(
+      (item) => item.invoiceId === invoice.id && item.status === 'approved'
+    );
+
+    if (!source || !authorization) return;
+
+    const next = schedulePayment(governance, {
+      invoiceId: invoice.id,
+      vendorName: invoice.vendorName,
+      amount: authorization.approvedAmount,
+      scheduledDate: invoice.dueDate,
+      paymentSourceId: source.id,
+      authorizationEventId: authorization.id,
+      notes: 'Scheduled from Payment Queue.',
+    });
+
+    onGovernanceChange(next);
+  };
+
+  const handleFacilitate = (invoice: InvoiceRecord) => {
+    const scheduled = governance.scheduledPayments.find(
+      (item) =>
+        item.invoiceId === invoice.id &&
+        ['scheduled', 'ready'].includes(item.status)
+    );
+
+    if (!scheduled) return;
+
+    const paymentRecordId = onRecordPayment({
+      vendorName: invoice.vendorName,
+      amount: scheduled.amount,
+      datePaid: new Date().toISOString().slice(0, 10),
+      paymentMethodSummary: 'Facilitated via Payment Queue',
+      invoiceId: invoice.id,
+      notes: 'Created from scheduled payment facilitation.',
+    });
+
+    const afterFacilitation = recordFacilitationEvent(governance, {
+      scheduledPaymentId: scheduled.id,
+      invoiceId: invoice.id,
+      vendorName: invoice.vendorName,
+      amount: scheduled.amount,
+      paymentRecordId,
+      notes: 'Facilitation event recorded from Payment Queue.',
+    });
+
+    const authorization = afterFacilitation.authorizations.find(
+      (item) => item.invoiceId === invoice.id && item.status === 'approved'
+    );
+
+    const finalState = createProofBundle(afterFacilitation, {
+      invoiceId: invoice.id,
+      authorizationEventId: authorization?.id,
+      facilitationEventId: afterFacilitation.facilitations[0]?.id,
+      paymentRecordId,
+    });
+
+    onGovernanceChange(finalState);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-4">
+        <SummaryCard label="Sources" value={String(summary.sources)} />
+        <SummaryCard label="Approved auths" value={String(summary.approvedAuthorizations)} />
+        <SummaryCard label="Scheduled" value={String(summary.scheduledPayments)} />
+        <SummaryCard label="Proof bundles" value={String(summary.proofBundles)} />
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="rounded-2xl border border-legal-border bg-white p-5 shadow-sm">
+          <h2 className="text-lg font-bold text-legal-navy">Payment Source Setup</h2>
+          <p className="mt-1 text-sm text-slate-500">
+            LawAidAI orchestrates approved payment sources. It does not become the transaction-truth authority.
+          </p>
+
+          <form onSubmit={handleAddSource} className="mt-4 space-y-4">
+            <Input
+              label="Source label"
+              value={sourceForm.label}
+              onChange={(value) => setSourceForm((prev) => ({ ...prev, label: value }))}
+            />
+            <Select
+              label="Source type"
+              value={sourceForm.sourceType}
+              onChange={(value) => setSourceForm((prev) => ({ ...prev, sourceType: value }))}
+              options={[
+                { value: 'manual_external', label: 'Manual External' },
+                { value: 'bank_account', label: 'Bank Account' },
+                { value: 'debit_card', label: 'Debit Card' },
+                { value: 'credit_card', label: 'Credit Card' },
+                { value: 'other', label: 'Other' },
+              ]}
+            />
+            <div className="grid gap-4 md:grid-cols-2">
+              <Input
+                label="Provider"
+                value={sourceForm.providerName}
+                onChange={(value) => setSourceForm((prev) => ({ ...prev, providerName: value }))}
+              />
+              <Input
+                label="Last 4"
+                value={sourceForm.last4}
+                onChange={(value) => setSourceForm((prev) => ({ ...prev, last4: value }))}
+              />
+            </div>
+
+            <button className="rounded-xl bg-legal-navy px-4 py-2 text-sm font-bold text-white">
+              Add Payment Source
+            </button>
+          </form>
+
+          {governance.sources.length > 0 && (
+            <div className="mt-6 space-y-2">
+              {governance.sources.map((source) => (
+                <div key={source.id} className="rounded-xl border border-slate-200 px-3 py-3 text-sm">
+                  <div className="font-semibold text-legal-navy">
+                    {source.label} {source.isDefault ? '• Default' : ''}
+                  </div>
+                  <div className="mt-1 text-slate-500">
+                    {source.sourceType} {source.providerName ? `• ${source.providerName}` : ''} {source.last4 ? `• ****${source.last4}` : ''}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="rounded-2xl border border-legal-border bg-white p-5 shadow-sm">
+          <h2 className="text-lg font-bold text-legal-navy">Payment Queue</h2>
+          <p className="mt-1 text-sm text-slate-500">
+            Evaluate, authorize, schedule, facilitate, and preserve proof around unpaid obligations.
+          </p>
+
+          {queue.length === 0 ? (
+            <p className="mt-4 text-sm text-slate-500">
+              No queue candidates. All current invoices appear paid or already handled.
+            </p>
+          ) : (
+            <div className="mt-4 space-y-4">
+              {queue.map(({ invoice, balance, evaluation, authorization, scheduled }) => (
+                <div key={invoice.id} className="rounded-2xl border border-slate-200 p-4">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div>
+                      <div className="text-lg font-bold text-legal-navy">
+                        {invoice.vendorName} · {invoice.invoiceNumber}
+                      </div>
+                      <div className="mt-1 text-sm text-slate-500">
+                        Due {invoice.dueDate} · Balance ${balance.toLocaleString()}
+                      </div>
+                      <div className="mt-2 text-xs text-slate-500">
+                        Invoice status: {invoice.status}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => handleEvaluate(invoice)}
+                        className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700"
+                      >
+                        Evaluate
+                      </button>
+
+                      <button
+                        onClick={() => handleAuthorize(invoice)}
+                        disabled={!defaultSource}
+                        className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700 disabled:opacity-50"
+                      >
+                        Authorize
+                      </button>
+
+                      <button
+                        onClick={() => handleSchedule(invoice)}
+                        disabled={!authorization}
+                        className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700 disabled:opacity-50"
+                      >
+                        Schedule
+                      </button>
+
+                      <button
+                        onClick={() => handleFacilitate(invoice)}
+                        disabled={!scheduled}
+                        className="rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-800 disabled:opacity-50"
+                      >
+                        Facilitate + Record
+                      </button>
+                    </div>
+                  </div>
+
+                  {evaluation && (
+                    <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm">
+                      <div className="font-semibold text-legal-navy">
+                        Paymeter outcome: {evaluation.outcome}
+                      </div>
+                      <ul className="mt-2 space-y-1 text-slate-600">
+                        {evaluation.reasons.map((reason, index) => (
+                          <li key={index}>• {reason}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {authorization && (
+                    <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-3 text-sm text-emerald-800">
+                      Authorized for ${authorization.approvedAmount.toLocaleString()}
+                    </div>
+                  )}
+
+                  {scheduled && (
+                    <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900">
+                      Scheduled for {scheduled.scheduledDate} · status: {scheduled.status}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SummaryCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</div>
+      <div className="mt-1 text-xl font-bold text-legal-navy">{value}</div>
+    </div>
+  );
+}
+
+function Input({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">{label}</div>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition-all focus:border-slate-400"
+      />
+    </label>
+  );
+}
+
+function Select({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: Array<{ value: string; label: string }>;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">{label}</div>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition-all focus:border-slate-400"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}

@@ -1,0 +1,37 @@
+{
+  "artifactType": "ActivatedTransactionState",
+  "transactionStateId": "ats-20260406-test-001",
+  "handoffId": "20260406-014114-TEST-009",
+  "sourceApp": "FundTrackerAI",
+  "targetApp": "LawAidAI",
+  "verifiedAt": "2026-04-06T21:36:55.181Z",
+  "transactionStatus": "verified",
+  "activationPermitted": true,
+  "entitlement": {
+    "accessLevel": "client",
+    "planId": "launch-plan",
+    "modules": [
+      "tasks",
+      "events",
+      "documents",
+      "expenses",
+      "timeline",
+      "evidence"
+    ]
+  },
+  "routing": {
+    "destinationApp": "LawAidAI",
+    "destinationMode": "personal"
+  },
+  "identity": {
+    "email": "test.user@example.com",
+    "fullName": "Test User",
+    "userId": "usr-test-001"
+  },
+  "context": {
+    "caseType": "family-law",
+    "matterId": "matter-test-001",
+    "projectId": "project-test-001",
+    "jurisdiction": "FL"
+  }
+}

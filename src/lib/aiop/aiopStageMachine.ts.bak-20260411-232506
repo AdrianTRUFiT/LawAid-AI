@@ -1,0 +1,34 @@
+import type { OnboardingSession, OnboardingStageId } from './aiopContracts';
+
+export const AIOP_STAGE_ORDER: OnboardingStageId[] = [
+  'emotional_opening',
+  'guided_clarification',
+  'first_payoff',
+  'structured_activation',
+  'trial_deepening',
+];
+
+export function getNextOnboardingStage(
+  current: OnboardingStageId
+): OnboardingStageId {
+  const index = AIOP_STAGE_ORDER.indexOf(current);
+  if (index < 0) return 'guided_clarification';
+  return AIOP_STAGE_ORDER[Math.min(index + 1, AIOP_STAGE_ORDER.length - 1)];
+}
+
+export function getStagePrompt(session: OnboardingSession): string {
+  switch (session.currentStageId) {
+    case 'emotional_opening':
+      return 'What is weighing on you most right now?';
+    case 'guided_clarification':
+      return 'What part of this feels most urgent, confusing, or exposed?';
+    case 'first_payoff':
+      return 'What do you most need the system to help you not miss?';
+    case 'structured_activation':
+      return 'What is one concrete detail, deadline, or communication the system should organize first?';
+    case 'trial_deepening':
+      return 'What would make this workspace feel immediately useful to you over the next few days?';
+    default:
+      return 'What is the next thing you need help sorting through?';
+  }
+}

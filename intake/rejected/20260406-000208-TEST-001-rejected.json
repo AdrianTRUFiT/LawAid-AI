@@ -1,0 +1,8 @@
+﻿{
+    "receiveTimestamp":  "2026-04-06T01:56:30.7193752-04:00",
+    "sourceFile":  "D:\\DEV\\AIVA\\shared-data\\handoffs\\20260406-000208-TEST-001.json",
+    "handoffId":  "20260406-000208-TEST-001",
+    "reason":  "Wrong targetApp",
+    "actualTarget":  "BEEATS",
+    "expectedTarget":  "LawAidAI"
+}

@@ -1,0 +1,16 @@
+﻿{
+    "handoffId":  "20260406-014114-TEST-009",
+    "leadId":  "TEST-009",
+    "timestamp":  "2026-04-06T01:41:14.1163237-04:00",
+    "sourceApp":  "FundTrackerAI",
+    "targetApp":  "LawAidAI",
+    "artifactType":  "ActivatedTransactionState",
+    "status":  "accepted",
+    "payload":  {
+                    "name":  "Adrian TRUFiT",
+                    "value":  "25000",
+                    "context":  "lawaid-activation",
+                    "confidence":  "0.95"
+                },
+    "validated":  true
+}

@@ -1,0 +1,187 @@
+﻿import JSZip from 'jszip';
+import type { RinDecodeResult, RinIdentity, RinIntakeContainer, RinRecord } from '../../types/rin';
+import {
+  buildSearchText,
+  createId,
+  createSummary,
+  decideImportance,
+  decideNextAction,
+  decideProofStatus,
+  defaultAccessScope,
+  defaultSourceClass,
+  defaultSourceKind,
+  defaultVerificationState,
+  detectActionFlags,
+  detectEvents,
+  detectIssues,
+  detectLegalBucket,
+  detectSubBucket,
+  extractDate,
+  extractOrganizations,
+  extractPeople,
+  extractSubject,
+  getExtension,
+  getInitialBin,
+  getMimeType,
+  getReadability,
+  getRecordType,
+  isDirectlyReadable,
+} from './rinUtils';
+
+async function safeReadText(entry: JSZip.JSZipObject): Promise<string> {
+  try {
+    return await entry.async('text');
+  } catch {
+    return '';
+  }
+}
+
+function computeResponseGapDays(text: string): number | null {
+  if (/follow up|follow-up|reschedule|availability|next week/i.test(text)) return 1;
+  return null;
+}
+
+export async function runRinOnZip(file: File, matterId: string): Promise<RinDecodeResult> {
+  const intakeId = createId('rin_intake');
+  const zip = await JSZip.loadAsync(file);
+  const entries = Object.values(zip.files).filter((entry) => !entry.dir);
+  const identities: RinIdentity[] = [];
+  const records: RinRecord[] = [];
+  const errors: string[] = [];
+
+  for (const entry of entries) {
+    try {
+      const extension = getExtension(entry.name);
+      const recordType = getRecordType(extension);
+      const readability = getReadability(recordType);
+      const mimeType = getMimeType(extension);
+      const rawText = isDirectlyReadable(recordType) ? await safeReadText(entry) : '';
+
+      const people = extractPeople(rawText);
+      const organizations = extractOrganizations(rawText);
+      const subject = extractSubject(rawText, entry.name);
+      const dateDetected = extractDate(rawText);
+
+      const legalBucket = detectLegalBucket(rawText, entry.name);
+      const subBucket = detectSubBucket(rawText, entry.name, legalBucket);
+      const issuesDetected = detectIssues(rawText, entry.name);
+      const eventsDetected = detectEvents(rawText);
+      const actionFlags = detectActionFlags(rawText, issuesDetected);
+
+      const actionRequested = actionFlags.includes('action_requested');
+      const actionTaken = actionFlags.includes('action_taken_signal');
+      const responseGapDays = computeResponseGapDays(rawText);
+      const possibleDelay = issuesDetected.includes('possible_delay') || (responseGapDays ?? 0) > 7;
+      const possibleWarningSign = issuesDetected.includes('warning_sign') || issuesDetected.includes('attorney_fee_issue');
+
+      const summary = createSummary(rawText, entry.name);
+      const importance = decideImportance(legalBucket, issuesDetected);
+      const proofStatus = decideProofStatus(recordType, readability, issuesDetected);
+      const nextAction = decideNextAction(readability, legalBucket, proofStatus);
+
+      const rinId = createId('rin');
+      const identity: RinIdentity = {
+        rin_id: rinId,
+        intake_id: intakeId,
+        matter_id: matterId,
+        source_kind: defaultSourceKind(),
+        source_class: defaultSourceClass(),
+        source_origin: file.name,
+        content_origin: entry.name,
+        processing_origin: 'rin',
+        llm_influenced: false,
+        search_influenced: false,
+        verification_state: defaultVerificationState(),
+        access_scope: defaultAccessScope(),
+        owner_user_id: undefined,
+        shared_with: [],
+        excluded_principals: [],
+        created_at: new Date().toISOString(),
+      };
+
+      const record: RinRecord = {
+        record_id: createId('rec'),
+        rin_id: rinId,
+        intake_id: intakeId,
+        matter_id: matterId,
+
+        file_name: entry.name.split('/').pop() ?? entry.name,
+        full_path: entry.name,
+        extension,
+        mime_type: mimeType,
+        size_bytes: 0,
+
+        record_type: recordType,
+        readability,
+        bin: getInitialBin(recordType, readability),
+
+        legal_bucket: legalBucket,
+        sub_bucket: subBucket,
+        labels: [legalBucket, subBucket, recordType].filter(Boolean),
+
+        date_detected: dateDetected,
+        people,
+        organizations,
+        roles: [],
+
+        subject,
+        content_raw: rawText,
+        content_summary: summary,
+        search_text: buildSearchText({
+          fileName: entry.name,
+          subject,
+          summary,
+          bucket: legalBucket,
+          subBucket,
+          people,
+          organizations,
+          issues: issuesDetected,
+          events: eventsDetected,
+          rawText,
+        }),
+
+        events_detected: eventsDetected,
+        issues_detected: issuesDetected,
+        action_flags: actionFlags,
+
+        action_requested: actionRequested,
+        action_taken: actionTaken,
+        response_gap_days: responseGapDays,
+        possible_delay: possibleDelay,
+        possible_warning_sign: possibleWarningSign,
+        possible_pattern_tags: [
+          ...(possibleDelay ? ['delay_pattern_candidate'] : []),
+          ...(possibleWarningSign ? ['warning_pattern_candidate'] : []),
+        ],
+
+        importance,
+        proof_status: proofStatus,
+        next_action: nextAction,
+
+        status: 'queued',
+        notes: '',
+      };
+
+      identities.push(identity);
+      records.push(record);
+    } catch (error) {
+      errors.push(`${entry.name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  const intake: RinIntakeContainer = {
+    intake_id: intakeId,
+    matter_id: matterId,
+    source_name: file.name,
+    source_kind: 'zip_import',
+    received_at: new Date().toISOString(),
+    verification_state: 'rin_tagged',
+    file_count: records.length,
+    readable_count: records.filter((r) => r.readability === 'readable').length,
+    unreadable_count: records.filter((r) => r.readability !== 'readable').length,
+    excluded_count: records.filter((r) => r.status === 'rejected').length,
+    status: errors.length ? 'needs_review' : 'processed',
+  };
+
+  return { intake, identities, records, errors };
+}

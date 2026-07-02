@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "scope": "Foundational Runtime Seam v1",
+  "records": [
+    {
+      "proofId": "step6-foundational-runtime-seam",
+      "title": "LawAidAI Foundational Runtime Seam",
+      "claimType": "runtime_proof",
+      "sourceArtifacts": [
+        "reviewed-shell-record",
+        "activated-transaction-state"
+      ],
+      "outputArtifacts": [
+        "activation-envelope",
+        "live-system-record"
+      ],
+      "refusalArtifacts": [
+        "duplicate-activation-refusal"
+      ],
+      "verification": {
+        "technical": true,
+        "architectural": true,
+        "governance": true
+      },
+      "notes": "Bounded foundational proof only."
+    }
+  ]
+}

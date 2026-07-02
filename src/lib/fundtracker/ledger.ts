@@ -1,0 +1,3 @@
+﻿// ledger.ts
+// scaffold placeholder
+

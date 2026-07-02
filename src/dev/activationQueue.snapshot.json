@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-04-06T23:47:08.045Z",
+  "projectRoot": "D:\\DEV\\PROJECTS\\LawAidAI",
+  "items": [
+    {
+      "handoffId": "20260406-014114-TEST-009",
+      "reviewedPath": null,
+      "reviewedStatus": "unknown",
+      "shellPath": null,
+      "activationEnvelopePath": "D:\\DEV\\PROJECTS\\LawAidAI\\records\\activation\\activation-envelope-f75c9d41c4d2302e1ea94257.json",
+      "liveRecordPath": "D:\\DEV\\PROJECTS\\LawAidAI\\records\\live\\live-record-f75c9d41c4d2302e1ea94257.json",
+      "transactionStateId": "ats-20260406-test-001",
+      "activationKey": "f75c9d41c4d2302e1ea94257",
+      "notes": [
+        "No reviewed artifact found.",
+        "No shell record found."
+      ],
+      "status": "live"
+    }
+  ]
+}

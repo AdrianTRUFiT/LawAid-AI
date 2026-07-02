@@ -1,0 +1,22 @@
+import type {
+  OnboardingSession,
+  OnboardingSummaryPackage,
+} from './aiopContracts';
+import { aiopMakeId, aiopNowIso } from './aiopContracts';
+
+export function buildOnboardingSummaryPackage(
+  session: OnboardingSession
+): OnboardingSummaryPackage {
+  return {
+    packageId: aiopMakeId('onboarding_package'),
+    sourceSessionId: session.sessionId,
+    dominantDomain: session.dominantDomain,
+    representationStatus: session.representationStatus,
+    primaryPressureSource: session.primaryPressureSource,
+    surfacedWarnings: session.surfacedWarnings,
+    immediateReturnValues: session.immediateReturnValues,
+    nextActions: session.nextActions,
+    readinessState: session.readinessState,
+    createdAt: aiopNowIso(),
+  };
+}

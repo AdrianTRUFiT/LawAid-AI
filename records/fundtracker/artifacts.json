@@ -1,0 +1,527 @@
+{
+  "verifiedOpportunities": [
+    {
+      "verifiedOpportunityId": "vo_seed_1",
+      "sourceSystem": "seed_script",
+      "merchantId": "m_002",
+      "customerId": "cust_001",
+      "productId": "prod_002",
+      "productName": "Pro Services",
+      "offerId": "offer_001",
+      "planId": "one_time",
+      "amount": 59,
+      "currency": "USD",
+      "paymentMode": "card",
+      "destinationType": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed"
+      },
+      "createdAt": "2026-04-12T06:08:22.684Z"
+    },
+    {
+      "verifiedOpportunityId": "vo_seed_2",
+      "sourceSystem": "seed_script",
+      "merchantId": "m_003",
+      "customerId": "cust_002",
+      "productId": "prod_001",
+      "productName": "Premium Plan",
+      "offerId": "offer_002",
+      "planId": "monthly",
+      "amount": 69,
+      "currency": "USD",
+      "paymentMode": "card",
+      "destinationType": "subscription_activation",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed"
+      },
+      "createdAt": "2026-04-12T06:08:22.685Z"
+    },
+    {
+      "verifiedOpportunityId": "vo_seed_3",
+      "sourceSystem": "seed_script",
+      "merchantId": "m_001",
+      "customerId": "cust_003",
+      "productId": "prod_002",
+      "productName": "Pro Services",
+      "offerId": "offer_003",
+      "planId": "one_time",
+      "amount": 79,
+      "currency": "USD",
+      "paymentMode": "card",
+      "destinationType": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed"
+      },
+      "createdAt": "2026-04-12T06:08:22.686Z"
+    },
+    {
+      "verifiedOpportunityId": "vo_seed_4",
+      "sourceSystem": "seed_script",
+      "merchantId": "m_002",
+      "customerId": "cust_004",
+      "productId": "prod_001",
+      "productName": "Premium Plan",
+      "offerId": "offer_004",
+      "planId": "monthly",
+      "amount": 89,
+      "currency": "USD",
+      "paymentMode": "card",
+      "destinationType": "subscription_activation",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed"
+      },
+      "createdAt": "2026-04-12T06:08:22.687Z"
+    },
+    {
+      "verifiedOpportunityId": "vo_seed_5",
+      "sourceSystem": "seed_script",
+      "merchantId": "m_003",
+      "customerId": "cust_005",
+      "productId": "prod_002",
+      "productName": "Pro Services",
+      "offerId": "offer_005",
+      "planId": "one_time",
+      "amount": 99,
+      "currency": "USD",
+      "paymentMode": "card",
+      "destinationType": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed"
+      },
+      "createdAt": "2026-04-12T06:08:22.688Z"
+    }
+  ],
+  "processorEvents": [
+    {
+      "processorReference": "pi_vo_seed_1",
+      "transactionId": "tx_vo_seed_1",
+      "eventType": "payment_succeeded",
+      "amount": 59,
+      "currency": "USD",
+      "receivedAt": "2026-04-12T06:08:22.684Z",
+      "rawStatus": "succeeded",
+      "metadata": {
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "processorReference": "pi_vo_seed_2",
+      "transactionId": "tx_vo_seed_2",
+      "eventType": "payment_succeeded",
+      "amount": 69,
+      "currency": "USD",
+      "receivedAt": "2026-04-12T06:08:22.685Z",
+      "rawStatus": "succeeded",
+      "metadata": {
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "processorReference": "pi_vo_seed_3",
+      "transactionId": "tx_vo_seed_3",
+      "eventType": "payment_succeeded",
+      "amount": 79,
+      "currency": "USD",
+      "receivedAt": "2026-04-12T06:08:22.686Z",
+      "rawStatus": "succeeded",
+      "metadata": {
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "processorReference": "pi_vo_seed_4",
+      "transactionId": "tx_vo_seed_4",
+      "eventType": "payment_succeeded",
+      "amount": 89,
+      "currency": "USD",
+      "receivedAt": "2026-04-12T06:08:22.687Z",
+      "rawStatus": "succeeded",
+      "metadata": {
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "processorReference": "pi_vo_seed_5",
+      "transactionId": "tx_vo_seed_5",
+      "eventType": "payment_succeeded",
+      "amount": 99,
+      "currency": "USD",
+      "receivedAt": "2026-04-12T06:08:22.688Z",
+      "rawStatus": "succeeded",
+      "metadata": {
+        "rail": "seed-rail"
+      }
+    }
+  ],
+  "transactionIntents": [
+    {
+      "transactionId": "tx_vo_seed_1",
+      "verifiedOpportunity": {
+        "verifiedOpportunityId": "vo_seed_1",
+        "sourceSystem": "seed_script",
+        "merchantId": "m_002",
+        "customerId": "cust_001",
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_001",
+        "planId": "one_time",
+        "amount": 59,
+        "currency": "USD",
+        "paymentMode": "card",
+        "destinationType": "service_unlock",
+        "successRoute": "/success",
+        "cancelRoute": "/cancel",
+        "metadata": {
+          "seed": true,
+          "batch": "financial_stack_seed"
+        },
+        "createdAt": "2026-04-12T06:08:22.684Z"
+      },
+      "paymentStatus": "processor-confirmed",
+      "verificationStatus": "pending",
+      "createdAt": "2026-04-12T06:08:22.684Z",
+      "updatedAt": "2026-04-12T06:08:22.684Z"
+    },
+    {
+      "transactionId": "tx_vo_seed_2",
+      "verifiedOpportunity": {
+        "verifiedOpportunityId": "vo_seed_2",
+        "sourceSystem": "seed_script",
+        "merchantId": "m_003",
+        "customerId": "cust_002",
+        "productId": "prod_001",
+        "productName": "Premium Plan",
+        "offerId": "offer_002",
+        "planId": "monthly",
+        "amount": 69,
+        "currency": "USD",
+        "paymentMode": "card",
+        "destinationType": "subscription_activation",
+        "successRoute": "/success",
+        "cancelRoute": "/cancel",
+        "metadata": {
+          "seed": true,
+          "batch": "financial_stack_seed"
+        },
+        "createdAt": "2026-04-12T06:08:22.685Z"
+      },
+      "paymentStatus": "processor-confirmed",
+      "verificationStatus": "pending",
+      "createdAt": "2026-04-12T06:08:22.686Z",
+      "updatedAt": "2026-04-12T06:08:22.685Z"
+    },
+    {
+      "transactionId": "tx_vo_seed_3",
+      "verifiedOpportunity": {
+        "verifiedOpportunityId": "vo_seed_3",
+        "sourceSystem": "seed_script",
+        "merchantId": "m_001",
+        "customerId": "cust_003",
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_003",
+        "planId": "one_time",
+        "amount": 79,
+        "currency": "USD",
+        "paymentMode": "card",
+        "destinationType": "service_unlock",
+        "successRoute": "/success",
+        "cancelRoute": "/cancel",
+        "metadata": {
+          "seed": true,
+          "batch": "financial_stack_seed"
+        },
+        "createdAt": "2026-04-12T06:08:22.686Z"
+      },
+      "paymentStatus": "processor-confirmed",
+      "verificationStatus": "pending",
+      "createdAt": "2026-04-12T06:08:22.687Z",
+      "updatedAt": "2026-04-12T06:08:22.686Z"
+    },
+    {
+      "transactionId": "tx_vo_seed_4",
+      "verifiedOpportunity": {
+        "verifiedOpportunityId": "vo_seed_4",
+        "sourceSystem": "seed_script",
+        "merchantId": "m_002",
+        "customerId": "cust_004",
+        "productId": "prod_001",
+        "productName": "Premium Plan",
+        "offerId": "offer_004",
+        "planId": "monthly",
+        "amount": 89,
+        "currency": "USD",
+        "paymentMode": "card",
+        "destinationType": "subscription_activation",
+        "successRoute": "/success",
+        "cancelRoute": "/cancel",
+        "metadata": {
+          "seed": true,
+          "batch": "financial_stack_seed"
+        },
+        "createdAt": "2026-04-12T06:08:22.687Z"
+      },
+      "paymentStatus": "processor-confirmed",
+      "verificationStatus": "pending",
+      "createdAt": "2026-04-12T06:08:22.688Z",
+      "updatedAt": "2026-04-12T06:08:22.687Z"
+    },
+    {
+      "transactionId": "tx_vo_seed_5",
+      "verifiedOpportunity": {
+        "verifiedOpportunityId": "vo_seed_5",
+        "sourceSystem": "seed_script",
+        "merchantId": "m_003",
+        "customerId": "cust_005",
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_005",
+        "planId": "one_time",
+        "amount": 99,
+        "currency": "USD",
+        "paymentMode": "card",
+        "destinationType": "service_unlock",
+        "successRoute": "/success",
+        "cancelRoute": "/cancel",
+        "metadata": {
+          "seed": true,
+          "batch": "financial_stack_seed"
+        },
+        "createdAt": "2026-04-12T06:08:22.688Z"
+      },
+      "paymentStatus": "processor-confirmed",
+      "verificationStatus": "pending",
+      "createdAt": "2026-04-12T06:08:22.689Z",
+      "updatedAt": "2026-04-12T06:08:22.688Z"
+    }
+  ],
+  "verificationDecisions": [
+    {
+      "allowed": true,
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "reasons": [],
+      "evaluatedAt": "2026-04-12T06:08:22.684Z"
+    },
+    {
+      "allowed": true,
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "reasons": [],
+      "evaluatedAt": "2026-04-12T06:08:22.686Z"
+    },
+    {
+      "allowed": true,
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "reasons": [],
+      "evaluatedAt": "2026-04-12T06:08:22.687Z"
+    },
+    {
+      "allowed": true,
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "reasons": [],
+      "evaluatedAt": "2026-04-12T06:08:22.688Z"
+    },
+    {
+      "allowed": true,
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "reasons": [],
+      "evaluatedAt": "2026-04-12T06:08:22.689Z"
+    }
+  ],
+  "activatedTransactionStates": [
+    {
+      "transactionId": "tx_vo_seed_1",
+      "merchantId": "m_002",
+      "customerId": "cust_001",
+      "verifiedOpportunityId": "vo_seed_1",
+      "processorReference": "pi_vo_seed_1",
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "grossAmount": 59,
+      "processorFees": 2.01,
+      "platformFees": 0.59,
+      "netAmount": 56.4,
+      "currency": "USD",
+      "entitlement": {
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_001",
+        "planId": "one_time",
+        "destinationType": "service_unlock"
+      },
+      "activationPermission": true,
+      "destination": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "verifiedAt": "2026-04-12T06:08:22.684Z",
+      "createdAt": "2026-04-12T06:08:22.684Z",
+      "updatedAt": "2026-04-12T06:08:22.684Z",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed",
+        "processorEventType": "payment_succeeded",
+        "processorStatus": "succeeded",
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "transactionId": "tx_vo_seed_2",
+      "merchantId": "m_003",
+      "customerId": "cust_002",
+      "verifiedOpportunityId": "vo_seed_2",
+      "processorReference": "pi_vo_seed_2",
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "grossAmount": 69,
+      "processorFees": 2.3,
+      "platformFees": 0.69,
+      "netAmount": 66.01,
+      "currency": "USD",
+      "entitlement": {
+        "productId": "prod_001",
+        "productName": "Premium Plan",
+        "offerId": "offer_002",
+        "planId": "monthly",
+        "destinationType": "subscription_activation"
+      },
+      "activationPermission": true,
+      "destination": "subscription_activation",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "verifiedAt": "2026-04-12T06:08:22.686Z",
+      "createdAt": "2026-04-12T06:08:22.686Z",
+      "updatedAt": "2026-04-12T06:08:22.686Z",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed",
+        "processorEventType": "payment_succeeded",
+        "processorStatus": "succeeded",
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "transactionId": "tx_vo_seed_3",
+      "merchantId": "m_001",
+      "customerId": "cust_003",
+      "verifiedOpportunityId": "vo_seed_3",
+      "processorReference": "pi_vo_seed_3",
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "grossAmount": 79,
+      "processorFees": 2.59,
+      "platformFees": 0.79,
+      "netAmount": 75.62,
+      "currency": "USD",
+      "entitlement": {
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_003",
+        "planId": "one_time",
+        "destinationType": "service_unlock"
+      },
+      "activationPermission": true,
+      "destination": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "verifiedAt": "2026-04-12T06:08:22.687Z",
+      "createdAt": "2026-04-12T06:08:22.687Z",
+      "updatedAt": "2026-04-12T06:08:22.687Z",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed",
+        "processorEventType": "payment_succeeded",
+        "processorStatus": "succeeded",
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "transactionId": "tx_vo_seed_4",
+      "merchantId": "m_002",
+      "customerId": "cust_004",
+      "verifiedOpportunityId": "vo_seed_4",
+      "processorReference": "pi_vo_seed_4",
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "grossAmount": 89,
+      "processorFees": 2.88,
+      "platformFees": 0.89,
+      "netAmount": 85.23,
+      "currency": "USD",
+      "entitlement": {
+        "productId": "prod_001",
+        "productName": "Premium Plan",
+        "offerId": "offer_004",
+        "planId": "monthly",
+        "destinationType": "subscription_activation"
+      },
+      "activationPermission": true,
+      "destination": "subscription_activation",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "verifiedAt": "2026-04-12T06:08:22.688Z",
+      "createdAt": "2026-04-12T06:08:22.688Z",
+      "updatedAt": "2026-04-12T06:08:22.688Z",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed",
+        "processorEventType": "payment_succeeded",
+        "processorStatus": "succeeded",
+        "rail": "seed-rail"
+      }
+    },
+    {
+      "transactionId": "tx_vo_seed_5",
+      "merchantId": "m_003",
+      "customerId": "cust_005",
+      "verifiedOpportunityId": "vo_seed_5",
+      "processorReference": "pi_vo_seed_5",
+      "paymentStatus": "verified",
+      "verificationStatus": "verified",
+      "grossAmount": 99,
+      "processorFees": 3.17,
+      "platformFees": 0.99,
+      "netAmount": 94.84,
+      "currency": "USD",
+      "entitlement": {
+        "productId": "prod_002",
+        "productName": "Pro Services",
+        "offerId": "offer_005",
+        "planId": "one_time",
+        "destinationType": "service_unlock"
+      },
+      "activationPermission": true,
+      "destination": "service_unlock",
+      "successRoute": "/success",
+      "cancelRoute": "/cancel",
+      "verifiedAt": "2026-04-12T06:08:22.689Z",
+      "createdAt": "2026-04-12T06:08:22.689Z",
+      "updatedAt": "2026-04-12T06:08:22.689Z",
+      "metadata": {
+        "seed": true,
+        "batch": "financial_stack_seed",
+        "processorEventType": "payment_succeeded",
+        "processorStatus": "succeeded",
+        "rail": "seed-rail"
+      }
+    }
+  ]
+}

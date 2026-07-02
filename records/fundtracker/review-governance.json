@@ -1,0 +1,102 @@
+{
+  "reviewQueue": [
+    {
+      "reviewId": "review_tx_vo_block15_001",
+      "transactionId": "tx_vo_block15_001",
+      "verifiedOpportunityId": "vo_block15_001",
+      "merchantId": "m_201",
+      "customerId": "cust_block15_001",
+      "status": "pending_review",
+      "reasonSummary": "[HIGH_AMOUNT] Transaction amount exceeds the merchant risk threshold. | [NON_USD] Currency is outside the merchant low-risk profile. | [MISSING_METADATA] Verified opportunity metadata is missing or empty. | [HIGH_RISK_SOURCE] Source system is categorized as higher risk. | [SUSPICIOUS_RAIL] Processor rail is categorized as non-production or suspicious.",
+      "reasons": [
+        {
+          "code": "UNKNOWN",
+          "message": "[HIGH_AMOUNT] Transaction amount exceeds the merchant risk threshold.",
+          "details": {
+            "riskWeight": 30,
+            "policy": "strict-consumer",
+            "amount": 2500,
+            "threshold": 300
+          }
+        },
+        {
+          "code": "UNKNOWN",
+          "message": "[NON_USD] Currency is outside the merchant low-risk profile.",
+          "details": {
+            "riskWeight": 25,
+            "policy": "strict-consumer",
+            "currency": "EUR"
+          }
+        },
+        {
+          "code": "UNKNOWN",
+          "message": "[MISSING_METADATA] Verified opportunity metadata is missing or empty.",
+          "details": {
+            "riskWeight": 15,
+            "policy": "strict-consumer"
+          }
+        },
+        {
+          "code": "UNKNOWN",
+          "message": "[HIGH_RISK_SOURCE] Source system is categorized as higher risk.",
+          "details": {
+            "riskWeight": 30,
+            "policy": "strict-consumer",
+            "sourceSystem": "manual_unknown_entry"
+          }
+        },
+        {
+          "code": "UNKNOWN",
+          "message": "[SUSPICIOUS_RAIL] Processor rail is categorized as non-production or suspicious.",
+          "details": {
+            "riskWeight": 25,
+            "policy": "strict-consumer",
+            "rail": "manual-test-rail"
+          }
+        }
+      ],
+      "createdAt": "2026-04-12T07:01:11.234Z",
+      "updatedAt": "2026-04-12T07:01:11.234Z",
+      "source": "refused",
+      "context": {
+        "intent": {
+          "transactionId": "tx_vo_block15_001",
+          "verifiedOpportunity": {
+            "verifiedOpportunityId": "vo_block15_001",
+            "sourceSystem": "manual_unknown_entry",
+            "merchantId": "m_201",
+            "customerId": "cust_block15_001",
+            "productId": "prod_block15_001",
+            "productName": "Block 15 Plan",
+            "amount": 2500,
+            "currency": "EUR",
+            "paymentMode": "card",
+            "destinationType": "subscription_activation",
+            "successRoute": "/success",
+            "cancelRoute": "/cancel",
+            "metadata": {},
+            "createdAt": "2020-01-01T00:00:00.000Z"
+          },
+          "paymentStatus": "initiated",
+          "verificationStatus": "pending",
+          "createdAt": "2026-04-12T07:01:11.234Z",
+          "updatedAt": "2026-04-12T07:01:11.234Z"
+        },
+        "processorEvent": {
+          "processorReference": "pi_block15_001",
+          "transactionId": "tx_vo_block15_001",
+          "eventType": "payment_succeeded",
+          "amount": 2500,
+          "currency": "EUR",
+          "receivedAt": "2026-04-12T07:01:11.234Z",
+          "rawStatus": "succeeded",
+          "metadata": {
+            "rail": "manual-test-rail"
+          }
+        }
+      }
+    }
+  ],
+  "reviewAuditLog": [],
+  "permanentRefusals": []
+}

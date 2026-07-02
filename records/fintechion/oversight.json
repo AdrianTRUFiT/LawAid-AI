@@ -1,0 +1,21 @@
+[
+  {
+    "oversightStateId": "ofs_2026_04",
+    "period": "2026-04",
+    "sourceSystems": [
+      "FundTrackerAI"
+    ],
+    "grossRevenue": 395,
+    "netRevenue": 378.1,
+    "feeExposure": 16.9,
+    "refundExposure": 0,
+    "disputeExposure": 0,
+    "anomalyFlags": [],
+    "complianceFlags": [],
+    "merchantHealthState": "healthy",
+    "recommendedActions": [
+      "No immediate operator action required."
+    ],
+    "generatedAt": "2026-04-12T06:08:22.690Z"
+  }
+]

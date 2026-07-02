@@ -1,0 +1,30 @@
+{
+  "shellRecordId": "shell-20260406-test-001",
+  "handoffId": "20260406-014114-TEST-009",
+  "targetApp": "LawAidAI",
+  "sourceApp": "FundTrackerAI",
+  "reviewStatus": "pending",
+  "reviewedAt": "2026-04-06T21:36:55.181Z",
+  "reviewedBy": "admin",
+  "identity": {
+    "email": "test.user@example.com",
+    "fullName": "Test User",
+    "userId": "usr-test-001"
+  },
+  "context": {
+    "caseType": "family-law",
+    "matterId": "matter-test-001",
+    "projectId": "project-test-001",
+    "jurisdiction": "FL"
+  },
+  "initializationHints": {
+    "modules": [
+      "tasks",
+      "events",
+      "documents",
+      "expenses",
+      "timeline",
+      "evidence"
+    ]
+  }
+}

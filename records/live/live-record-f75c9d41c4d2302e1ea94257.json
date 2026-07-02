@@ -1,0 +1,46 @@
+{
+  "artifactType": "LiveSystemRecord",
+  "recordVersion": "1.0",
+  "liveRecordId": "lsr-f75c9d41c4d2302e1ea94257",
+  "activationKey": "f75c9d41c4d2302e1ea94257",
+  "createdAt": "2026-04-06T21:37:10.411Z",
+  "source": {
+    "reviewedShellRecordId": "shell-20260406-test-001",
+    "transactionStateId": "ats-20260406-test-001",
+    "handoffId": "20260406-014114-TEST-009"
+  },
+  "workspace": {
+    "workspaceId": "lawaid-workspace-project-test-001",
+    "projectId": "project-test-001",
+    "matterId": "matter-test-001",
+    "status": "active"
+  },
+  "identity": {
+    "email": "test.user@example.com",
+    "fullName": "Test User",
+    "userId": "usr-test-001"
+  },
+  "modules": [
+    "tasks",
+    "events",
+    "documents",
+    "expenses",
+    "timeline",
+    "evidence"
+  ],
+  "continuity": {
+    "continuityStartedAt": "2026-04-06T21:37:10.411Z",
+    "active": true
+  },
+  "marks": [
+    {
+      "type": "ACTIVATION_CONFIRMED",
+      "at": "2026-04-06T21:37:10.411Z",
+      "by": "Step6ActivationEngine",
+      "evidence": [
+        "D:\\DEV\\PROJECTS\\LawAidAI\\records\\activation\\testdata\\reviewed-shell-test.json",
+        "D:\\DEV\\PROJECTS\\LawAidAI\\records\\activation\\testdata\\activated-transaction-state-test.json"
+      ]
+    }
+  ]
+}

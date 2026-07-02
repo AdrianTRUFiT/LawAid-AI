@@ -1,0 +1,24 @@
+﻿{
+    "receiveTimestamp":  "2026-04-06T01:45:59.3685010-04:00",
+    "receiveStatus":  "rejected",
+    "reviewedBy":  "Adrian",
+    "reviewedAt":  "2026-04-06T01:50:37.5684573-04:00",
+    "ingestStatus":  "notIngested",
+    "handoff":  {
+                    "handoffId":  "20260406-014114-TEST-009",
+                    "leadId":  "TEST-009",
+                    "timestamp":  "2026-04-06T01:41:14.1163237-04:00",
+                    "sourceApp":  "FundTrackerAI",
+                    "targetApp":  "LawAidAI",
+                    "artifactType":  "ActivatedTransactionState",
+                    "status":  "accepted",
+                    "payload":  {
+                                    "name":  "Adrian TRUFiT",
+                                    "value":  "25000",
+                                    "context":  "lawaid-activation",
+                                    "confidence":  "0.95"
+                                },
+                    "validated":  true
+                },
+    "rejectionReason":  "Cleanup after Step 5 validation"
+}

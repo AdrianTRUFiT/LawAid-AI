@@ -1,0 +1,3 @@
+﻿// stateMachine.ts
+// scaffold placeholder
+

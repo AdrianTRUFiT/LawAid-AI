@@ -1,0 +1,3 @@
+﻿// healthModel.ts
+// scaffold placeholder
+

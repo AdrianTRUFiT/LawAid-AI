@@ -1,0 +1,23 @@
+[
+  {
+    "id": "si-seed-1",
+    "createdAt": "2026-04-07T12:00:00.000Z",
+    "text": "Make workflow view easier to move items into assisted outbox.",
+    "category": "workflow",
+    "decision": "build-now",
+    "reason": [
+      "Category: workflow",
+      "High immediate workflow value.",
+      "Strong fit for current build pressure."
+    ],
+    "recommendedNextAction": "Build this now.",
+    "score": {
+      "burdenRemoved": 8,
+      "timingProtected": 5,
+      "confusionClarified": 8,
+      "transitionCleaned": 8,
+      "workflowImproved": 8,
+      "total": 37
+    }
+  }
+]

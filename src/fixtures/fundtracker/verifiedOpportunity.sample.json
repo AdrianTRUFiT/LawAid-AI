@@ -1,0 +1,1 @@
+﻿{ "verifiedOpportunityId": "vo_001", "merchantId": "m_001", "customerId": "cust_001", "productId": "prod_001", "amount": 99, "currency": "USD", "paymentMode": "card", "destinationType": "subscription_activation" }

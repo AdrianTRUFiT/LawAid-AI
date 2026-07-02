@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-04-06T23:47:24.895Z",
+  "purpose": "Step 10 friction-audit to refinement backlog",
+  "buckets": {
+    "structural": [],
+    "workflow": [],
+    "missing-artifact": [],
+    "visibility": [],
+    "automation": [],
+    "manual-safety": [],
+    "continuity": [],
+    "retrieval": [],
+    "operator-burden": []
+  }
+}

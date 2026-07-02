@@ -1,0 +1,19 @@
+import React from "react";
+
+type Props = {
+  initialTab?: string;
+};
+
+export default function CodeCoordinatorPatchWorkspace({ initialTab = "patches" }: Props) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 className="text-lg font-bold text-legal-navy">Code Coordinator Patch Workspace</h2>
+      <p className="mt-2 text-sm text-slate-500">
+        Patch workspace placeholder. This surface is present so the admin view can compile while the full coordinator workflow is reconciled.
+      </p>
+      <div className="mt-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+        Initial tab: {initialTab}
+      </div>
+    </div>
+  );
+}

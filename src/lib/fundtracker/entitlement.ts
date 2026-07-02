@@ -1,0 +1,3 @@
+﻿// entitlement.ts
+// scaffold placeholder
+

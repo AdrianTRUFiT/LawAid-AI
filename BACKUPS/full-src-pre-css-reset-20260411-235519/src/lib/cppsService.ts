@@ -1,0 +1,72 @@
+import { Record, Signal, RepresentationState } from "../context/ProjectContext";
+
+export const runSignalEngine = async (
+  projectId: string,
+  records: Record[],
+  representationState: RepresentationState
+): Promise<Signal[]> => {
+  const projectRecords = records.filter((r) => r.projectId === projectId);
+  const signals: Signal[] = [];
+
+  const unverifiedDocs = projectRecords.filter(
+    (r) => r.type === "document" && !r.verified
+  );
+
+  if (unverifiedDocs.length > 0) {
+    signals.push({
+      id: Math.random().toString(36).slice(2, 11),
+      projectId,
+      timestamp: new Date().toISOString(),
+      status: "active",
+      type: "Missing Documentation",
+      description:
+        "Pattern detected that may require clarification. One or more document records do not show verified status.",
+      supportingEvidenceIds: unverifiedDocs.map((r) => r.id),
+      confidence: "Medium",
+      recommendedAction:
+        "Review the unverified document records and confirm whether supporting documentation should be added or verified.",
+    });
+  }
+
+  const taskLike = projectRecords.filter((r) => r.type === "task");
+  const oldTasks = taskLike.filter((r) => {
+    const taskDate = new Date(r.date).getTime();
+    const ageMs = Date.now() - taskDate;
+    return ageMs > 1000 * 60 * 60 * 24 * 14;
+  });
+
+  if (oldTasks.length > 0) {
+    signals.push({
+      id: Math.random().toString(36).slice(2, 11),
+      projectId,
+      timestamp: new Date().toISOString(),
+      status: "active",
+      type: "Timeline Drift",
+      description:
+        "Pattern detected that may require clarification. Older task records remain in the timeline and may warrant follow-up or documentation.",
+      supportingEvidenceIds: oldTasks.map((r) => r.id),
+      confidence: "Low",
+      recommendedAction:
+        "Review older tasks and document whether they were completed, deferred, or still require action.",
+    });
+  }
+
+  const expenseRecords = projectRecords.filter((r) => r.type === "expense");
+  if (expenseRecords.length >= 3) {
+    signals.push({
+      id: Math.random().toString(36).slice(2, 11),
+      projectId,
+      timestamp: new Date().toISOString(),
+      status: "active",
+      type: "Billing Irregularity",
+      description:
+        "Pattern detected that may require clarification. Multiple expense records were captured and may warrant a closer billing review.",
+      supportingEvidenceIds: expenseRecords.map((r) => r.id),
+      confidence: "Low",
+      recommendedAction:
+        "Review the expense trail and confirm whether each billing-related record has supporting explanation or documentation.",
+    });
+  }
+
+  return signals;
+};
