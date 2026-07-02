@@ -1,0 +1,1 @@
+{"version":3,"file":"fact2Verifier.js","sourceRoot":"","sources":["../../src/fact2/fact2Verifier.ts"],"names":[],"mappings":"AAEA,MAAM,UAAU,kBAAkB,CAAC,MAAoB;IACrD,OAAO,CACL,MAAM,CAAC,kBAAkB,CAAC,MAAM,GAAG,CAAC;QACpC,CAAC,MAAM,CAAC,MAAM,KAAK,QAAQ;YACzB,MAAM,CAAC,MAAM,KAAK,QAAQ;YAC1B,MAAM,CAAC,MAAM,KAAK,SAAS,CAAC,CAC/B,CAAC;AACJ,CAAC"}
